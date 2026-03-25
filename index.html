@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Multi-Service Platform</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            950: '#022c22',
+                        },
+                        zinc: {
+                            900: '#18181b',
+                            950: '#09090b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-zinc-950 antialiased text-white selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <main class="relative min-h-[100dvh] w-full flex items-center overflow-hidden">
+        
+        <!-- Video Background -->
+        <div class="absolute inset-0 z-0 w-full h-full bg-zinc-950">
+            <video 
+                autoplay 
+                loop 
+                muted 
+                playsinline 
+                class="absolute inset-0 w-full h-full object-cover opacity-50 scale-105 parallax-video"
+                id="hero-video"
+            >
+                <source src="NB.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Dark Gradient Overlays for Readability -->
+            <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-zinc-950/20"></div>
+        </div>
+
+        <!-- Glass Navigation -->
+        <nav class="absolute top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-12 py-6 reveal-nav">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.4)]"></div>
+                <span class="font-medium text-xl tracking-tight">Lumina</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+                <a href="#" class="hover:text-white transition-colors">Bus Booking</a>
+                <a href="#" class="hover:text-white transition-colors">Vehicle Rentals</a>
+                <a href="#" class="hover:text-white transition-colors">Service Marketplace</a>
+            </div>
+            <button class="text-sm font-medium bg-white/5 border border-white/10 px-6 py-2.5 rounded-full hover:bg-white/10 transition-colors backdrop-blur-md">
+                Sign In
+            </button>
+        </nav>
+
+        <!-- Content Box -->
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-center pt-20">
+            
+            <div class="max-w-3xl hero-content-stagger">
+                
+                <!-- Eyebrow -->
+                <div class="reveal-item overflow-hidden mb-6">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium backdrop-blur-md">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Next-Gen Travel Platform
+                    </span>
+                </div>
+
+                <!-- Headline -->
+                <div class="reveal-item overflow-hidden">
+                    <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-light tracking-tighter leading-[1.05] text-white">
+                        Connecting Every <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">Journey, Every Town</span>
+                    </h1>
+                </div>
+
+                <!-- Subheadline -->
+                <div class="reveal-item overflow-hidden mt-8">
+                    <p class="text-lg md:text-xl text-zinc-400 font-light leading-relaxed max-w-xl">
+                        A seamless ecosystem for bus bookings, premium vehicle rentals, and trusted local services. One platform to power your entire journey.
+                    </p>
+                </div>
+
+                <!-- CTAs -->
+                <div class="reveal-item flex flex-col sm:flex-row items-center gap-4 mt-12 w-full sm:w-auto">
+                    <!-- Primary CTA -->
+                    <a href="#" class="magnetic-btn group relative w-full sm:w-auto flex items-center justify-center gap-3 bg-emerald-500 text-emerald-950 font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-emerald-400 active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(16,185,129,0.3)]">
+                        <span>Book Bus</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                    
+                    <!-- Secondary CTA: Liquid Glass Refraction -->
+                    <a href="#" class="magnetic-btn w-full sm:w-auto flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 shadow-[inner_0_1px_0_rgba(255,255,255,0.1)] text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-[0.98]">
+                        <span>Explore Services</span>
+                    </a>
+                </div>
+
+                <!-- Trust Metrics -->
+                <div class="reveal-item flex items-center gap-8 mt-16 pt-8 border-t border-white/10">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-light text-white font-mono tracking-tight">10k+</span>
+                        <span class="text-sm text-zinc-500 font-medium mt-1">Daily Routes</span>
+                    </div>
+                    <div class="w-px h-10 bg-white/10"></div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-light text-white font-mono tracking-tight">4.9/5</span>
+                        <span class="text-sm text-zinc-500 font-medium mt-1">Service Rating</span>
+                    </div>
+                    <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
+                    <div class="hidden sm:flex -space-x-3">
+                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80" src="https://i.pravatar.cc/100?img=1" alt="User">
+                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80" src="https://i.pravatar.cc/100?img=2" alt="User">
+                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80" src="https://i.pravatar.cc/100?img=3" alt="User">
+                        <div class="w-10 h-10 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-xs font-medium text-white">+2k</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('hero-video');
+            if(video) {
+                video.playbackRate = 0.8;
+                video.play().catch(e => console.warn('Autoplay prevented', e));
+            }
+        });
+
+        // Parallax Effect on Scroll
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const video = document.querySelector('.parallax-video');
+            const content = document.querySelector('.hero-content-stagger');
+            
+            if(video) {
+                video.style.transform = `translateY(${scrollY * 0.3}px) scale(1.05)`;
+            }
+            if(content) {
+                content.style.opacity = Math.max(1 - scrollY / 600, 0);
+                content.style.transform = `translateY(${scrollY * 0.15}px)`;
+            }
+        });
+
+        // Magnetic Buttons
+        const magnets = document.querySelectorAll('.magnetic-btn');
+        magnets.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const position = btn.getBoundingClientRect();
+                const x = e.pageX - position.left - position.width / 2;
+                const y = e.pageY - position.top - position.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.02)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
