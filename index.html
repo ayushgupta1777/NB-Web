@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,24 +35,20 @@
     </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-zinc-950 antialiased text-white selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+
+<body
+    class="bg-zinc-950 antialiased text-white selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
 
     <!-- Hero Section -->
     <main class="relative min-h-[100dvh] w-full flex items-center overflow-hidden">
-        
+
         <!-- Video Background -->
         <div class="absolute inset-0 z-0 w-full h-full bg-zinc-950">
-            <video 
-                autoplay 
-                loop 
-                muted 
-                playsinline 
-                class="absolute inset-0 w-full h-full object-cover opacity-50 scale-105 parallax-video"
-                id="hero-video"
-            >
+            <video autoplay loop muted playsinline
+                class="absolute inset-0 w-full h-full object-cover opacity-50 scale-105 parallax-video" id="hero-video">
                 <source src="NB.mp4" type="video/mp4">
             </video>
-            
+
             <!-- Dark Gradient Overlays for Readability -->
             <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-transparent"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-zinc-950/20"></div>
@@ -61,26 +58,28 @@
         <nav class="absolute top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-12 py-6 reveal-nav">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-full bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.4)]"></div>
-                <span class="font-medium text-xl tracking-tight">Lumina</span>
+                <span class="font-medium text-xl tracking-tight">NB</span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
                 <a href="#" class="hover:text-white transition-colors">Bus Booking</a>
                 <a href="#" class="hover:text-white transition-colors">Vehicle Rentals</a>
                 <a href="#" class="hover:text-white transition-colors">Service Marketplace</a>
             </div>
-            <button class="text-sm font-medium bg-white/5 border border-white/10 px-6 py-2.5 rounded-full hover:bg-white/10 transition-colors backdrop-blur-md">
+            <button
+                class="text-sm font-medium bg-white/5 border border-white/10 px-6 py-2.5 rounded-full hover:bg-white/10 transition-colors backdrop-blur-md">
                 Sign In
             </button>
         </nav>
 
         <!-- Content Box -->
         <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-center pt-20">
-            
+
             <div class="max-w-3xl hero-content-stagger">
-                
+
                 <!-- Eyebrow -->
                 <div class="reveal-item overflow-hidden mb-6">
-                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium backdrop-blur-md">
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium backdrop-blur-md">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                         Next-Gen Travel Platform
                     </span>
@@ -88,31 +87,38 @@
 
                 <!-- Headline -->
                 <div class="reveal-item overflow-hidden">
-                    <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-light tracking-tighter leading-[1.05] text-white">
+                    <h1
+                        class="text-5xl md:text-7xl lg:text-[5.5rem] font-light tracking-tighter leading-[1.05] text-white">
                         Connecting Every <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">Journey, Every Town</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">Journey,
+                            Every Town</span>
                     </h1>
                 </div>
 
                 <!-- Subheadline -->
                 <div class="reveal-item overflow-hidden mt-8">
                     <p class="text-lg md:text-xl text-zinc-400 font-light leading-relaxed max-w-xl">
-                        A seamless ecosystem for bus bookings, premium vehicle rentals, and trusted local services. One platform to power your entire journey.
+                        A seamless ecosystem for bus bookings, premium vehicle rentals, and trusted local services. One
+                        platform to power your entire journey.
                     </p>
                 </div>
 
                 <!-- CTAs -->
                 <div class="reveal-item flex flex-col sm:flex-row items-center gap-4 mt-12 w-full sm:w-auto">
                     <!-- Primary CTA -->
-                    <a href="#" class="magnetic-btn group relative w-full sm:w-auto flex items-center justify-center gap-3 bg-emerald-500 text-emerald-950 font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-emerald-400 active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(16,185,129,0.3)]">
+                    <a href="#"
+                        class="magnetic-btn group relative w-full sm:w-auto flex items-center justify-center gap-3 bg-emerald-500 text-emerald-950 font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-emerald-400 active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(16,185,129,0.3)]">
                         <span>Book Bus</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                     </a>
-                    
+
                     <!-- Secondary CTA: Liquid Glass Refraction -->
-                    <a href="#" class="magnetic-btn w-full sm:w-auto flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 shadow-[inner_0_1px_0_rgba(255,255,255,0.1)] text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-[0.98]">
+                    <a href="#"
+                        class="magnetic-btn w-full sm:w-auto flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 shadow-[inner_0_1px_0_rgba(255,255,255,0.1)] text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-[0.98]">
                         <span>Explore Services</span>
                     </a>
                 </div>
@@ -130,10 +136,15 @@
                     </div>
                     <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
                     <div class="hidden sm:flex -space-x-3">
-                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80" src="https://i.pravatar.cc/100?img=1" alt="User">
-                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80" src="https://i.pravatar.cc/100?img=2" alt="User">
-                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80" src="https://i.pravatar.cc/100?img=3" alt="User">
-                        <div class="w-10 h-10 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-xs font-medium text-white">+2k</div>
+                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80"
+                            src="https://i.pravatar.cc/100?img=1" alt="User">
+                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80"
+                            src="https://i.pravatar.cc/100?img=2" alt="User">
+                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80"
+                            src="https://i.pravatar.cc/100?img=3" alt="User">
+                        <div
+                            class="w-10 h-10 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-xs font-medium text-white">
+                            +2k</div>
                     </div>
                 </div>
 
@@ -141,11 +152,314 @@
         </div>
     </main>
 
+    <!-- 1. TRUST / SOCIAL PROOF STRIP -->
+    <section class="relative z-20 w-full bg-zinc-900/50 backdrop-blur-xl border-y border-white/5 py-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p class="text-zinc-400 font-medium text-sm tracking-wide uppercase">Trusted by thousands of यात्रियों <br
+                    class="hidden md:block"> across cities & villages</p>
+            <div class="flex flex-wrap items-center gap-8 md:gap-16">
+                <!-- Stat 1 -->
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-white font-bold text-lg font-mono">10K+</span>
+                        <span class="text-zinc-500 text-xs font-medium">यात्राएँ</span>
+                    </div>
+                </div>
+                <!-- Stat 2 -->
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-white font-bold text-lg font-mono">500+</span>
+                        <span class="text-zinc-500 text-xs font-medium">Routes</span>
+                    </div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-white font-bold text-lg font-mono">200+</span>
+                        <span class="text-zinc-500 text-xs font-medium">Providers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CORE SERVICES SECTION -->
+    <section class="relative z-10 w-full bg-zinc-950 py-32 px-6 md:px-12 overflow-hidden section-fade-up">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-light tracking-tight text-white mb-16 max-w-2xl">
+                Everything You Need <br><span class="text-zinc-500">for Your Journey</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]">
+                <!-- Bus Booking -->
+                <div
+                    class="lg:col-span-2 group relative p-10 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden hover:border-emerald-500/30 transition-colors duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 h-full flex flex-col justify-end">
+                        <div
+                            class="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 font-bold text-xl">
+                            B</div>
+                        <h3 class="text-3xl font-medium text-white mb-3">Bus Booking</h3>
+                        <p class="text-zinc-400 text-lg max-w-sm">Find and book buses across cities and small towns.</p>
+                    </div>
+                </div>
+                <!-- Vehicle Rental -->
+                <div
+                    class="group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden hover:border-white/20 transition-colors duration-500">
+                    <div class="relative z-10 h-full flex flex-col justify-end">
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10 font-bold text-lg">
+                            R</div>
+                        <h3 class="text-xl font-medium text-white mb-2">Vehicle Rental</h3>
+                        <p class="text-zinc-500 text-sm">Book buses or cars for events, weddings, and trips.</p>
+                    </div>
+                </div>
+                <!-- Service Marketplace -->
+                <div
+                    class="group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden hover:border-white/20 transition-colors duration-500">
+                    <div class="relative z-10 h-full flex flex-col justify-end">
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10 font-bold text-lg">
+                            S</div>
+                        <h3 class="text-xl font-medium text-white mb-2">Service Marketplace</h3>
+                        <p class="text-zinc-500 text-sm">Find drivers, hotels, photographers, and more.</p>
+                    </div>
+                </div>
+                <!-- Smart Food -->
+                <div
+                    class="lg:col-span-2 md:col-span-2 group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden hover:border-white/20 transition-colors duration-500">
+                    <div class="relative z-10 h-full flex flex-col justify-end">
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10 font-bold text-lg">
+                            F</div>
+                        <h3 class="text-xl font-medium text-white mb-2">Smart Food (Optional)</h3>
+                        <p class="text-zinc-500 text-sm max-w-sm">Order food during your journey at the right time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. HOW IT WORKS -->
+    <section class="relative z-10 w-full bg-zinc-900 py-32 px-6 md:px-12 section-fade-up">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            <h2 class="text-sm font-medium text-emerald-400 uppercase tracking-widest mb-4">How It Works</h2>
+            <h3 class="text-4xl md:text-5xl font-light text-white mb-20">Simple. Fast. Reliable.</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-5xl relative">
+                <!-- Connecting Line -->
+                <div
+                    class="hidden md:block absolute top-[28px] left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent">
+                </div>
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center relative z-10">
+                    <div
+                        class="w-14 h-14 rounded-full bg-zinc-950 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-mono text-xl mb-6 shadow-[0_0_30px_rgba(16,185,129,0.15)] pulse-ring">
+                        1</div>
+                    <h4 class="text-xl font-medium text-white mb-3">Search or Post</h4>
+                    <p class="text-zinc-400 text-sm">Look for buses or post your exact requirements.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center relative z-10">
+                    <div
+                        class="w-14 h-14 rounded-full bg-zinc-950 border border-white/10 flex items-center justify-center text-white font-mono text-xl mb-6">
+                        2</div>
+                    <h4 class="text-xl font-medium text-white mb-3">Get Matches Instantly</h4>
+                    <p class="text-zinc-400 text-sm">Connect with the best providers or routes.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center relative z-10">
+                    <div
+                        class="w-14 h-14 rounded-full bg-zinc-950 border border-white/10 flex items-center justify-center text-white font-mono text-xl mb-6">
+                        3</div>
+                    <h4 class="text-xl font-medium text-white mb-3">Chat & Finalize</h4>
+                    <p class="text-zinc-400 text-sm">Communicate, agree on terms, and secure it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. RENTAL / SERVICE HIGHLIGHT -->
+    <section class="relative z-10 w-full bg-zinc-950 py-32 px-6 md:px-12 section-fade-up">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2 flex flex-col items-start">
+                <div
+                    class="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 mb-6">
+                    Premium Rentals</div>
+                <h2 class="text-4xl md:text-5xl font-light text-white leading-tight mb-6">
+                    Plan Events, <span class="text-emerald-400 block">Book Vehicles Easily.</span>
+                </h2>
+                <p class="text-xl text-zinc-400 font-light mb-4">Need a bus for a wedding or group trip?</p>
+                <p class="text-zinc-500 mb-10 max-w-lg">Post your requirement and get offers from multiple owners
+                    directly without hassle.</p>
+                <a href="#"
+                    class="magnetic-btn bg-white text-zinc-950 px-8 py-4 rounded-full font-medium hover:bg-zinc-200 transition-colors">Post
+                    Requirement</a>
+            </div>
+            <div class="w-full md:w-1/2">
+                <div
+                    class="aspect-[4/3] rounded-[2.5rem] bg-zinc-900 border border-white/5 flex items-center justify-center relative group p-8">
+                    <!-- Virtual UI representation -->
+                    <div
+                        class="w-full max-w-sm rounded-[2rem] bg-zinc-950 border border-white/10 p-6 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
+                        <div class="h-6 w-32 bg-zinc-800 rounded mb-6"></div>
+                        <div class="h-16 w-full bg-zinc-800/50 rounded-xl mb-4 p-4 border border-emerald-500/20">
+                            <div class="h-4 w-24 bg-emerald-500/20 rounded"></div>
+                        </div>
+                        <div class="h-16 w-full bg-zinc-800/30 rounded-xl mb-6"></div>
+                        <div class="h-12 w-full bg-emerald-500 rounded-xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WHY CHOOSE US -->
+    <section class="relative z-10 w-full bg-zinc-900 py-32 px-6 md:px-12 section-fade-up">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
+            <div class="w-full md:w-1/3">
+                <h2 class="text-4xl md:text-5xl font-light text-white">Why Choose <br><span class="text-zinc-500">Our
+                        Platform</span></h2>
+            </div>
+            <div class="w-full md:w-2/3 flex flex-col gap-6">
+                <!-- Items -->
+                <div
+                    class="p-8 rounded-[2rem] bg-zinc-950/50 border border-white/5 flex items-start gap-6 hover:bg-zinc-950 transition-colors">
+                    <div class="flex-1">
+                        <h4 class="text-xl font-medium text-white mb-2">Works in Small Towns & Villages</h4>
+                        <p class="text-zinc-500 text-sm">Accessible booking for remote locations.</p>
+                    </div>
+                </div>
+                <div
+                    class="p-8 rounded-[2rem] bg-zinc-950/50 border border-white/5 flex items-start gap-6 hover:bg-zinc-950 transition-colors">
+                    <div class="flex-1">
+                        <h4 class="text-xl font-medium text-white mb-2">Direct Connection</h4>
+                        <p class="text-zinc-500 text-sm">No middleman fees between you and the provider.</p>
+                    </div>
+                </div>
+                <div
+                    class="p-8 rounded-[2rem] bg-zinc-950/50 border border-white/5 flex items-start gap-6 hover:bg-zinc-950 transition-colors">
+                    <div class="flex-1">
+                        <h4 class="text-xl font-medium text-white mb-2">Transparent Pricing</h4>
+                        <p class="text-zinc-500 text-sm">Clear pricing and options laid out in front of you.</p>
+                    </div>
+                </div>
+                <div
+                    class="p-8 rounded-[2rem] bg-zinc-950/50 border border-white/5 flex items-start gap-6 hover:bg-zinc-950 transition-colors">
+                    <div class="flex-1">
+                        <h4 class="text-xl font-medium text-white mb-2">Multiple Services in One App</h4>
+                        <p class="text-zinc-500 text-sm">All trip-related utilities compiled together.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. APP PREVIEW / VISUAL SECTION -->
+    <section class="relative z-10 w-full bg-zinc-950 py-32 text-center overflow-hidden section-fade-up">
+        <h2 class="text-5xl md:text-6xl font-light text-white tracking-tighter mb-4">Everything in your pocket.</h2>
+        <p class="text-xl text-zinc-400 mb-16 font-light">Booking, chatting, and renting flows built seamlessly.</p>
+        <div class="flex items-center justify-center min-h-[400px]">
+            <div
+                class="w-[300px] h-[550px] rounded-[3rem] bg-zinc-900 border-[8px] border-zinc-800 shadow-[0_0_80px_rgba(16,185,129,0.15)] relative">
+                <div class="absolute inset-x-12 top-0 h-6 bg-zinc-800 rounded-b-2xl"></div>
+                <div class="p-6 pt-12">
+                    <div
+                        class="h-32 w-full bg-gradient-to-br from-emerald-500/20 to-transparent border border-emerald-500/20 rounded-2xl mb-4">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="h-20 bg-zinc-800 rounded-xl"></div>
+                        <div class="h-20 bg-zinc-800 rounded-xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TESTIMONIALS -->
+    <section class="relative z-10 w-full bg-zinc-900 py-32 section-fade-up">
+        <div class="max-w-7xl mx-auto px-6 mb-16 text-center">
+            <h2 class="text-4xl md:text-5xl font-light text-white">What Our <span class="text-zinc-500">Users Say</span>
+            </h2>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-10 rounded-[2rem] bg-zinc-950 border border-white/5 flex flex-col justify-between">
+                <p class="text-xl text-white font-light leading-relaxed mb-8">"Booked a bus for my wedding easily. The
+                    direct connection system is flawless."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-white/10 rounded-full"></div>
+                    <div class="text-white font-medium text-sm">Rahul S.</div>
+                </div>
+            </div>
+            <div class="p-10 rounded-[2rem] bg-zinc-950 border border-white/5 flex flex-col justify-between">
+                <p class="text-xl text-white font-light leading-relaxed mb-8">"Very helpful for village travel where
+                    options are usually sparse."</p>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center font-bold">
+                        A</div>
+                    <div class="text-white font-medium text-sm">Anita M.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FINAL CTA SECTION -->
+    <section class="relative z-10 w-full bg-zinc-950 py-40 text-center section-fade-up">
+        <h2 class="text-5xl md:text-7xl font-light text-white tracking-tighter mb-10 max-w-4xl mx-auto">Start Your <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-200">Journey
+                Today.</span></h2>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#"
+                class="magnetic-btn bg-emerald-500 text-emerald-950 font-medium px-10 py-5 rounded-full hover:bg-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.3)]">Book
+                Bus</a>
+            <a href="#"
+                class="magnetic-btn bg-white/5 border border-white/10 text-white font-medium px-10 py-5 rounded-full hover:bg-white/10 backdrop-blur-md">Explore
+                Services</a>
+        </div>
+    </section>
+
+    <!-- 9. FOOTER -->
+    <footer class="relative z-10 w-full bg-zinc-950 border-t border-white/5 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between text-sm text-zinc-500 gap-6">
+            <p>&copy; 2026 Platform. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition-colors">About</a>
+                <a href="#" class="hover:text-white transition-colors">Services</a>
+                <a href="#" class="hover:text-white transition-colors">Contact</a>
+                <a href="#" class="hover:text-white transition-colors">Terms & Privacy</a>
+            </div>
+        </div>
+    </footer>
+
     <!-- Interactive Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const video = document.getElementById('hero-video');
-            if(video) {
+            if (video) {
                 video.playbackRate = 0.8;
                 video.play().catch(e => console.warn('Autoplay prevented', e));
             }
@@ -156,11 +470,11 @@
             const scrollY = window.scrollY;
             const video = document.querySelector('.parallax-video');
             const content = document.querySelector('.hero-content-stagger');
-            
-            if(video) {
+
+            if (video) {
                 video.style.transform = `translateY(${scrollY * 0.3}px) scale(1.05)`;
             }
-            if(content) {
+            if (content) {
                 content.style.opacity = Math.max(1 - scrollY / 600, 0);
                 content.style.transform = `translateY(${scrollY * 0.15}px)`;
             }
@@ -173,7 +487,7 @@
                 const position = btn.getBoundingClientRect();
                 const x = e.pageX - position.left - position.width / 2;
                 const y = e.pageY - position.top - position.height / 2;
-                
+
                 btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.02)`;
             });
 
@@ -181,6 +495,22 @@
                 btn.style.transform = 'translate(0px, 0px) scale(1)';
             });
         });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: stop observing once revealed
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+        document.querySelectorAll('.section-fade-up').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
+
 </html>
