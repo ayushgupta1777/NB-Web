@@ -52,7 +52,7 @@
                 <div
                     class="w-10 h-10 rounded-full bg-emerald-500 text-zinc-950 flex items-center justify-center font-bold shadow-[0_0_20px_rgba(16,185,129,0.4)]">
                     NB</div>
-                <span class="font-semibold text-xl tracking-tight hidden sm:block">Next-gen Bus</span>
+                <span class="font-semibold text-xl tracking-tight hidden sm:block">Night Bus</span>
             </div>
             <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-300">
                 <a href="#services" class="hover:text-white transition-colors">Bus</a>
@@ -156,7 +156,8 @@
                         <!-- Top header mock -->
                         <div class="h-40 bg-gradient-to-br from-emerald-500/20 to-transparent p-5 pt-12">
                             <div class="w-10 h-10 rounded-full bg-emerald-500/20 mb-3 flex items-center justify-center">
-                                <i class="ri-user-smile-line text-emerald-500"></i></div>
+                                <i class="ri-user-smile-line text-emerald-500"></i>
+                            </div>
                             <div class="h-4 w-24 bg-white/20 rounded mb-2"></div>
                             <div class="h-3 w-16 bg-white/10 rounded"></div>
                         </div>
@@ -234,80 +235,128 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <!-- Bus Booking Card -->
-                <div class="service-card lg:col-span-2 group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-emerald-500/30 transition-all duration-500 min-h-[380px]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950/90 z-10 transition-colors group-hover:to-zinc-950 border-emerald"></div>
+                <div
+                    class="service-card lg:col-span-2 group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-emerald-500/30 transition-all duration-500 min-h-[380px]">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950/90 z-10 transition-colors group-hover:to-zinc-950 border-emerald">
+                    </div>
                     <!-- bg shape -->
-                    <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[60px] group-hover:bg-emerald-500/20 transition-all duration-700"></div>
-                    <div class="absolute top-8 right-8 z-20 text-emerald-500/50 group-hover:text-emerald-400 transition-colors text-6xl">
-                        <i class="ri-bus-wifi-line"></i></div>
+                    <div
+                        class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[60px] group-hover:bg-emerald-500/20 transition-all duration-700">
+                    </div>
+                    <div
+                        class="absolute top-8 right-8 z-20 text-emerald-500/50 group-hover:text-emerald-400 transition-colors text-6xl">
+                        <i class="ri-bus-wifi-line"></i>
+                    </div>
 
                     <div class="relative z-20 mt-auto">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
                             <i class="ri-ticket-2-line text-white text-xl"></i>
                         </div>
-                        <h4 class="text-3xl font-bold text-white mb-2 group-hover:gradient-text transition-all">Bus Booking</h4>
-                        <p class="text-zinc-400 max-w-md mb-6 transition-transform group-hover:translate-x-2 w-full">Instantly search and book seats on thousands of routes. Transparent tracking, direct connectivity.</p>
+                        <h4 class="text-3xl font-bold text-white mb-2 group-hover:gradient-text transition-all">Bus
+                            Booking</h4>
+                        <p class="text-zinc-400 max-w-md mb-6 transition-transform group-hover:translate-x-2 w-full">
+                            Instantly search and book seats on thousands of routes. Transparent tracking, direct
+                            connectivity.</p>
                         <div class="flex flex-wrap gap-3 origin-left opacity-90 group-hover:opacity-100 transition-all">
-                            <button onclick="window.location.href='nb://bus'" class="glass-panel px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 shrink-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">Continue in App <i class="ri-arrow-right-up-line ml-1"></i></button>
-                            <button onclick="openWhatsApp('Hi, I want to book a bus ticket.')" class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-6 py-3 rounded-full text-sm font-medium hover:bg-emerald-500 hover:text-zinc-950 transition-colors shrink-0"><i class="ri-whatsapp-line mr-1"></i> WhatsApp</button>
+                            <button onclick="window.location.href='nb://bus'"
+                                class="glass-panel px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 shrink-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">Continue
+                                in App <i class="ri-arrow-right-up-line ml-1"></i></button>
+                            <button onclick="openWhatsApp('Hi, I want to book a bus ticket.')"
+                                class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-6 py-3 rounded-full text-sm font-medium hover:bg-emerald-500 hover:text-zinc-950 transition-colors shrink-0"><i
+                                    class="ri-whatsapp-line mr-1"></i> WhatsApp</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Rentals Card (Simplified & Beautiful) -->
-                <div id="rentals" class="service-card group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-white/20 transition-all duration-500 hover:-translate-y-2 min-h-[380px]">
-                    <div class="absolute top-8 right-8 z-20 text-white/5 text-6xl group-hover:text-white/20 transition-colors">
-                        <i class="ri-steering-2-line"></i></div>
+                <div id="rentals"
+                    class="service-card group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-white/20 transition-all duration-500 hover:-translate-y-2 min-h-[380px]">
+                    <div
+                        class="absolute top-8 right-8 z-20 text-white/5 text-6xl group-hover:text-white/20 transition-colors">
+                        <i class="ri-steering-2-line"></i>
+                    </div>
                     <div class="relative z-20 mt-auto">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
-                            <i class="ri-car-line text-white"></i></div>
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
+                            <i class="ri-car-line text-white"></i>
+                        </div>
                         <h4 class="text-2xl font-bold text-white mb-2">Vehicle Rentals</h4>
-                        <p class="text-sm text-zinc-400 mb-6 group-hover:-translate-y-1 transition-transform">Book full buses, cars, or bikes for events & personal trips. Zero middleman fees.</p>
-                        
+                        <p class="text-sm text-zinc-400 mb-6 group-hover:-translate-y-1 transition-transform">Book full
+                            buses, cars, or bikes for events & personal trips. Zero middleman fees.</p>
+
                         <div class="flex flex-col gap-2 relative">
-                            <button onclick="window.location.href='nb://rentals'" class="w-full bg-emerald-500 text-zinc-950 py-3 rounded-xl text-sm font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors">Explore Vehicles</button>
-                            <button onclick="openWhatsApp('Hi, I have a requirement for Vehicle Rental.')" class="w-full glass-panel border border-white/10 py-3 rounded-xl text-sm font-medium text-white hover:bg-white/10">Enquire  <i class="ri-whatsapp-line text-emerald-400 ml-1"></i></button>
+                            <button onclick="window.location.href='nb://rentals'"
+                                class="w-full bg-emerald-500 text-zinc-950 py-3 rounded-xl text-sm font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors">Explore
+                                Vehicles</button>
+                            <button onclick="openWhatsApp('Hi, I have a requirement for Vehicle Rental.')"
+                                class="w-full glass-panel border border-white/10 py-3 rounded-xl text-sm font-medium text-white hover:bg-white/10">Enquire
+                                <i class="ri-whatsapp-line text-emerald-400 ml-1"></i></button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Events / Services Card -->
-                <div id="events" class="service-card group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-white/20 transition-all duration-500 hover:-translate-y-2 min-h-[380px]">
-                    <div class="absolute top-8 right-8 z-20 text-white/5 text-6xl group-hover:text-white/20 transition-colors">
-                        <i class="ri-calendar-event-line"></i></div>
+                <div id="events"
+                    class="service-card group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-white/20 transition-all duration-500 hover:-translate-y-2 min-h-[380px]">
+                    <div
+                        class="absolute top-8 right-8 z-20 text-white/5 text-6xl group-hover:text-white/20 transition-colors">
+                        <i class="ri-calendar-event-line"></i>
+                    </div>
                     <div class="relative z-20 mt-auto">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
-                            <i class="ri-music-2-line text-white"></i></div>
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
+                            <i class="ri-music-2-line text-white"></i>
+                        </div>
                         <h4 class="text-2xl font-bold text-white mb-2">Event Services</h4>
-                        <p class="text-sm text-zinc-400 mb-6 group-hover:-translate-y-1 transition-transform">Hire verified local DJs, Halls, Caterers & more for your wedding or event.</p>
+                        <p class="text-sm text-zinc-400 mb-6 group-hover:-translate-y-1 transition-transform">Hire
+                            verified local DJs, Halls, Caterers & more for your wedding or event.</p>
                         <div class="flex flex-col gap-2 relative">
-                            <button onclick="window.location.href='nb://events'" class="w-full glass-panel py-3 rounded-xl text-sm font-bold hover:bg-white/10 border border-white/10">Open Marketplace</button>
-                            <button onclick="openWhatsApp('Hi, I am looking for event organizers/services.')" class="w-full text-emerald-400 text-sm hover:underline py-2"><i class="ri-whatsapp-line"></i> Connect on WA</button>
+                            <button onclick="window.location.href='nb://events'"
+                                class="w-full glass-panel py-3 rounded-xl text-sm font-bold hover:bg-white/10 border border-white/10">Open
+                                Marketplace</button>
+                            <button onclick="openWhatsApp('Hi, I am looking for event organizers/services.')"
+                                class="w-full text-emerald-400 text-sm hover:underline py-2"><i
+                                    class="ri-whatsapp-line"></i> Connect on WA</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Smart Food -->
-                <div class="service-card group relative rounded-[2.5rem] bg-zinc-950 border border-emerald-500/20 overflow-hidden p-8 flex flex-col justify-end hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 shadow-[0_0_40px_rgba(16,185,129,0.05)] min-h-[380px]">
-                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-dot.png')] opacity-30 mix-blend-overlay"></div>
+                <div
+                    class="service-card group relative rounded-[2.5rem] bg-zinc-950 border border-emerald-500/20 overflow-hidden p-8 flex flex-col justify-end hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 shadow-[0_0_40px_rgba(16,185,129,0.05)] min-h-[380px]">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-dot.png')] opacity-30 mix-blend-overlay">
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-tr from-emerald-950/80 to-transparent"></div>
                     <div class="relative z-20 mt-auto">
-                        <div class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-4 uppercase tracking-widest border border-emerald-500/30">
-                            <i class="ri-flight-takeoff-line mr-1"></i> Smart Food</div>
+                        <div
+                            class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-4 uppercase tracking-widest border border-emerald-500/30">
+                            <i class="ri-flight-takeoff-line mr-1"></i> Smart Food
+                        </div>
                         <h4 class="text-2xl font-bold text-white mb-2">Enroute Dining</h4>
-                        <p class="text-sm text-emerald-100/70 mb-6">Our revolutionary system tracks your bus and ensures hot food arrives precisely at your partnered rest stop.</p>
-                        <button onclick="window.location.href='nb://food'" class="flexItems-center group-hover:text-emerald-400 text-white font-medium transition-colors group-hover:translate-x-1 duration-300">Explore Partnered Menus <i class="ri-arrow-right-line"></i></button>
+                        <p class="text-sm text-emerald-100/70 mb-6">Our revolutionary system tracks your bus and ensures
+                            hot food arrives precisely at your partnered rest stop.</p>
+                        <button onclick="window.location.href='nb://food'"
+                            class="flexItems-center group-hover:text-emerald-400 text-white font-medium transition-colors group-hover:translate-x-1 duration-300">Explore
+                            Partnered Menus <i class="ri-arrow-right-line"></i></button>
                     </div>
                 </div>
 
                 <!-- Vendor / Partner Link hidden here subtly -->
-                <div id="vendor" class="service-card group relative rounded-[2.5rem] bg-zinc-950 border-2 border-dashed border-white/10 overflow-hidden p-8 flex flex-col justify-center items-center hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-all duration-500 cursor-pointer min-h-[380px]" onclick="openWhatsApp('Hi, I want to list my service/vehicle on the NB platform.')">
+                <div id="vendor"
+                    class="service-card group relative rounded-[2.5rem] bg-zinc-950 border-2 border-dashed border-white/10 overflow-hidden p-8 flex flex-col justify-center items-center hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-all duration-500 cursor-pointer min-h-[380px]"
+                    onclick="openWhatsApp('Hi, I want to list my service/vehicle on the NB platform.')">
                     <div class="text-center relative z-20 flex flex-col items-center">
-                        <div class="w-20 h-20 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                        <div
+                            class="w-20 h-20 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]">
                             <i class="ri-add-line text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">List Your Service</h4>
-                        <p class="text-sm text-zinc-500 max-w-[200px]">Become a verified NB Vendor (Bus Owners, DJs, Drivers)</p>
+                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
+                            List Your Service</h4>
+                        <p class="text-sm text-zinc-500 max-w-[200px]">Become a verified NB Vendor (Bus Owners, DJs,
+                            Drivers)</p>
                     </div>
                 </div>
 
