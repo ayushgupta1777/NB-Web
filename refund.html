@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-zinc-950">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation & Refund Policy - Night Bus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669', 950: '#022c22' }, zinc: { 900: '#18181b', 950: '#09090b' } }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-zinc-950 text-white selection:bg-emerald-500/30">
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 text-zinc-950 flex items-center justify-center font-bold">NB</div>
+                <span class="font-semibold text-xl tracking-tight">Night Bus</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium hover:text-emerald-400 transition-colors">Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">Refund & Cancellation</h1>
+            
+            <div class="glass-panel p-8 md:p-12 rounded-[2.5rem] border border-white/5 space-y-8 text-zinc-400 leading-relaxed">
+                <section>
+                    <h2 class="text-xl font-bold text-white mb-4">1. Bus Ticket Cancellations</h2>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>More than 24 hours before departure: <span class="text-emerald-400 font-bold">100% Refund</span></li>
+                        <li>12 to 24 hours before departure: <span class="text-emerald-400 font-bold">50% Refund</span></li>
+                        <li>Less than 12 hours before departure: <span class="text-red-400 font-bold">No Refund</span></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-white mb-4">2. Vehicle Rental Cancellations</h2>
+                    <p>Rentals follow a strict 48-hour cancellation policy for a full refund. Cancellations made within 48 hours of the booking start time will be subject to a 20% processing fee.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-white mb-4">3. Event Services</h2>
+                    <p>Event service cancellations are subject to individual vendor policies, typically requiring 7-day prior notice for a full refund of the deposit.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-white mb-4">4. Refund Process</h2>
+                    <p>Once a refund is approved, it will be processed and credited to the original source of payment within 5-7 working days as per standard banking procedures.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-white mb-4">5. Non-Refundable Items</h2>
+                    <p>Booking convenience fees and insurance premiums are non-refundable once the booking is confirmed.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-white mb-4">6. Force Majeure</h2>
+                    <p>In cases of natural disasters, strikes, or sudden government restrictions, NB will work with operators to provide either a full refund or an alternative travel date.</p>
+                </section>
+
+                <p class="text-sm text-zinc-500 pt-8 border-t border-white/5 italic">Last updated: March 31, 2026</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/5 py-10 px-6 text-center text-xs text-zinc-600">
+        <p>&copy; 2026 NB Platform. Night Bus - All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

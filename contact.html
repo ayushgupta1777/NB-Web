@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-zinc-950">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Night Bus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669', 950: '#022c22' }, zinc: { 900: '#18181b', 950: '#09090b' } }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-zinc-950 text-white selection:bg-emerald-500/30">
+
+    <!-- Navigation (Simplified) -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 text-zinc-950 flex items-center justify-center font-bold">NB</div>
+                <span class="font-semibold text-xl tracking-tight">Night Bus</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium hover:text-emerald-400 transition-colors">Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-12">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text">Contact Us</h1>
+                <p class="text-zinc-400 text-lg">Have questions about your journey? We're here to help you 24/7.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                        <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <i class="ri-map-pin-2-line text-emerald-500"></i> Business Address
+                        </h2>
+                        <p class="text-zinc-400 leading-relaxed">
+                            NB Platforms Private Limited<br>
+                            123, Tech Hub, Sector 45<br>
+                            Pune, Maharashtra - 411001<br>
+                            India
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                        <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <i class="ri-customer-service-2-line text-emerald-500"></i> Support Details
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                                    <i class="ri-mail-line"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-zinc-500">Email us at</p>
+                                    <p class="text-sm font-medium">support@nbbus.online</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-zinc-500">Call us at</p>
+                                    <p class="text-sm font-medium">+91 91234 56789</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5">
+                    <h2 class="text-xl font-bold mb-6">Send us a Message</h2>
+                    <form action="#" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-widest">Full Name</label>
+                            <input type="text" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-colors" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-widest">Email Address</label>
+                            <input type="email" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-colors" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-widest">Message</label>
+                            <textarea rows="4" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-colors" placeholder="How can we help?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-500 text-zinc-950 font-bold py-4 rounded-xl hover:bg-emerald-400 transition-all emerald-glow">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Simplified) -->
+    <footer class="border-t border-white/5 py-10 px-6 text-center text-xs text-zinc-600">
+        <p>&copy; 2026 NB Platform. Night Bus - All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
