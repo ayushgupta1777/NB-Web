@@ -1,515 +1,671 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth bg-zinc-950">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Multi-Service Platform</title>
-    <!-- Google Fonts: Outfit -->
+    <title>NB - Next-gen Bus | Premium Multi-Service Platform</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        emerald: {
-                            400: '#34d399',
-                            500: '#10b981',
-                            950: '#022c22',
-                        },
-                        zinc: {
-                            900: '#18181b',
-                            950: '#09090b',
-                        }
-                    }
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669', 950: '#022c22' }, zinc: { 900: '#18181b', 950: '#09090b' } },
+                    animation: { 'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }
                 }
             }
         }
     </script>
+    <!-- Remixicons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Local CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body
-    class="bg-zinc-950 antialiased text-white selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+<body class="bg-zinc-950 text-white selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+
+    <!-- Lottie Loader -->
+    <div id="loader" class="fixed inset-0 z-[100] bg-zinc-950 flex flex-col items-center justify-center">
+        <!-- Circular spinner (Lottie replacement for simple implementation) -->
+        <div class="relative w-24 h-24">
+            <div class="absolute inset-0 border-t-2 border-emerald-500 rounded-full animate-spin"></div>
+            <div
+                class="absolute inset-2 border-r-2 border-emerald-400 rounded-full animate-[spin_2s_linear_infinite_reverse]">
+            </div>
+            <div
+                class="absolute inset-4 bg-emerald-500/10 rounded-full flex items-center justify-center font-bold text-emerald-400">
+                NB</div>
+        </div>
+        <p class="mt-4 text-zinc-400 animate-pulse font-light tracking-widest text-sm">Preparing Your Journey...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5 reveal-down">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-full bg-emerald-500 text-zinc-950 flex items-center justify-center font-bold shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                    NB</div>
+                <span class="font-semibold text-xl tracking-tight hidden sm:block">Next-gen Bus</span>
+            </div>
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-300">
+                <a href="#services" class="hover:text-white transition-colors">Bus</a>
+                <a href="#rentals" class="hover:text-white transition-colors">Rentals</a>
+                <a href="#events" class="hover:text-white transition-colors">Events</a>
+                <a href="#yatra" class="hover:text-white transition-colors">Yatra</a>
+                <a href="#vendor" class="hover:text-emerald-400 transition-colors">Partner with Us</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.location.href='nb://app'"
+                    class="hidden sm:flex text-sm font-medium bg-white/5 border border-white/10 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors">Open
+                    in App</button>
+                <button
+                    class="text-sm font-medium bg-emerald-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-emerald-400 transition-colors emerald-glow">Download</button>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <main class="relative min-h-[100dvh] w-full flex items-center overflow-hidden">
-
+    <main class="relative min-h-[100dvh] w-full flex flex-col justify-center overflow-hidden pt-20" id="hero">
         <!-- Video Background -->
-        <div class="absolute inset-0 z-0 w-full h-full bg-zinc-950">
-            <video autoplay loop muted playsinline
-                class="absolute inset-0 w-full h-full object-cover opacity-50 scale-105 parallax-video" id="hero-video">
-                <source src="NB.mp4" type="video/mp4">
+        <div class="absolute inset-0 z-0">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover scale-105 opacity-60"
+                id="bg-video">
+                <source src="NB4.mp4" type="video/mp4">
             </video>
-
-            <!-- Dark Gradient Overlays for Readability -->
-            <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-zinc-950/20"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/30"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(9,9,11,1)_100%)]">
+            </div>
         </div>
 
-        <!-- Glass Navigation -->
-        <nav class="absolute top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-12 py-6 reveal-nav">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.4)]"></div>
-                <span class="font-medium text-xl tracking-tight">NB</span>
-            </div>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
-                <a href="#" class="hover:text-white transition-colors">Bus Booking</a>
-                <a href="#" class="hover:text-white transition-colors">Vehicle Rentals</a>
-                <a href="#" class="hover:text-white transition-colors">Service Marketplace</a>
-            </div>
-            <button
-                class="text-sm font-medium bg-white/5 border border-white/10 px-6 py-2.5 rounded-full hover:bg-white/10 transition-colors backdrop-blur-md">
-                Sign In
-            </button>
-        </nav>
+        <!-- Content -->
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 align-middle grid lg:grid-cols-2 gap-16 items-center">
 
-        <!-- Content Box -->
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-center pt-20">
-
-            <div class="max-w-3xl hero-content-stagger">
-
-                <!-- Eyebrow -->
-                <div class="reveal-item overflow-hidden mb-6">
-                    <span
-                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium backdrop-blur-md">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Next-Gen Travel Platform
-                    </span>
+            <!-- Left: Text & Search -->
+            <div class="flex flex-col items-start mt-10 lg:mt-0">
+                <div
+                    class="reveal-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    The Ultimate Travel Super App
                 </div>
 
-                <!-- Headline -->
-                <div class="reveal-item overflow-hidden">
-                    <h1
-                        class="text-5xl md:text-7xl lg:text-[5.5rem] font-light tracking-tighter leading-[1.05] text-white">
-                        Connecting Every <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">Journey,
-                            Every Town</span>
-                    </h1>
-                </div>
+                <h1 class="reveal-up text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] text-white mb-6">
+                    Connecting <br />
+                    <span class="gradient-text">Every Journey,</span> <br />
+                    Every Town.
+                </h1>
 
-                <!-- Subheadline -->
-                <div class="reveal-item overflow-hidden mt-8">
-                    <p class="text-lg md:text-xl text-zinc-400 font-light leading-relaxed max-w-xl">
-                        A seamless ecosystem for bus bookings, premium vehicle rentals, and trusted local services. One
-                        platform to power your entire journey.
-                    </p>
-                </div>
+                <p class="reveal-up text-lg text-zinc-400 font-light mb-10 max-w-xl">
+                    Bus bookings, premium rentals, event services, and yatra packages. One multi-service platform built
+                    for the next generation of travelers.
+                </p>
 
-                <!-- CTAs -->
-                <div class="reveal-item flex flex-col sm:flex-row items-center gap-4 mt-12 w-full sm:w-auto">
-                    <!-- Primary CTA -->
-                    <a href="#"
-                        class="magnetic-btn group relative w-full sm:w-auto flex items-center justify-center gap-3 bg-emerald-500 text-emerald-950 font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-emerald-400 active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(16,185,129,0.3)]">
-                        <span>Book Bus</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-
-                    <!-- Secondary CTA: Liquid Glass Refraction -->
-                    <a href="#"
-                        class="magnetic-btn w-full sm:w-auto flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 shadow-[inner_0_1px_0_rgba(255,255,255,0.1)] text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-[0.98]">
-                        <span>Explore Services</span>
+                <!-- CTA Buttons -->
+                <div class="reveal-up flex flex-wrap gap-4 mb-12 w-full">
+                    <button onclick="document.getElementById('search-panel').classList.toggle('hidden')"
+                        class="magnetic-btn flex-1 sm:flex-none flex items-center justify-center gap-2 bg-emerald-500 text-emerald-950 font-bold px-8 py-4 rounded-full hover:bg-emerald-400 transition-all emerald-glow">
+                        <i class="ri-bus-wifi-line text-lg"></i> Book Bus
+                    </button>
+                    <a href="#services"
+                        class="magnetic-btn flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-medium px-8 py-4 rounded-full hover:bg-white/10 glass-panel transition-all">
+                        <i class="ri-compass-3-line text-lg"></i> Explore Services
                     </a>
                 </div>
 
-                <!-- Trust Metrics -->
-                <div class="reveal-item flex items-center gap-8 mt-16 pt-8 border-t border-white/10">
-                    <div class="flex flex-col">
-                        <span class="text-3xl font-light text-white font-mono tracking-tight">10k+</span>
-                        <span class="text-sm text-zinc-500 font-medium mt-1">Daily Routes</span>
+                <!-- Inline Search Bar Panel (Hidden by default, toggled by Book Bus) -->
+                <div id="search-panel"
+                    class="hidden reveal-up w-full glass-panel p-4 rounded-3xl border border-white/10 relative overflow-hidden emerald-glow-strong mb-10">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 relative z-10">
+                        <div class="bg-zinc-900/50 rounded-2xl p-3 flex items-center gap-3 border border-white/5">
+                            <i class="ri-map-pin-line text-emerald-500 text-xl"></i>
+                            <input type="text" id="bus-from" placeholder="From (e.g. Pune)"
+                                class="bg-transparent border-none outline-none text-white w-full placeholder-zinc-500">
+                        </div>
+                        <div class="bg-zinc-900/50 rounded-2xl p-3 flex items-center gap-3 border border-white/5">
+                            <i class="ri-map-pin-fill text-emerald-400 text-xl"></i>
+                            <input type="text" id="bus-to" placeholder="To (e.g. Mumbai)"
+                                class="bg-transparent border-none outline-none text-white w-full placeholder-zinc-500">
+                        </div>
+                        <button id="search-deep-link"
+                            class="bg-emerald-500 text-zinc-950 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-400 transition-colors">
+                            <i class="ri-search-line"></i> Search in App
+                        </button>
                     </div>
-                    <div class="w-px h-10 bg-white/10"></div>
-                    <div class="flex flex-col">
-                        <span class="text-3xl font-light text-white font-mono tracking-tight">4.9/5</span>
-                        <span class="text-sm text-zinc-500 font-medium mt-1">Service Rating</span>
-                    </div>
-                    <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
-                    <div class="hidden sm:flex -space-x-3">
-                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80"
-                            src="https://i.pravatar.cc/100?img=1" alt="User">
-                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80"
-                            src="https://i.pravatar.cc/100?img=2" alt="User">
-                        <img class="w-10 h-10 rounded-full border-2 border-zinc-950 object-cover opacity-80"
-                            src="https://i.pravatar.cc/100?img=3" alt="User">
-                        <div
-                            class="w-10 h-10 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-xs font-medium text-white">
-                            +2k</div>
+                </div>
+            </div>
+
+            <!-- Right: App Mockup & QR -->
+            <div class="reveal-zoom hidden lg:flex flex-col items-center justify-center relative">
+                <!-- Decorative Glow behind phone -->
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-500/20 rounded-full blur-[80px]">
+                </div>
+
+                <!-- Phone Frame -->
+                <div
+                    class="relative w-[280px] h-[580px] rounded-[3rem] border-[6px] border-zinc-800 bg-zinc-950 p-2 shadow-2xl glass-panel z-10 flex flex-col justify-between overflow-hidden">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-zinc-800 rounded-b-2xl z-20"></div>
+                    <!-- Mock UI Inside Phone -->
+                    <div class="w-full h-full rounded-[2.5rem] bg-zinc-900 overflow-hidden relative">
+                        <!-- Top header mock -->
+                        <div class="h-40 bg-gradient-to-br from-emerald-500/20 to-transparent p-5 pt-12">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500/20 mb-3 flex items-center justify-center">
+                                <i class="ri-user-smile-line text-emerald-500"></i></div>
+                            <div class="h-4 w-24 bg-white/20 rounded mb-2"></div>
+                            <div class="h-3 w-16 bg-white/10 rounded"></div>
+                        </div>
+                        <!-- Cards mock -->
+                        <div class="p-4 space-y-3 -mt-6">
+                            <div class="h-24 bg-zinc-800 rounded-2xl flex items-center gap-3 p-3">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex-shrink-0"></div>
+                                <div class="flex-1">
+                                    <div class="h-3 w-1/2 bg-white/20 rounded mb-2"></div>
+                                    <div class="h-2 w-1/3 bg-white/10 rounded"></div>
+                                </div>
+                            </div>
+                            <div class="h-20 bg-zinc-800/50 rounded-2xl"></div>
+                            <div class="h-20 bg-zinc-800/50 rounded-2xl"></div>
+                        </div>
                     </div>
                 </div>
 
+                <!-- QR Install Panel -->
+                <div class="absolute -right-12 bottom-10 glass-panel p-4 rounded-3xl z-20 shadow-xl border border-white/10 flex items-center gap-4 tooltip-trigger"
+                    title="Scan to Install NB App">
+                    <div class="w-20 h-20 bg-white rounded-xl flex items-center justify-center shrink-0">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=nb://app&bgcolor=ffffff&color=10b981"
+                            alt="QR Code" class="w-16 h-16 rounded-lg opacity-80" />
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-white mb-1 tracking-tight">Get the App</p>
+                        <p class="text-xs text-zinc-400">Scan to download</p>
+                    </div>
+                </div>
             </div>
+
         </div>
     </main>
 
-    <!-- 1. TRUST / SOCIAL PROOF STRIP -->
-    <section class="relative z-20 w-full bg-zinc-900/50 backdrop-blur-xl border-y border-white/5 py-8 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p class="text-zinc-400 font-medium text-sm tracking-wide uppercase">Trusted by thousands of यात्रियों <br
-                    class="hidden md:block"> across cities & villages</p>
-            <div class="flex flex-wrap items-center gap-8 md:gap-16">
-                <!-- Stat 1 -->
-                <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-white font-bold text-lg font-mono">10K+</span>
-                        <span class="text-zinc-500 text-xs font-medium">यात्राएँ</span>
-                    </div>
-                </div>
-                <!-- Stat 2 -->
-                <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7">
-                            </path>
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-white font-bold text-lg font-mono">500+</span>
-                        <span class="text-zinc-500 text-xs font-medium">Routes</span>
-                    </div>
-                </div>
-                <!-- Stat 3 -->
-                <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white border border-white/10">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                            </path>
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-white font-bold text-lg font-mono">200+</span>
-                        <span class="text-zinc-500 text-xs font-medium">Providers</span>
-                    </div>
+    <!-- Trust Stats -->
+    <section class="border-y border-white/5 bg-zinc-950/50 backdrop-blur relative z-20">
+        <div
+            class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden">
+            <div class="flex items-center gap-3">
+                <span class="relative flex h-3 w-3"><span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span
+                        class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span></span>
+                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Only few slots left for
+                    weekend travel</span>
+            </div>
+            <div class="flex items-center gap-8 md:gap-16">
+                <div class="reveal-fade flex flex-col text-center sm:text-left"><span
+                        class="text-2xl font-bold font-mono">10K+</span><span class="text-xs text-zinc-500">Routes
+                        Active</span></div>
+                <div class="w-px h-8 bg-white/10"></div>
+                <div class="reveal-fade flex flex-col text-center sm:text-left"><span
+                        class="text-2xl font-bold font-mono">500+</span><span
+                        class="text-xs text-zinc-500">Providers</span></div>
+                <div class="w-px h-8 bg-white/10"></div>
+                <div class="reveal-fade flex items-center gap-2">
+                    <span class="text-2xl font-bold font-mono text-emerald-400">4.9/5</span>
+                    <div class="flex text-emerald-400 text-xs"><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-half-fill"></i></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. CORE SERVICES SECTION -->
-    <section class="relative z-10 w-full bg-zinc-950 py-32 px-6 md:px-12 overflow-hidden section-fade-up">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight text-white mb-16 max-w-2xl">
-                Everything You Need <br><span class="text-zinc-500">for Your Journey</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]">
-                <!-- Bus Booking -->
-                <div
-                    class="lg:col-span-2 group relative p-10 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden hover:border-emerald-500/30 transition-colors duration-500">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-                    <div class="relative z-10 h-full flex flex-col justify-end">
-                        <div
-                            class="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 font-bold text-xl">
-                            B</div>
-                        <h3 class="text-3xl font-medium text-white mb-3">Bus Booking</h3>
-                        <p class="text-zinc-400 text-lg max-w-sm">Find and book buses across cities and small towns.</p>
-                    </div>
-                </div>
-                <!-- Vehicle Rental -->
-                <div
-                    class="group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden hover:border-white/20 transition-colors duration-500">
-                    <div class="relative z-10 h-full flex flex-col justify-end">
-                        <div
-                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10 font-bold text-lg">
-                            R</div>
-                        <h3 class="text-xl font-medium text-white mb-2">Vehicle Rental</h3>
-                        <p class="text-zinc-500 text-sm">Book buses or cars for events, weddings, and trips.</p>
-                    </div>
-                </div>
-                <!-- Service Marketplace -->
-                <div
-                    class="group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden hover:border-white/20 transition-colors duration-500">
-                    <div class="relative z-10 h-full flex flex-col justify-end">
-                        <div
-                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10 font-bold text-lg">
-                            S</div>
-                        <h3 class="text-xl font-medium text-white mb-2">Service Marketplace</h3>
-                        <p class="text-zinc-500 text-sm">Find drivers, hotels, photographers, and more.</p>
-                    </div>
-                </div>
-                <!-- Smart Food -->
-                <div
-                    class="lg:col-span-2 md:col-span-2 group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden hover:border-white/20 transition-colors duration-500">
-                    <div class="relative z-10 h-full flex flex-col justify-end">
-                        <div
-                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10 font-bold text-lg">
-                            F</div>
-                        <h3 class="text-xl font-medium text-white mb-2">Smart Food (Optional)</h3>
-                        <p class="text-zinc-500 text-sm max-w-sm">Order food during your journey at the right time.</p>
-                    </div>
-                </div>
+    <!-- Services Section -->
+    <section id="services" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="reveal-up text-center mb-16">
+                <h2 class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">Our Ecosystem</h2>
+                <h3 class="text-4xl md:text-5xl font-bold tracking-tight">A seamless platform for <br /><span
+                        class="text-zinc-500 font-light">all your travel needs</span></h3>
             </div>
-        </div>
-    </section>
 
-    <!-- 3. HOW IT WORKS -->
-    <section class="relative z-10 w-full bg-zinc-900 py-32 px-6 md:px-12 section-fade-up">
-        <div class="max-w-7xl mx-auto flex flex-col items-center">
-            <h2 class="text-sm font-medium text-emerald-400 uppercase tracking-widest mb-4">How It Works</h2>
-            <h3 class="text-4xl md:text-5xl font-light text-white mb-20">Simple. Fast. Reliable.</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-5xl relative">
-                <!-- Connecting Line -->
-                <div
-                    class="hidden md:block absolute top-[28px] left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent">
-                </div>
-                <!-- Step 1 -->
-                <div class="flex flex-col items-center text-center relative z-10">
-                    <div
-                        class="w-14 h-14 rounded-full bg-zinc-950 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-mono text-xl mb-6 shadow-[0_0_30px_rgba(16,185,129,0.15)] pulse-ring">
-                        1</div>
-                    <h4 class="text-xl font-medium text-white mb-3">Search or Post</h4>
-                    <p class="text-zinc-400 text-sm">Look for buses or post your exact requirements.</p>
-                </div>
-                <!-- Step 2 -->
-                <div class="flex flex-col items-center text-center relative z-10">
-                    <div
-                        class="w-14 h-14 rounded-full bg-zinc-950 border border-white/10 flex items-center justify-center text-white font-mono text-xl mb-6">
-                        2</div>
-                    <h4 class="text-xl font-medium text-white mb-3">Get Matches Instantly</h4>
-                    <p class="text-zinc-400 text-sm">Connect with the best providers or routes.</p>
-                </div>
-                <!-- Step 3 -->
-                <div class="flex flex-col items-center text-center relative z-10">
-                    <div
-                        class="w-14 h-14 rounded-full bg-zinc-950 border border-white/10 flex items-center justify-center text-white font-mono text-xl mb-6">
-                        3</div>
-                    <h4 class="text-xl font-medium text-white mb-3">Chat & Finalize</h4>
-                    <p class="text-zinc-400 text-sm">Communicate, agree on terms, and secure it.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    <!-- 4. RENTAL / SERVICE HIGHLIGHT -->
-    <section class="relative z-10 w-full bg-zinc-950 py-32 px-6 md:px-12 section-fade-up">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-            <div class="w-full md:w-1/2 flex flex-col items-start">
-                <div
-                    class="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 mb-6">
-                    Premium Rentals</div>
-                <h2 class="text-4xl md:text-5xl font-light text-white leading-tight mb-6">
-                    Plan Events, <span class="text-emerald-400 block">Book Vehicles Easily.</span>
-                </h2>
-                <p class="text-xl text-zinc-400 font-light mb-4">Need a bus for a wedding or group trip?</p>
-                <p class="text-zinc-500 mb-10 max-w-lg">Post your requirement and get offers from multiple owners
-                    directly without hassle.</p>
-                <a href="#"
-                    class="magnetic-btn bg-white text-zinc-950 px-8 py-4 rounded-full font-medium hover:bg-zinc-200 transition-colors">Post
-                    Requirement</a>
-            </div>
-            <div class="w-full md:w-1/2">
-                <div
-                    class="aspect-[4/3] rounded-[2.5rem] bg-zinc-900 border border-white/5 flex items-center justify-center relative group p-8">
-                    <!-- Virtual UI representation -->
-                    <div
-                        class="w-full max-w-sm rounded-[2rem] bg-zinc-950 border border-white/10 p-6 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
-                        <div class="h-6 w-32 bg-zinc-800 rounded mb-6"></div>
-                        <div class="h-16 w-full bg-zinc-800/50 rounded-xl mb-4 p-4 border border-emerald-500/20">
-                            <div class="h-4 w-24 bg-emerald-500/20 rounded"></div>
+                <!-- Bus Booking Card -->
+                <div class="service-card lg:col-span-2 group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-emerald-500/30 transition-all duration-500 min-h-[380px]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950/90 z-10 transition-colors group-hover:to-zinc-950 border-emerald"></div>
+                    <!-- bg shape -->
+                    <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[60px] group-hover:bg-emerald-500/20 transition-all duration-700"></div>
+                    <div class="absolute top-8 right-8 z-20 text-emerald-500/50 group-hover:text-emerald-400 transition-colors text-6xl">
+                        <i class="ri-bus-wifi-line"></i></div>
+
+                    <div class="relative z-20 mt-auto">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
+                            <i class="ri-ticket-2-line text-white text-xl"></i>
                         </div>
-                        <div class="h-16 w-full bg-zinc-800/30 rounded-xl mb-6"></div>
-                        <div class="h-12 w-full bg-emerald-500 rounded-xl"></div>
+                        <h4 class="text-3xl font-bold text-white mb-2 group-hover:gradient-text transition-all">Bus Booking</h4>
+                        <p class="text-zinc-400 max-w-md mb-6 transition-transform group-hover:translate-x-2 w-full">Instantly search and book seats on thousands of routes. Transparent tracking, direct connectivity.</p>
+                        <div class="flex flex-wrap gap-3 origin-left opacity-90 group-hover:opacity-100 transition-all">
+                            <button onclick="window.location.href='nb://bus'" class="glass-panel px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 shrink-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">Continue in App <i class="ri-arrow-right-up-line ml-1"></i></button>
+                            <button onclick="openWhatsApp('Hi, I want to book a bus ticket.')" class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-6 py-3 rounded-full text-sm font-medium hover:bg-emerald-500 hover:text-zinc-950 transition-colors shrink-0"><i class="ri-whatsapp-line mr-1"></i> WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rentals Card (Simplified & Beautiful) -->
+                <div id="rentals" class="service-card group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-white/20 transition-all duration-500 hover:-translate-y-2 min-h-[380px]">
+                    <div class="absolute top-8 right-8 z-20 text-white/5 text-6xl group-hover:text-white/20 transition-colors">
+                        <i class="ri-steering-2-line"></i></div>
+                    <div class="relative z-20 mt-auto">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
+                            <i class="ri-car-line text-white"></i></div>
+                        <h4 class="text-2xl font-bold text-white mb-2">Vehicle Rentals</h4>
+                        <p class="text-sm text-zinc-400 mb-6 group-hover:-translate-y-1 transition-transform">Book full buses, cars, or bikes for events & personal trips. Zero middleman fees.</p>
+                        
+                        <div class="flex flex-col gap-2 relative">
+                            <button onclick="window.location.href='nb://rentals'" class="w-full bg-emerald-500 text-zinc-950 py-3 rounded-xl text-sm font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors">Explore Vehicles</button>
+                            <button onclick="openWhatsApp('Hi, I have a requirement for Vehicle Rental.')" class="w-full glass-panel border border-white/10 py-3 rounded-xl text-sm font-medium text-white hover:bg-white/10">Enquire  <i class="ri-whatsapp-line text-emerald-400 ml-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events / Services Card -->
+                <div id="events" class="service-card group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-white/20 transition-all duration-500 hover:-translate-y-2 min-h-[380px]">
+                    <div class="absolute top-8 right-8 z-20 text-white/5 text-6xl group-hover:text-white/20 transition-colors">
+                        <i class="ri-calendar-event-line"></i></div>
+                    <div class="relative z-20 mt-auto">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
+                            <i class="ri-music-2-line text-white"></i></div>
+                        <h4 class="text-2xl font-bold text-white mb-2">Event Services</h4>
+                        <p class="text-sm text-zinc-400 mb-6 group-hover:-translate-y-1 transition-transform">Hire verified local DJs, Halls, Caterers & more for your wedding or event.</p>
+                        <div class="flex flex-col gap-2 relative">
+                            <button onclick="window.location.href='nb://events'" class="w-full glass-panel py-3 rounded-xl text-sm font-bold hover:bg-white/10 border border-white/10">Open Marketplace</button>
+                            <button onclick="openWhatsApp('Hi, I am looking for event organizers/services.')" class="w-full text-emerald-400 text-sm hover:underline py-2"><i class="ri-whatsapp-line"></i> Connect on WA</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Food -->
+                <div class="service-card group relative rounded-[2.5rem] bg-zinc-950 border border-emerald-500/20 overflow-hidden p-8 flex flex-col justify-end hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 shadow-[0_0_40px_rgba(16,185,129,0.05)] min-h-[380px]">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-dot.png')] opacity-30 mix-blend-overlay"></div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-950/80 to-transparent"></div>
+                    <div class="relative z-20 mt-auto">
+                        <div class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-4 uppercase tracking-widest border border-emerald-500/30">
+                            <i class="ri-flight-takeoff-line mr-1"></i> Smart Food</div>
+                        <h4 class="text-2xl font-bold text-white mb-2">Enroute Dining</h4>
+                        <p class="text-sm text-emerald-100/70 mb-6">Our revolutionary system tracks your bus and ensures hot food arrives precisely at your partnered rest stop.</p>
+                        <button onclick="window.location.href='nb://food'" class="flexItems-center group-hover:text-emerald-400 text-white font-medium transition-colors group-hover:translate-x-1 duration-300">Explore Partnered Menus <i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+
+                <!-- Vendor / Partner Link hidden here subtly -->
+                <div id="vendor" class="service-card group relative rounded-[2.5rem] bg-zinc-950 border-2 border-dashed border-white/10 overflow-hidden p-8 flex flex-col justify-center items-center hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-all duration-500 cursor-pointer min-h-[380px]" onclick="openWhatsApp('Hi, I want to list my service/vehicle on the NB platform.')">
+                    <div class="text-center relative z-20 flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                            <i class="ri-add-line text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">List Your Service</h4>
+                        <p class="text-sm text-zinc-500 max-w-[200px]">Become a verified NB Vendor (Bus Owners, DJs, Drivers)</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Yatra Packages Section -->
+    <section id="yatra" class="py-32 relative bg-zinc-900 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="reveal-up flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">Curated Tours</h2>
+                    <h3 class="text-4xl font-bold tracking-tight">Divine Yatra Packages</h3>
+                    <p class="mt-4 text-zinc-400 max-w-lg">All-inclusive travel, accommodation, and darshan packages
+                        carefully formulated for peace of mind.</p>
+                </div>
+                <button onclick="window.location.href='nb://yatra'"
+                    class="glass-panel px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 shrink-0">View All
+                    Packages <i class="ri-arrow-right-s-line"></i></button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Package 1 -->
+                <div
+                    class="reveal-up rounded-3xl glass-panel border border-white/5 overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 bg-zinc-800 relative overflow-hidden">
+                        <!-- Placeholder subtle gradient for image -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-600/20"></div>
+                        <div
+                            class="absolute bottom-4 left-4 bg-zinc-950/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-white tracking-wide border border-white/10">
+                            3 Days / 2 Nights</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-1">Jyotirlinga Tour</h4>
+                        <p class="text-sm text-zinc-400 mb-4 line-clamp-2">Complete guided tour visiting 3 prominent
+                            self-manifested shrines.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <div><span class="text-xs text-zinc-500 block">Starting from</span><span
+                                    class="text-lg font-bold text-emerald-400">₹4,999</span></div>
+                            <button onclick="getYatraDetails('Jyotirlinga Tour')"
+                                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-emerald-500 hover:text-zinc-950 transition-colors"><i
+                                    class="ri-whatsapp-line"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="reveal-up rounded-3xl glass-panel border border-white/5 overflow-hidden group hover:-translate-y-2 transition-transform duration-300"
+                    style="transition-delay: 100ms">
+                    <div class="h-48 bg-zinc-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-600/20"></div>
+                        <div
+                            class="absolute bottom-4 left-4 bg-zinc-950/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-white tracking-wide border border-white/10">
+                            5 Days / 4 Nights</div>
+                        <div
+                            class="absolute top-4 right-4 bg-emerald-500 text-zinc-950 px-2 py-1 rounded text-xs font-bold animate-pulse">
+                            POPULAR</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-1">Char Dham Special</h4>
+                        <p class="text-sm text-zinc-400 mb-4 line-clamp-2">Seamless transport and priority darshan
+                            across the sacred circuit.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <div><span class="text-xs text-zinc-500 block">Starting from</span><span
+                                    class="text-lg font-bold text-emerald-400">₹12,499</span></div>
+                            <button onclick="getYatraDetails('Char Dham Special')"
+                                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-emerald-500 hover:text-zinc-950 transition-colors"><i
+                                    class="ri-whatsapp-line"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="reveal-up rounded-3xl glass-panel border border-white/5 overflow-hidden group hover:-translate-y-2 transition-transform duration-300"
+                    style="transition-delay: 200ms">
+                    <div class="h-48 bg-zinc-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-600/20"></div>
+                        <div
+                            class="absolute bottom-4 left-4 bg-zinc-950/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-white tracking-wide border border-white/10">
+                            1 Day</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-1">Local Temple Circuit</h4>
+                        <p class="text-sm text-zinc-400 mb-4 line-clamp-2">AC Bus travel covering all powerful deities
+                            within 100km radius.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <div><span class="text-xs text-zinc-500 block">Starting from</span><span
+                                    class="text-lg font-bold text-emerald-400">₹999</span></div>
+                            <button onclick="getYatraDetails('Local Temple Circuit')"
+                                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-emerald-500 hover:text-zinc-950 transition-colors"><i
+                                    class="ri-whatsapp-line"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. WHY CHOOSE US -->
-    <section class="relative z-10 w-full bg-zinc-900 py-32 px-6 md:px-12 section-fade-up">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
-            <div class="w-full md:w-1/3">
-                <h2 class="text-4xl md:text-5xl font-light text-white">Why Choose <br><span class="text-zinc-500">Our
-                        Platform</span></h2>
-            </div>
-            <div class="w-full md:w-2/3 flex flex-col gap-6">
-                <!-- Items -->
-                <div
-                    class="p-8 rounded-[2rem] bg-zinc-950/50 border border-white/5 flex items-start gap-6 hover:bg-zinc-950 transition-colors">
-                    <div class="flex-1">
-                        <h4 class="text-xl font-medium text-white mb-2">Works in Small Towns & Villages</h4>
-                        <p class="text-zinc-500 text-sm">Accessible booking for remote locations.</p>
-                    </div>
-                </div>
-                <div
-                    class="p-8 rounded-[2rem] bg-zinc-950/50 border border-white/5 flex items-start gap-6 hover:bg-zinc-950 transition-colors">
-                    <div class="flex-1">
-                        <h4 class="text-xl font-medium text-white mb-2">Direct Connection</h4>
-                        <p class="text-zinc-500 text-sm">No middleman fees between you and the provider.</p>
-                    </div>
-                </div>
-                <div
-                    class="p-8 rounded-[2rem] bg-zinc-950/50 border border-white/5 flex items-start gap-6 hover:bg-zinc-950 transition-colors">
-                    <div class="flex-1">
-                        <h4 class="text-xl font-medium text-white mb-2">Transparent Pricing</h4>
-                        <p class="text-zinc-500 text-sm">Clear pricing and options laid out in front of you.</p>
-                    </div>
-                </div>
-                <div
-                    class="p-8 rounded-[2rem] bg-zinc-950/50 border border-white/5 flex items-start gap-6 hover:bg-zinc-950 transition-colors">
-                    <div class="flex-1">
-                        <h4 class="text-xl font-medium text-white mb-2">Multiple Services in One App</h4>
-                        <p class="text-zinc-500 text-sm">All trip-related utilities compiled together.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Promotional Auto-Video / Lifestyle Section -->
+    <section class="relative py-32 overflow-hidden h-screen max-h-[800px] flex items-center justify-center">
+        <!-- Reusing NB.mp4 or adding a secondary visual -->
+        <div class="absolute inset-0 z-0">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30 transform scale-110"
+                style="filter: grayscale(80%) sepia(30%) hue-rotate(100deg)">
+                <source src="NB.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-zinc-950/80"></div>
         </div>
-    </section>
 
-    <!-- 6. APP PREVIEW / VISUAL SECTION -->
-    <section class="relative z-10 w-full bg-zinc-950 py-32 text-center overflow-hidden section-fade-up">
-        <h2 class="text-5xl md:text-6xl font-light text-white tracking-tighter mb-4">Everything in your pocket.</h2>
-        <p class="text-xl text-zinc-400 mb-16 font-light">Booking, chatting, and renting flows built seamlessly.</p>
-        <div class="flex items-center justify-center min-h-[400px]">
-            <div
-                class="w-[300px] h-[550px] rounded-[3rem] bg-zinc-900 border-[8px] border-zinc-800 shadow-[0_0_80px_rgba(16,185,129,0.15)] relative">
-                <div class="absolute inset-x-12 top-0 h-6 bg-zinc-800 rounded-b-2xl"></div>
-                <div class="p-6 pt-12">
-                    <div
-                        class="h-32 w-full bg-gradient-to-br from-emerald-500/20 to-transparent border border-emerald-500/20 rounded-2xl mb-4">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="h-20 bg-zinc-800 rounded-xl"></div>
-                        <div class="h-20 bg-zinc-800 rounded-xl"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. TESTIMONIALS -->
-    <section class="relative z-10 w-full bg-zinc-900 py-32 section-fade-up">
-        <div class="max-w-7xl mx-auto px-6 mb-16 text-center">
-            <h2 class="text-4xl md:text-5xl font-light text-white">What Our <span class="text-zinc-500">Users Say</span>
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+            <h2 class="reveal-zoom text-5xl md:text-8xl font-black tracking-tighter uppercase leading-none mb-6">
+                Book.<br />
+                <span class="text-transparent border-text"
+                    style="-webkit-text-stroke: 1px rgba(255,255,255,0.2);">Travel.</span><br />
+                <span class="text-emerald-500 emerald-glow">Celebrate.</span>
             </h2>
+            <p class="reveal-zoom text-xl text-zinc-400 font-light max-w-lg mx-auto mb-10">Experience the future of
+                mobility and event management, engineered for Indian terrains.</p>
+            <button onclick="window.location.href='nb://app'"
+                class="reveal-zoom magnetic-btn bg-white text-zinc-950 font-bold px-10 py-5 rounded-full hover:bg-zinc-200 transition-colors text-lg shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                Launch NB App <i class="ri-rocket-line ml-2"></i>
+            </button>
         </div>
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-10 rounded-[2rem] bg-zinc-950 border border-white/5 flex flex-col justify-between">
-                <p class="text-xl text-white font-light leading-relaxed mb-8">"Booked a bus for my wedding easily. The
-                    direct connection system is flawless."</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-white/10 rounded-full"></div>
-                    <div class="text-white font-medium text-sm">Rahul S.</div>
-                </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-32 relative max-w-4xl mx-auto px-6">
+        <div class="text-center mb-16 reveal-up">
+            <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p class="text-zinc-400">Need help? Learn how NB simplifies your requirements.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- FAQ ITEM -->
+            <div class="reveal-up border border-white/10 bg-zinc-900/50 rounded-2xl overflow-hidden glass-panel">
+                <button
+                    class="w-full text-left px-6 py-5 font-bold flex justify-between items-center group cursor-pointer"
+                    onclick="toggleFaq(this)">
+                    How does the Rent a Vehicle feature work?
+                    <i class="ri-add-line text-zinc-500 group-hover:text-emerald-400 transition-colors"></i>
+                </button>
+                <div class="px-6 pb-5 text-sm text-zinc-400 hidden">You fill out the basic requirements (Date, Vehicle,
+                    Occupancy). Our system pings verified owners in the region, and you receive competitive direct
+                    quotes on WhatsApp/App. No hidden middleman commissions.</div>
             </div>
-            <div class="p-10 rounded-[2rem] bg-zinc-950 border border-white/5 flex flex-col justify-between">
-                <p class="text-xl text-white font-light leading-relaxed mb-8">"Very helpful for village travel where
-                    options are usually sparse."</p>
-                <div class="flex items-center gap-4">
+
+            <div class="reveal-up border border-white/10 bg-zinc-900/50 rounded-2xl overflow-hidden glass-panel">
+                <button
+                    class="w-full text-left px-6 py-5 font-bold flex justify-between items-center group cursor-pointer"
+                    onclick="toggleFaq(this)">
+                    Are the Event Services (DJs, Halls) verified?
+                    <i class="ri-add-line text-zinc-500 group-hover:text-emerald-400 transition-colors"></i>
+                </button>
+                <div class="px-6 pb-5 text-sm text-zinc-400 hidden">Yes! Every vendor undergoes a strict KYC process,
+                    and our community rating system (out of 5.0) guarantees transparency.</div>
+            </div>
+
+            <div class="reveal-up border border-white/10 bg-zinc-900/50 rounded-2xl overflow-hidden glass-panel">
+                <button
+                    class="w-full text-left px-6 py-5 font-bold flex justify-between items-center group cursor-pointer"
+                    onclick="toggleFaq(this)">
+                    How is Smart Food delivered on a moving bus?
+                    <i class="ri-add-line text-zinc-500 group-hover:text-emerald-400 transition-colors"></i>
+                </button>
+                <div class="px-6 pb-5 text-sm text-zinc-400 hidden">We integrate live GPS tracking with our partner
+                    rest-stops. Your food is prepared fresh and handed directly to your seat when the bus halts.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 border-t border-white/5 pt-20 pb-10 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-2 mb-6">
                     <div
-                        class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center font-bold">
-                        A</div>
-                    <div class="text-white font-medium text-sm">Anita M.</div>
+                        class="w-8 h-8 rounded-full bg-emerald-500 text-zinc-950 flex items-center justify-center font-bold text-xs">
+                        NB</div>
+                    <span class="font-bold text-lg">Next-gen Bus</span>
+                </div>
+                <p class="text-zinc-500 text-sm max-w-sm mb-6">Connecting passengers with bus operators, premium
+                    rentals, event curators, and smart transit dining across the country.</p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"><i
+                            class="ri-instagram-line"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"><i
+                            class="ri-twitter-x-line"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"><i
+                            class="ri-linkedin-fill"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 8. FINAL CTA SECTION -->
-    <section class="relative z-10 w-full bg-zinc-950 py-40 text-center section-fade-up">
-        <h2 class="text-5xl md:text-7xl font-light text-white tracking-tighter mb-10 max-w-4xl mx-auto">Start Your <span
-                class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-200">Journey
-                Today.</span></h2>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#"
-                class="magnetic-btn bg-emerald-500 text-emerald-950 font-medium px-10 py-5 rounded-full hover:bg-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.3)]">Book
-                Bus</a>
-            <a href="#"
-                class="magnetic-btn bg-white/5 border border-white/10 text-white font-medium px-10 py-5 rounded-full hover:bg-white/10 backdrop-blur-md">Explore
-                Services</a>
-        </div>
-    </section>
-
-    <!-- 9. FOOTER -->
-    <footer class="relative z-10 w-full bg-zinc-950 border-t border-white/5 py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between text-sm text-zinc-500 gap-6">
-            <p>&copy; 2026 Platform. All rights reserved.</p>
-            <div class="flex gap-4">
-                <a href="#" class="hover:text-white transition-colors">About</a>
-                <a href="#" class="hover:text-white transition-colors">Services</a>
-                <a href="#" class="hover:text-white transition-colors">Contact</a>
-                <a href="#" class="hover:text-white transition-colors">Terms & Privacy</a>
+            <div>
+                <h5 class="text-white font-bold mb-4">Quick Links</h5>
+                <ul class="space-y-3 text-sm text-zinc-500">
+                    <li><a href="#services" class="hover:text-emerald-400 transition-colors">Bus Tickets</a></li>
+                    <li><a href="#rentals" class="hover:text-emerald-400 transition-colors">Vehicle Rentals</a></li>
+                    <li><a href="#events" class="hover:text-emerald-400 transition-colors">Event Management</a></li>
+                    <li><a href="#yatra" class="hover:text-emerald-400 transition-colors">Yatras</a></li>
+                </ul>
             </div>
+            <div>
+                <h5 class="text-white font-bold mb-4">Support</h5>
+                <ul class="space-y-3 text-sm text-zinc-500">
+                    <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Cancel Ticket</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
+            <p>&copy; 2026 NB Platform. Built for Bharat.</p>
+            <p>Made with <i class="ri-heart-fill text-emerald-500"></i> by NB Engineering</p>
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
+    <!-- Floating Sticky Action Button (Mobile focused) -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="window.location.href='nb://app'"
+            class="w-16 h-16 rounded-full bg-emerald-500 text-zinc-950 shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center hover:scale-110 transition-transform cursor-pointer md:w-auto md:px-6 md:py-3 md:rounded-full group">
+            <i class="ri-smartphone-line text-2xl md:mr-2"></i>
+            <span class="hidden md:inline font-bold">Open App</span>
+        </button>
+    </div>
+
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Scripts for Logic & Animations -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('hero-video');
-            if (video) {
-                video.playbackRate = 0.8;
-                video.play().catch(e => console.warn('Autoplay prevented', e));
-            }
+        // Multi-contact WhatsApp Logic
+        const WA_NUMBER = "919999999999"; // Developer: Swap this with actual NB business number
+
+        function openWhatsApp(message) {
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank');
+        }
+
+        function submitRental() {
+            const vehicle = document.getElementById('rental-vehicle').value || 'A vehicle';
+            const date = document.getElementById('rental-date').value || 'an upcoming date';
+            openWhatsApp(`Hi, I want a quote to rent: ${vehicle} for ${date}. Please provide details.`);
+        }
+
+        function getYatraDetails(packageName) {
+            openWhatsApp(`🙏 Hari Om! I would like to get detailed itinerary and availability for the [${packageName}] package.`);
+        }
+
+        // Search Deep Link Logic
+        document.getElementById('search-deep-link').addEventListener('click', () => {
+            const from = document.getElementById('bus-from').value || '';
+            const to = document.getElementById('bus-to').value || '';
+            window.location.href = `nb://bus-search?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
         });
 
-        // Parallax Effect on Scroll
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const video = document.querySelector('.parallax-video');
-            const content = document.querySelector('.hero-content-stagger');
-
-            if (video) {
-                video.style.transform = `translateY(${scrollY * 0.3}px) scale(1.05)`;
+        // FAQ Toggle
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('ri-add-line');
+                icon.classList.add('ri-subtract-line');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('ri-subtract-line');
+                icon.classList.add('ri-add-line');
             }
-            if (content) {
-                content.style.opacity = Math.max(1 - scrollY / 600, 0);
-                content.style.transform = `translateY(${scrollY * 0.15}px)`;
-            }
-        });
+        }
 
-        // Magnetic Buttons
-        const magnets = document.querySelectorAll('.magnetic-btn');
-        magnets.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const position = btn.getBoundingClientRect();
-                const x = e.pageX - position.left - position.width / 2;
-                const y = e.pageY - position.top - position.height / 2;
-
-                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.02)`;
-            });
-
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translate(0px, 0px) scale(1)';
-            });
-        });
-
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    // Optional: stop observing once revealed
-                    // observer.unobserve(entry.target);
+        // GSAP & Smooth Interactions
+        window.addEventListener('load', () => {
+            // Remove Loader smoothly
+            gsap.to('#loader', {
+                opacity: 0,
+                duration: 0.6,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    document.getElementById('loader').style.display = 'none';
+                    initAnimations();
                 }
             });
-        }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
-
-        document.querySelectorAll('.section-fade-up').forEach(section => {
-            observer.observe(section);
         });
+
+        function initAnimations() {
+            // Register ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Intro stagger sequence strictly for hero section to avoid ScrollTrigger conflicts
+            const tl = gsap.timeline();
+            tl.from('#hero .reveal-down, nav', { y: -50, opacity: 0, duration: 0.8, ease: "power3.out" })
+                .from('#hero .reveal-up', { y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" }, "-=0.4")
+                .from('#hero .reveal-zoom', { scale: 0.9, opacity: 0, duration: 1, ease: "back.out(1.4)" }, "-=0.6");
+
+            // Scroll Reveals for below-the-fold content
+            gsap.utils.toArray('.reveal-up').forEach(el => {
+                if (el.closest('#hero')) return; // skip hero elements already animated
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: "top 85%" },
+                    y: 50, opacity: 0, duration: 0.8, ease: "power3.out"
+                });
+            });
+
+            gsap.utils.toArray('.reveal-fade').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: "top 90%" },
+                    opacity: 0, duration: 1.2, stagger: 0.2
+                });
+            });
+
+            gsap.utils.toArray('.reveal-zoom').forEach(el => {
+                if (el.closest('#hero')) return;
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: "top 80%" },
+                    scale: 0.9, opacity: 0, duration: 1, ease: "back.out(1.4)"
+                });
+            });
+
+            gsap.utils.toArray('.service-card').forEach((el, index) => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: '#services', start: "top 75%" },
+                    y: 60, opacity: 0, duration: 0.8, stagger: 0.1, delay: index * 0.1, ease: "spring"
+                });
+            });
+
+            // Parallax Background Video
+            if (document.getElementById('bg-video')) {
+                gsap.to('#bg-video', {
+                    scrollTrigger: {
+                        trigger: '#hero',
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    },
+                    y: 150, // Parallax intensity
+                    scale: 1.15
+                });
+            }
+
+            // Magnetic Buttons Mapping
+            document.querySelectorAll('.magnetic-btn').forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) - rect.width / 2;
+                    const y = (e.clientY - rect.top) - rect.height / 2;
+                    gsap.to(btn, { x: x * 0.2, y: y * 0.2, duration: 0.3, ease: "power2.out" });
+                });
+                btn.addEventListener('mouseleave', () => {
+                    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+                });
+            });
+        }
     </script>
 </body>
 
