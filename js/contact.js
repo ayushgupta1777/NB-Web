@@ -6,9 +6,9 @@
 (function() {
     // --- CONFIGURATION ---
     // Replace these with your actual EmailJS credentials
-    const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; 
-    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-    const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+    const EMAILJS_PUBLIC_KEY = "vMiWgSpYM2sA2lrXU"; 
+    const EMAILJS_SERVICE_ID = "service_dx4ny55";
+    const EMAILJS_TEMPLATE_ID = "template_n6kxya7";
 
     // Initialize EmailJS
     if (typeof emailjs !== 'undefined') {

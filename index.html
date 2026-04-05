@@ -24,6 +24,8 @@
     </script>
     <!-- Remixicons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <!-- Local CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -275,7 +277,7 @@
             <div class="relative min-h-[500px]">
 
                 <!-- Tab 1: Travel -->
-                <div id="eco-travel" class="tab-content active reveal-fade relative">
+                <div id="eco-travel" class="tab-content active relative">
                     <!-- Dynamic Video Content Backing -->
                     <video autoplay loop muted playsinline
                         class="absolute max-w-none w-[120%] h-[120%] -top-[10%] -left-[10%] object-cover opacity-10 mix-blend-screen pointer-events-none rounded-[3rem]">
@@ -336,23 +338,23 @@
                                     id="eco-t1-form-title">Request a Custom Trip</span></h5>
                             <form class="relative z-10 space-y-4" onsubmit="handleFormSubmit(event, 'Travel Enquiry')">
                                 <div class="relative">
-                                    <input type="text" id="travel-dest" class="premium-input peer" placeholder=" "
+                                    <input type="text" id="travel-dest" name="destination" class="premium-input peer" placeholder=" "
                                         required />
                                     <label for="travel-dest" class="floating-label">Destination</label>
                                 </div>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div class="relative">
-                                        <input type="date" id="travel-date"
+                                        <input type="date" id="travel-date" name="date"
                                             class="premium-input text-zinc-400 focus:text-white" required />
                                     </div>
                                     <div class="relative">
-                                        <input type="number" id="travel-pax" class="premium-input peer" placeholder=" "
+                                        <input type="number" id="travel-pax" name="passengers" class="premium-input peer" placeholder=" "
                                             min="1" required />
                                         <label for="travel-pax" class="floating-label">Passengers</label>
                                     </div>
                                 </div>
                                 <div class="relative">
-                                    <input type="tel" id="travel-phone" class="premium-input peer" placeholder=" "
+                                    <input type="tel" id="travel-phone" name="user_phone" class="premium-input peer" placeholder=" "
                                         required />
                                     <label for="travel-phone" class="floating-label">WhatsApp Number</label>
                                 </div>
@@ -366,7 +368,7 @@
                 </div>
 
                 <!-- Tab 2: Events -->
-                <div id="eco-events" class="tab-content reveal-fade relative">
+                <div id="eco-events" class="tab-content relative">
                     <video autoplay loop muted playsinline
                         class="absolute max-w-none w-[120%] h-[120%] -top-[10%] -left-[10%] object-cover opacity-10 mix-blend-screen pointer-events-none rounded-[3rem]">
                         <source src="NB3.mp4" type="video/mp4">
@@ -393,7 +395,7 @@
                                     Event Services</span></h5>
                             <form class="space-y-4" onsubmit="handleFormSubmit(event, 'Event Booking')">
                                 <div class="relative">
-                                    <select id="event-type"
+                                    <select id="event-type" name="service_type"
                                         class="premium-input premium-select text-zinc-400 focus:text-white" required>
                                         <option value="" disabled selected>Select Service</option>
                                         <option value="Food Vendor">Food Vendors</option>
@@ -404,15 +406,15 @@
                                     <i class="ri-arrow-down-s-line select-icon"></i>
                                 </div>
                                 <div class="relative">
-                                    <input type="text" id="event-city" class="premium-input peer" placeholder=" "
+                                    <input type="text" id="event-city" name="city" class="premium-input peer" placeholder=" "
                                         required />
                                     <label for="event-city" class="floating-label">Event City (e.g., Katni)</label>
                                 </div>
                                 <div class="relative">
-                                    <input type="date" class="premium-input text-zinc-400 focus:text-white" required />
+                                    <input type="date" name="event_date" class="premium-input text-zinc-400 focus:text-white" required />
                                 </div>
                                 <div class="relative">
-                                    <input type="tel" class="premium-input peer" placeholder=" " required />
+                                    <input type="tel" name="user_phone" class="premium-input peer" placeholder=" " required />
                                     <label class="floating-label">WhatsApp Number</label>
                                 </div>
                                 <button type="submit"
@@ -471,7 +473,7 @@
                 </div>
 
                 <!-- Tab 3: Business/Partner -->
-                <div id="eco-business" class="tab-content reveal-fade relative">
+                <div id="eco-business" class="tab-content relative">
                     <video autoplay loop muted playsinline
                         class="absolute max-w-none w-[120%] h-[120%] -top-[10%] -left-[10%] object-cover opacity-10 mix-blend-screen pointer-events-none rounded-[3rem]">
                         <source src="NB4.mp4" type="video/mp4">
@@ -559,7 +561,7 @@
                                     Partnership</span></h5>
                             <form class="space-y-4" onsubmit="handleFormSubmit(event, 'Partner Onboarding')">
                                 <div class="relative">
-                                    <select class="premium-input premium-select text-zinc-400 focus:text-white"
+                                    <select name="partner_type" class="premium-input premium-select text-zinc-400 focus:text-white"
                                         required>
                                         <option value="" disabled selected>I am a...</option>
                                         <option value="Bus Owner">Bus Owner</option>
@@ -571,16 +573,16 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div class="relative">
-                                        <input type="text" class="premium-input peer" placeholder=" " required />
+                                        <input type="text" name="user_name" class="premium-input peer" placeholder=" " required />
                                         <label class="floating-label">Full Name</label>
                                     </div>
                                     <div class="relative">
-                                        <input type="text" class="premium-input peer" placeholder=" " required />
+                                        <input type="text" name="city" class="premium-input peer" placeholder=" " required />
                                         <label class="floating-label">City</label>
                                     </div>
                                 </div>
                                 <div class="relative">
-                                    <input type="tel" class="premium-input peer" placeholder=" " required />
+                                    <input type="tel" name="user_phone" class="premium-input peer" placeholder=" " required />
                                     <label class="floating-label">Phone Number</label>
                                 </div>
                                 <button type="submit"
@@ -646,6 +648,76 @@
                         class="w-full h-auto rounded-3xl shadow-[0_0_40px_rgba(16,185,129,0.2)] border border-white/10 hover:scale-105 transition-transform duration-500"
                         alt="Night Bus Ecosystem Infographic">
                 </div>
+            </div>
+    </section>
+
+    <!-- Google Reviews Section -->
+    <section id="reviews" class="py-32 relative bg-zinc-950/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal-up">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
+                    <i class="ri-star-fill"></i> <span>Top Rated Transit App</span>
+                </div>
+                <h2 id="reviews-title" class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Trusted by <span class="text-emerald-400">1000+ Travelers</span></h2>
+                <p id="reviews-desc" class="text-zinc-400 text-lg max-w-2xl mx-auto">Real experiences from our community. We pride ourselves on safety, punctuality, and comfort.</p>
+            </div>
+
+            <!-- Review Cards Grid (Static fallback while widget loads) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 reveal-up">
+                <!-- Review 1 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 relative group hover:-translate-y-2 transition-all duration-300">
+                    <div class="flex gap-1 text-emerald-500 mb-4 text-xs">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="text-zinc-300 italic mb-6">"Booking a bus has never been this smooth. The live tracking feature is a lifesaver for night journeys!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-emerald-400 font-bold border border-emerald-500/20">AK</div>
+                        <div>
+                            <p class="text-sm font-bold text-white uppercase tracking-wider">Aman Kushwaha</p>
+                            <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Verified Traveler</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 relative group hover:-translate-y-2 transition-all duration-300">
+                    <div class="flex gap-1 text-emerald-500 mb-4 text-xs">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="text-zinc-300 italic mb-6">"Rented a luxury traveller for a class picnic. Pristine condition and professional driver. Highly recommend!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-emerald-400 font-bold border border-emerald-500/20">PK</div>
+                        <div>
+                            <p class="text-sm font-bold text-white uppercase tracking-wider">Priya Kohli</p>
+                            <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Local Guide</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 relative group hover:-translate-y-2 transition-all duration-300">
+                    <div class="flex gap-1 text-emerald-500 mb-4 text-xs">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="text-zinc-300 italic mb-6">"Reliable and fast. The ecosystem approach is brilliant. Everything from darshan to transport handled."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-emerald-400 font-bold border border-emerald-500/20">RS</div>
+                        <div>
+                            <p class="text-sm font-bold text-white uppercase tracking-wider">Rajesh Sharma</p>
+                            <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Google Review Widget Placeholder -->
+            <div class="reveal-up rounded-3xl overflow-hidden glass-panel border border-white/5 flex items-center justify-center min-h-[250px] relative">
+                <div class="text-center py-10 px-6">
+                    <i class="ri-google-line text-6xl mb-4 text-emerald-500 opacity-20"></i>
+                    <p class="text-zinc-500 text-sm mb-4">Paste your Elfsight or Trustindex Reviews Widget code here</p>
+                    <span class="text-[10px] text-zinc-600 bg-white/5 px-4 py-1 rounded-full border border-white/10 uppercase tracking-widest">Awaiting API Integration</span>
+                </div>
+                <!-- INSTRUCTIONS: To enable live reviews, paste your widget script below and remove the placeholder div above -->
+                <!-- <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script> -->
+                <!-- <div class="elfsight-app-PASTE-YOUR-WIDGET-ID-HERE" data-elfsight-app-lazy></div> -->
             </div>
         </div>
     </section>
@@ -822,6 +894,124 @@
         </div>
     </section>
 
+    <!-- Instagram Social Wall Section -->
+    <section id="social-wall" class="py-32 relative bg-zinc-900/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal-up">
+                <div>
+                    <h2 class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">#NightBusVibes</h2>
+                    <h3 class="text-4xl font-bold tracking-tight">Our Stories, Your <span class="text-emerald-400">Memories</span></h3>
+                    <p class="mt-4 text-zinc-400 max-w-lg">Follow our journey across Bharat. Tag us in your travel stories to get featured!</p>
+                </div>
+                <button onclick="window.location.href='https://instagram.com'" class="glass-panel px-8 py-4 rounded-full text-sm font-bold hover:bg-emerald-500 hover:text-zinc-950 transition-all flex items-center gap-2">
+                    <i class="ri-instagram-line text-lg"></i> Follow @nightbus_official
+                </button>
+            </div>
+
+            <!-- Instagram Feed Placeholder (Grid Layout) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal-up">
+                <div class="aspect-square rounded-2xl overflow-hidden glass-panel border border-white/5 group relative">
+                    <div class="absolute inset-0 bg-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <i class="ri-instagram-line text-3xl text-white"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Instagram Post 1">
+                </div>
+                <div class="aspect-square rounded-2xl overflow-hidden glass-panel border border-white/5 group relative">
+                    <div class="absolute inset-0 bg-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <i class="ri-instagram-line text-3xl text-white"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Instagram Post 2">
+                </div>
+                <div class="aspect-square rounded-2xl overflow-hidden glass-panel border border-white/5 group relative">
+                    <div class="absolute inset-0 bg-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <i class="ri-instagram-line text-3xl text-white"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1568228071830-29c3f1f1ca9e?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Instagram Post 3">
+                </div>
+                <div class="aspect-square rounded-2xl overflow-hidden glass-panel border border-white/5 group relative">
+                    <div class="absolute inset-0 bg-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <i class="ri-instagram-line text-3xl text-white"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Instagram Post 4">
+                </div>
+            </div>
+
+            <!-- Dynamic Social Widget Placeholder -->
+            <div class="mt-8 reveal-up">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 flex items-center justify-center min-h-[150px] relative">
+                    <div class="text-center">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-2 font-bold">Dynamic Instagram Feed</p>
+                        <p class="text-xs text-zinc-600">Embed your SnapWidget or Elfsight script below to replace placeholders</p>
+                    </div>
+                </div>
+                <!-- INSTRUCTIONS: Paste your SnapWidget/Elfsight embed code here -->
+                <!-- <script src="https://snapwidget.com/js/snapwidget.js"></script> -->
+                <!-- <iframe src="https://snapwidget.com/embed/YOUR_ID" class="snapwidget-widget w-full border-none overflow-hidden" title="Instagram Feed"></iframe> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Quick Enquiry Section -->
+    <section id="whatsapp-support" class="py-24 relative bg-zinc-950 overflow-hidden border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6">
+                        <i class="ri-whatsapp-fill"></i> <span>Instant Support</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Chat with an <span class="text-emerald-400">Expert</span> Now</h2>
+                    <p class="text-zinc-400 text-lg mb-10">Prefer WhatsApp? Skip the wait and message our support team directly. We are online and ready to help with bookings, rentals, or partnerships.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl border border-emerald-500/20">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Fast Response</h4>
+                                <p class="text-xs text-zinc-500 font-light">Typically replies in under 5 minutes</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl border border-emerald-500/20">
+                                <i class="ri-shield-check-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Secure Chat</h4>
+                                <p class="text-xs text-zinc-500 font-light">Direct and private communication</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-up">
+                    <form onsubmit="handleWhatsAppForm(event)" class="glass-panel p-8 rounded-[2rem] border border-white/10 relative overflow-hidden shadow-2xl">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                        <h4 class="text-xl font-bold mb-8 flex items-center gap-2"><i class="ri-chat-smile-2-line text-emerald-400"></i> Start a Conversation</h4>
+                        
+                        <div class="space-y-4 relative z-10">
+                            <div class="relative">
+                                <input type="text" name="wa_name" id="wa_name" required class="premium-input peer" placeholder=" ">
+                                <label for="wa_name" class="floating-label">Your Full Name</label>
+                            </div>
+                            <div class="relative">
+                                <input type="tel" name="wa_phone" id="wa_phone" required class="premium-input peer" placeholder=" ">
+                                <label for="wa_phone" class="floating-label">WhatsApp Number</label>
+                            </div>
+                            <div class="relative">
+                                <textarea name="wa_message" id="wa_message" rows="3" required class="premium-input peer" placeholder=" "></textarea>
+                                <label for="wa_message" class="floating-label">How can we help you?</label>
+                            </div>
+                            <button type="submit" class="premium-btn w-full bg-emerald-500 text-emerald-950 font-bold py-4 rounded-xl mt-4 flex items-center justify-center gap-2 transition-all hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]">
+                                <i class="ri-whatsapp-line text-xl"></i> <span>Send to WhatsApp</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Join CTA Section -->
     <section class="py-24 relative bg-zinc-950 overflow-hidden">
         <div class="absolute inset-0 bg-emerald-500/5"></div>
@@ -833,12 +1023,8 @@
                 Whether you are booking a ticket or growing your local business, NB is your unified growth partner.
             </p>
             <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="window.location.href='nb://app'"
-                    class="bg-emerald-500 text-emerald-950 px-8 py-4 font-bold rounded-full hover:bg-emerald-400 transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                    <span id="cta-download">Download the App Today</span>
-                </button>
                 <a href="#services"
-                    class="glass-panel text-white px-8 py-4 font-bold rounded-full hover:bg-white/10 transition-colors border border-white/10">
+                    class="glass-panel text-white px-8 py-4 font-bold rounded-full hover:bg-emerald-400 hover:text-emerald-950 transition-colors border border-white/10">
                     <span id="cta-explore">Explore Services</span> <i class="ri-arrow-up-line"></i>
                 </a>
             </div>
@@ -951,27 +1137,81 @@
         </div>
     </footer>
 
-    <!-- Floating Sticky Action Button (Mobile focused) -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="window.location.href='nb://app'"
-            class="w-16 h-16 rounded-full bg-emerald-500 text-zinc-950 shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center hover:scale-110 transition-transform cursor-pointer md:w-auto md:px-6 md:py-3 md:rounded-full group">
-            <i class="ri-smartphone-line text-2xl md:mr-2"></i>
-            <span id="fab-open" class="hidden md:inline font-bold">Open App</span>
-        </button>
-    </div>
+    <!-- Floating Elements -->
 
     <!-- GSAP Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-[100px] right-[28px] z-[40] reveal-fade group">
+        <!-- Tooltip -->
+        <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-zinc-900 text-white px-4 py-2 rounded-xl text-xs font-bold border border-white/10 shadow-2xl scale-0 group-hover:scale-100 transition-all origin-right pointer-events-none whitespace-nowrap">
+            <span class="text-emerald-400">Online</span> Chat with Us
+        </div>
+        <button onclick="openWhatsApp('Hello Night Bus team! I need assistance.')" 
+            class="w-14 h-14 bg-emerald-500 text-emerald-950 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center justify-center text-2xl hover:scale-110 active:scale-95 transition-all animate-pulse-slow">
+            <i class="ri-whatsapp-line"></i>
+        </button>
+    </div>
+
     <!-- Scripts for Logic & Animations -->
     <script>
+        // --- Tawk.to Live Chat Integration ---
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/69d26bc3b35c8f1c3425c186/1jlev9tg1';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+
+        // --- EmailJS Configuration for index.html ---
+        (function() {
+            const EMAILJS_PUBLIC_KEY = "vMiWgSpYM2sA2lrXU"; 
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+            }
+        })();
+
         // Multi-contact WhatsApp Logic
-        const WA_NUMBER = "919999999999"; // Developer: Swap this with actual NB business number
+        const WA_NUMBER = "917583022298"; 
 
         function openWhatsApp(message) {
             const encoded = encodeURIComponent(message);
             window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank');
+        }
+
+        // WhatsApp Quick Enquiry Handler
+        function handleWhatsAppForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            const name = form.wa_name.value;
+            const phone = form.wa_phone.value;
+            const message = form.wa_message.value;
+
+            // Format the message for WhatsApp
+            const fullMessage = `*New Quick Enquiry - Night Bus*\n\n` +
+                                `👤 *Name:* ${name}\n` +
+                                `📱 *WhatsApp:* ${phone}\n` +
+                                `💬 *Message:* ${message}`;
+
+            // Redirect to WhatsApp
+            openWhatsApp(fullMessage);
+            
+            // Success Feedback & Reset
+            const btn = form.querySelector('button');
+            const original = btn.innerHTML;
+            btn.innerHTML = `<i class="ri-check-line"></i> Opening WhatsApp...`;
+            btn.classList.add('bg-white', 'text-emerald-500');
+            
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.classList.remove('bg-white', 'text-emerald-500');
+                form.reset();
+            }, 3000);
         }
 
         function submitRental() {
@@ -1011,43 +1251,59 @@
             );
         }
 
-        // Handle Form Submissions via Node.js Backend
+        // Handle Form Submissions via EmailJS
         async function handleFormSubmit(e, formTitle) {
             e.preventDefault();
             const form = e.target;
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
 
-            // UI Feedback
+            // --- Configuration ---
+            const EMAILJS_SERVICE_ID = "service_dx4ny55";
+            const EMAILJS_TEMPLATE_ID = "template_n6kxya7";
+
+            // UI Feedback (Loading)
             btn.innerHTML = `<div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> Sending...`;
             btn.disabled = true;
 
-            // Gather details
-            let details = [];
+            // Gather and format details
+            let extraDetails = "";
+            let templateParams = {
+                user_name: "Customer (Ecosystem App)", // Default for ecosystem forms
+                user_email: "Not provided",
+                user_phone: "",
+                message: "",
+                form_title: formTitle,
+                submission_date: new Date().toLocaleString()
+            };
+
             form.querySelectorAll('input, select').forEach(input => {
                 if (input.value) {
-                    const label = input.nextElementSibling?.tagName === 'LABEL' ? input.nextElementSibling.innerText : input.placeholder || input.type;
-                    details.push(`${label}: ${input.value}`);
+                    const name = input.getAttribute('name');
+                    const label = input.placeholder || name || input.type;
+                    
+                    if (name === 'user_name') templateParams.user_name = input.value;
+                    else if (name === 'user_email') templateParams.user_email = input.value;
+                    else if (name === 'user_phone') templateParams.user_phone = input.value;
+                    else {
+                        extraDetails += `• ${label}: ${input.value}\n`;
+                    }
                 }
             });
+            
+            // Build the message field by combining form title and extra details
+            templateParams.message = `Form: ${formTitle}\n\nAdditional Details:\n${extraDetails}`;
 
             try {
-                // Send data to our Node.js server
-                const response = await fetch('http://localhost:5000/api/send-enquiry', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ formTitle, details })
-                });
-
-                if (response.ok) {
-                    btn.innerHTML = `<i class="ri-check-line text-xl"></i> Enquiry Sent!`;
-                    btn.classList.add('bg-emerald-400');
-                    form.reset(); // Reset form locally
-                } else {
-                    throw new Error('Server returned an error');
-                }
+                // Send data using EmailJS
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                
+                // UI Feedback (Success)
+                btn.innerHTML = `<i class="ri-check-line text-xl"></i> Enquiry Sent!`;
+                btn.classList.add('bg-emerald-400', 'text-zinc-950');
+                form.reset(); 
             } catch (error) {
-                console.error('Error sending enquiry:', error);
+                console.error('EmailJS Error:', error);
                 btn.innerHTML = `<i class="ri-error-warning-line text-xl"></i> Failed to send`;
                 btn.classList.add('bg-red-500');
             }
@@ -1055,7 +1311,7 @@
             // Reset button state after a few seconds
             setTimeout(() => {
                 btn.innerHTML = originalText;
-                btn.classList.remove('bg-emerald-400', 'bg-red-500');
+                btn.classList.remove('bg-emerald-400', 'bg-red-500', 'text-zinc-950');
                 btn.disabled = false;
             }, 3000);
         }
