@@ -5,24 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Night Bus</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Get in touch with Night Bus for support, business inquiries, or feedback. We're here to help 24/7.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: { sans: ['Outfit', 'sans-serif'] },
-                    colors: { emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669', 950: '#022c22' }, zinc: { 900: '#18181b', 950: '#09090b' } }
+                    colors: { 
+                        emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669', 950: '#022c22' }, 
+                        zinc: { 900: '#18181b', 950: '#09090b', 800: '#27272a' } 
+                    }
                 }
             }
         }
     </script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body class="bg-zinc-950 text-white selection:bg-emerald-500/30">
 
-    <!-- Navigation (Simplified) -->
+    <!-- Navigation -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3">
@@ -60,7 +67,7 @@
                         <p class="text-zinc-400 leading-relaxed">
                             NB Platforms Private Limited<br>
                             123, Tech Hub, Sector 45<br>
-                            Pune, Maharashtra - 411001<br>
+                            Katni, Madhya Pradesh - 483501<br>
                             India
                         </p>
                     </div>
@@ -69,23 +76,23 @@
                         <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
                             <i class="ri-customer-service-2-line text-emerald-500"></i> Support Details
                         </h2>
-                        <div class="space-y-4">
+                        <div class="space-y-6">
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                                    <i class="ri-mail-line"></i>
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20">
+                                    <i class="ri-mail-line text-xl"></i>
                                 </div>
-                                <div>
-                                    <p class="text-xs text-zinc-500">Email us at</p>
-                                    <p class="text-sm font-medium">support@nbbus.online</p>
+                                <div class="flex-1">
+                                    <p class="text-xs text-zinc-500 uppercase tracking-widest mb-0.5">Email us at</p>
+                                    <p class="text-base font-medium">support@nbbus.online</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                                    <i class="ri-phone-line"></i>
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20">
+                                    <i class="ri-phone-line text-xl"></i>
                                 </div>
-                                <div>
-                                    <p class="text-xs text-zinc-500">Call us at</p>
-                                    <p class="text-sm font-medium">+91 91234 56789</p>
+                                <div class="flex-1">
+                                    <p class="text-xs text-zinc-500 uppercase tracking-widest mb-0.5">Call us at</p>
+                                    <p class="text-base font-medium">+91 91234 56789</p>
                                 </div>
                             </div>
                         </div>
@@ -93,32 +100,66 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="glass-panel p-8 rounded-3xl border border-white/5">
-                    <h2 class="text-xl font-bold mb-6">Send us a Message</h2>
-                    <form action="#" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-widest">Full Name</label>
-                            <input type="text" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-colors" placeholder="John Doe">
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl -z-10"></div>
+                    <h2 class="text-xl font-bold mb-8">Send us a Message</h2>
+                    
+                    <!-- Alert Container -->
+                    <div id="form-alert" class="hidden mb-6 p-4 rounded-xl text-sm font-medium transition-all duration-300">
+                        <div class="flex items-center gap-3">
+                            <i id="alert-icon" class="ri-information-line text-lg"></i>
+                            <span id="alert-message"></span>
                         </div>
-                        <div>
-                            <label class="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-widest">Email Address</label>
-                            <input type="email" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-colors" placeholder="john@example.com">
+                    </div>
+
+                    <form id="contact-form" class="space-y-5">
+                        <div class="relative group">
+                            <label for="user_name" class="block text-[10px] font-bold text-zinc-500 mb-2 uppercase tracking-[0.2em] group-focus-within:text-emerald-400 transition-colors">Full Name</label>
+                            <input type="text" id="user_name" name="user_name" required
+                                class="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3.5 focus:border-emerald-500/50 focus:bg-zinc-800/50 outline-none transition-all placeholder:text-zinc-700" 
+                                placeholder="Enter your name">
                         </div>
-                        <div>
-                            <label class="block text-xs font-medium text-zinc-500 mb-2 uppercase tracking-widest">Message</label>
-                            <textarea rows="4" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none transition-colors" placeholder="How can we help?"></textarea>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="relative group">
+                                <label for="user_email" class="block text-[10px] font-bold text-zinc-500 mb-2 uppercase tracking-[0.2em] group-focus-within:text-emerald-400 transition-colors">Email Address</label>
+                                <input type="email" id="user_email" name="user_email" required
+                                    class="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3.5 focus:border-emerald-500/50 focus:bg-zinc-800/50 outline-none transition-all placeholder:text-zinc-700" 
+                                    placeholder="john@example.com">
+                            </div>
+                            <div class="relative group">
+                                <label for="user_phone" class="block text-[10px] font-bold text-zinc-500 mb-2 uppercase tracking-[0.2em] group-focus-within:text-emerald-400 transition-colors">Phone Number</label>
+                                <input type="tel" id="user_phone" name="user_phone" required
+                                    class="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3.5 focus:border-emerald-500/50 focus:bg-zinc-800/50 outline-none transition-all placeholder:text-zinc-700" 
+                                    placeholder="+91 XXXXX XXXXX">
+                            </div>
                         </div>
-                        <button type="submit" class="w-full bg-emerald-500 text-zinc-950 font-bold py-4 rounded-xl hover:bg-emerald-400 transition-all emerald-glow">Send Message</button>
+
+                        <div class="relative group">
+                            <label for="message" class="block text-[10px] font-bold text-zinc-500 mb-2 uppercase tracking-[0.2em] group-focus-within:text-emerald-400 transition-colors">Message</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3.5 focus:border-emerald-500/50 focus:bg-zinc-800/50 outline-none transition-all placeholder:text-zinc-700 resize-none" 
+                                placeholder="How can we help?"></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" 
+                            class="w-full bg-emerald-500 text-zinc-950 font-bold py-4 rounded-xl hover:bg-emerald-400 active:scale-[0.98] transition-all emerald-glow flex items-center justify-center gap-3">
+                            <span id="btn-text">Send Message</span>
+                            <div id="btn-spinner" class="hidden w-5 h-5 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin"></div>
+                            <i id="btn-icon" class="ri-send-plane-fill"></i>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer (Simplified) -->
+    <!-- Footer -->
     <footer class="border-t border-white/5 py-10 px-6 text-center text-xs text-zinc-600">
         <p>&copy; 2026 NB Platform. Night Bus - All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="js/contact.js"></script>
 </body>
 </html>

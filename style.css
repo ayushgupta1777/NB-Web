@@ -168,12 +168,35 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Tab Content Transitions */
 .tab-content {
   display: none;
   opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .tab-content.active {
   display: block;
   opacity: 1;
+}
+
+/* Contact Form Specifics */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(10, 10, 15, 1) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#form-alert {
+  transform: translateY(-10px);
+  animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
