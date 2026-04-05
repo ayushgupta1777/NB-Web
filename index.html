@@ -42,31 +42,35 @@
                 class="absolute inset-4 bg-emerald-500/10 rounded-full flex items-center justify-center font-bold text-emerald-400">
                 NB</div>
         </div>
-        <p class="mt-4 text-zinc-400 animate-pulse font-light tracking-widest text-sm">Preparing Your Journey...</p>
+        <p id="loader-text" class="mt-4 text-zinc-400 animate-pulse font-light tracking-widest text-sm">Preparing Your Journey...</p>
     </div>
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5 reveal-down">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div
-                    class="w-10 h-10 rounded-full bg-emerald-500 text-zinc-950 flex items-center justify-center font-bold shadow-[0_0_20px_rgba(16,185,129,0.4)]">
-                    NB</div>
+                <img src="CONTENT/logo_NB.png" class="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]" alt="NB Logo">
                 <span class="font-semibold text-xl tracking-tight hidden sm:block">Night Bus</span>
             </div>
             <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-300">
-                <a href="#services" class="hover:text-white transition-colors">Bus</a>
-                <a href="#rentals" class="hover:text-white transition-colors">Rentals</a>
-                <a href="#events" class="hover:text-white transition-colors">Events</a>
-                <a href="#yatra" class="hover:text-white transition-colors">Yatra</a>
-                <a href="#vendor" class="hover:text-emerald-400 transition-colors">Partner with Us</a>
+                <a href="#services" data-i18n="nav_bus" class="hover:text-white transition-colors">Bus</a>
+                <a href="yatra.html" data-i18n="nav_yatras" class="hover:text-white transition-colors">Yatras</a>
+                <a href="events.html" data-i18n="nav_events" class="hover:text-white transition-colors">Events</a>
+                <a href="partners.html" data-i18n="nav_partner" class="hover:text-emerald-400 transition-colors">Partner with Us</a>
             </div>
             <div class="flex items-center gap-4">
-                <button onclick="window.location.href='nb://app'"
-                    class="hidden sm:flex text-sm font-medium bg-white/5 border border-white/10 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors">Open
-                    in App</button>
-                <button
-                    class="text-sm font-medium bg-emerald-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-emerald-400 transition-colors emerald-glow">Download</button>
+                <!-- Language Toggle -->
+                <div class="hidden sm:flex items-center gap-1 text-xs font-bold bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors">
+                    <button id="btn-en" onclick="setLanguage('en')" class="text-white hover:text-emerald-400 transition-colors">EN</button>
+                    <span class="text-zinc-600">|</span>
+                    <button id="btn-hi" onclick="setLanguage('hi')" class="text-zinc-400 hover:text-emerald-400 transition-colors">HI</button>
+                </div>
+                <!-- Dashboard -->
+                <a href="dashboard.html" class="hidden sm:flex text-sm font-bold items-center gap-2 text-zinc-300 hover:text-white transition-colors">
+                    <i class="ri-user-smile-line text-lg"></i> <span data-i18n="nav_account">Account</span>
+                </a>
+                <button onclick="window.location.href='bundle-builder.html'" data-i18n="nav_plan_trip"
+                    class="text-sm font-medium bg-emerald-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-emerald-400 transition-colors emerald-glow">Plan a Trip</button>
             </div>
         </div>
     </nav>
@@ -80,8 +84,9 @@
                 <source src="NB4.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/30"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(9,9,11,1)_100%)]">
-            </div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(9,9,11,1)_100%)]"></div>
+            <!-- Interactive Ecosystem Canvas overlay -->
+            <canvas id="ecosystem-network" class="absolute inset-0 z-0 opacity-40"></canvas>
         </div>
 
         <!-- Content -->
@@ -92,16 +97,16 @@
                 <div
                     class="reveal-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    The Ultimate Travel Super App
+                    <span id="hero-badge-text">The Ultimate Travel Super App</span>
                 </div>
 
-                <h1 class="reveal-up text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] text-white mb-6">
+                <h1 id="hero-title" class="reveal-up text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] text-white mb-6">
                     Connecting <br />
                     <span class="gradient-text">Every Journey,</span> <br />
                     Every Town.
                 </h1>
 
-                <p class="reveal-up text-lg text-zinc-400 font-light mb-10 max-w-xl">
+                <p id="hero-desc" class="reveal-up text-lg text-zinc-400 font-light mb-10 max-w-xl">
                     Bus bookings, premium rentals, event services, and yatra packages. One multi-service platform built
                     for the next generation of travelers.
                 </p>
@@ -110,11 +115,11 @@
                 <div class="reveal-up flex flex-wrap gap-4 mb-12 w-full">
                     <button onclick="document.getElementById('search-panel').classList.toggle('hidden')"
                         class="magnetic-btn flex-1 sm:flex-none flex items-center justify-center gap-2 bg-emerald-500 text-emerald-950 font-bold px-8 py-4 rounded-full hover:bg-emerald-400 transition-all emerald-glow">
-                        <i class="ri-bus-wifi-line text-lg"></i> Book Bus
+                        <i class="ri-bus-wifi-line text-lg"></i> <span id="hero-btn-book">Book Bus</span>
                     </button>
                     <a href="#services"
                         class="magnetic-btn flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-medium px-8 py-4 rounded-full hover:bg-white/10 glass-panel transition-all">
-                        <i class="ri-compass-3-line text-lg"></i> Explore Services
+                        <i class="ri-compass-3-line text-lg"></i> <span id="hero-btn-explore">Explore Services</span>
                     </a>
                 </div>
 
@@ -134,7 +139,7 @@
                         </div>
                         <button id="search-deep-link"
                             class="bg-emerald-500 text-zinc-950 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-400 transition-colors">
-                            <i class="ri-search-line"></i> Search in App
+                            <i class="ri-search-line"></i> <span id="hero-search-btn">Search in App</span>
                         </button>
                     </div>
                 </div>
@@ -201,17 +206,14 @@
                 <span class="relative flex h-3 w-3"><span
                         class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span
                         class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span></span>
-                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Only few slots left for
-                    weekend travel</span>
+                <span id="stats-alert" class="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Only few slots left for weekend travel</span>
             </div>
             <div class="flex items-center gap-8 md:gap-16">
                 <div class="reveal-fade flex flex-col text-center sm:text-left"><span
-                        class="text-2xl font-bold font-mono">10K+</span><span class="text-xs text-zinc-500">Routes
-                        Active</span></div>
+                        class="text-2xl font-bold font-mono">10K+</span><span id="stats-routes" class="text-xs text-zinc-500">Routes Active</span></div>
                 <div class="w-px h-8 bg-white/10"></div>
                 <div class="reveal-fade flex flex-col text-center sm:text-left"><span
-                        class="text-2xl font-bold font-mono">500+</span><span
-                        class="text-xs text-zinc-500">Providers</span></div>
+                        class="text-2xl font-bold font-mono">500+</span><span id="stats-providers" class="text-xs text-zinc-500">Providers</span></div>
                 <div class="w-px h-8 bg-white/10"></div>
                 <div class="reveal-fade flex items-center gap-2">
                     <span class="text-2xl font-bold font-mono text-emerald-400">4.9/5</span>
@@ -223,143 +225,274 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Beautiful Ecosystem Tabbed Section -->
     <section id="services" class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="reveal-up text-center mb-16">
-                <h2 class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">Our Ecosystem</h2>
-                <h3 class="text-4xl md:text-5xl font-bold tracking-tight">A seamless platform for <br /><span
-                        class="text-zinc-500 font-light">all your travel needs</span></h3>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="reveal-up text-center mb-12">
+                <h2 id="eco-badge" class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3 animate-pulse">Our Ecosystem</h2>
+                <h3 id="eco-title" class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Travel. Events. Logistics.</h3>
+                <p id="eco-desc" class="text-zinc-400 max-w-2xl mx-auto">Experience a fully integrated ecosystem designed for an effortless journey. Book buses, organize events, or partner with us—all in one place.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Tab Navigation -->
+            <div class="reveal-up flex flex-wrap justify-center gap-3 mb-16">
+                <button class="eco-tab active px-6 py-3 md:px-8 md:py-3 rounded-full text-sm font-bold text-zinc-400 border border-white/5 hover:text-white hover:bg-white/5 transition-all" onclick="switchEcoTab('eco-travel', this)">
+                    <i class="ri-bus-wifi-line mr-2"></i> <span id="eco-tab1">Travel & Yatra</span>
+                </button>
+                <button class="eco-tab px-6 py-3 md:px-8 md:py-3 rounded-full text-sm font-bold text-zinc-400 border border-white/5 hover:text-white hover:bg-white/5 transition-all" onclick="switchEcoTab('eco-events', this)">
+                    <i class="ri-calendar-event-line mr-2"></i> <span id="eco-tab2">Events & Services</span>
+                </button>
+                <button class="eco-tab px-6 py-3 md:px-8 md:py-3 rounded-full text-sm font-bold text-zinc-400 border border-white/5 hover:text-white hover:bg-white/5 transition-all" onclick="switchEcoTab('eco-business', this)">
+                    <i class="ri-briefcase-line mr-2"></i> <span id="eco-tab3">Business Partners</span>
+                </button>
+            </div>
 
-                <!-- Bus Booking Card -->
-                <div
-                    class="service-card lg:col-span-2 group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-emerald-500/30 transition-all duration-500 min-h-[380px]">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950/90 z-10 transition-colors group-hover:to-zinc-950 border-emerald">
-                    </div>
-                    <!-- bg shape -->
-                    <div
-                        class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[60px] group-hover:bg-emerald-500/20 transition-all duration-700">
-                    </div>
-                    <div
-                        class="absolute top-8 right-8 z-20 text-emerald-500/50 group-hover:text-emerald-400 transition-colors text-6xl">
-                        <i class="ri-bus-wifi-line"></i>
-                    </div>
+            <!-- Tab Contents Wrapper -->
+            <div class="relative min-h-[500px]">
+                
+                <!-- Tab 1: Travel -->
+                <div id="eco-travel" class="tab-content active reveal-fade relative">
+                    <!-- Dynamic Video Content Backing -->
+                    <video autoplay loop muted playsinline class="absolute max-w-none w-[120%] h-[120%] -top-[10%] -left-[10%] object-cover opacity-10 mix-blend-screen pointer-events-none rounded-[3rem]">
+                        <source src="NB2.mp4" type="video/mp4">
+                    </video>
+                    
+                    <div class="grid lg:grid-cols-2 gap-10 items-center relative z-10">
+                        <div>
+                            <div class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-emerald-500/10 mb-6 border border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.2)] text-emerald-400 font-bold uppercase tracking-widest text-xs">
+                                <i class="ri-route-line mr-2"></i> <span id="eco-t1-badge">B2C Bookings</span>
+                            </div>
+                            <h4 id="eco-t1-title" class="text-3xl font-bold text-white mb-6 leading-tight">Your Complete Journey,<br/><span class="text-emerald-400">Perfected.</span></h4>
+                            
+                            <div class="grid grid-cols-2 gap-4 mb-8">
+                                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform border border-emerald-500/10 shadow-[0_4px_20px_rgba(16,185,129,0.05)]">
+                                    <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2"><i class="ri-bus-fill text-xl"></i></div>
+                                    <span id="eco-t1-om" class="text-xs font-bold text-white uppercase tracking-wider">Om Travel</span>
+                                </div>
+                                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform border border-emerald-500/10 shadow-[0_4px_20px_rgba(16,185,129,0.05)]">
+                                    <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2"><i class="ri-hearts-fill text-xl"></i></div>
+                                    <span id="eco-t1-wedding" class="text-xs font-bold text-white uppercase tracking-wider">Wedding</span>
+                                </div>
+                                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform border border-emerald-500/10 shadow-[0_4px_20px_rgba(16,185,129,0.05)]">
+                                    <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2"><i class="ri-sun-fill text-xl"></i></div>
+                                    <span id="eco-t1-picnic" class="text-xs font-bold text-white uppercase tracking-wider">Picnic</span>
+                                </div>
+                                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform border border-emerald-500/10 shadow-[0_4px_20px_rgba(16,185,129,0.05)]">
+                                    <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2"><i class="ri-hand-heart-fill text-xl"></i></div>
+                                    <span id="eco-t1-yatra" class="text-xs font-bold text-white uppercase tracking-wider">Teerth Yatra</span>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="relative z-20 mt-auto">
-                        <div
-                            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
-                            <i class="ri-ticket-2-line text-white text-xl"></i>
-                        </div>
-                        <h4 class="text-3xl font-bold text-white mb-2 group-hover:gradient-text transition-all">Bus
-                            Booking</h4>
-                        <p class="text-zinc-400 max-w-md mb-6 transition-transform group-hover:translate-x-2 w-full">
-                            Instantly search and book seats on thousands of routes. Transparent tracking, direct
-                            connectivity.</p>
-                        <div class="flex flex-wrap gap-3 origin-left opacity-90 group-hover:opacity-100 transition-all">
-                            <button onclick="window.location.href='nb://bus'"
-                                class="glass-panel px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 shrink-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">Continue
-                                in App <i class="ri-arrow-right-up-line ml-1"></i></button>
-                            <button onclick="openWhatsApp('Hi, I want to book a bus ticket.')"
-                                class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-6 py-3 rounded-full text-sm font-medium hover:bg-emerald-500 hover:text-zinc-950 transition-colors shrink-0"><i
-                                    class="ri-whatsapp-line mr-1"></i> WhatsApp</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Rentals Card (Simplified & Beautiful) -->
-                <div id="rentals"
-                    class="service-card group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-white/20 transition-all duration-500 hover:-translate-y-2 min-h-[380px]">
-                    <div
-                        class="absolute top-8 right-8 z-20 text-white/5 text-6xl group-hover:text-white/20 transition-colors">
-                        <i class="ri-steering-2-line"></i>
-                    </div>
-                    <div class="relative z-20 mt-auto">
-                        <div
-                            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
-                            <i class="ri-car-line text-white"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-2">Vehicle Rentals</h4>
-                        <p class="text-sm text-zinc-400 mb-6 group-hover:-translate-y-1 transition-transform">Book full
-                            buses, cars, or bikes for events & personal trips. Zero middleman fees.</p>
-
-                        <div class="flex flex-col gap-2 relative">
-                            <button onclick="window.location.href='nb://rentals'"
-                                class="w-full bg-emerald-500 text-zinc-950 py-3 rounded-xl text-sm font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-colors">Explore
-                                Vehicles</button>
-                            <button onclick="openWhatsApp('Hi, I have a requirement for Vehicle Rental.')"
-                                class="w-full glass-panel border border-white/10 py-3 rounded-xl text-sm font-medium text-white hover:bg-white/10">Enquire
-                                <i class="ri-whatsapp-line text-emerald-400 ml-1"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Events / Services Card -->
-                <div id="events"
-                    class="service-card group relative rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden p-8 flex flex-col justify-end hover:border-white/20 transition-all duration-500 hover:-translate-y-2 min-h-[380px]">
-                    <div
-                        class="absolute top-8 right-8 z-20 text-white/5 text-6xl group-hover:text-white/20 transition-colors">
-                        <i class="ri-calendar-event-line"></i>
-                    </div>
-                    <div class="relative z-20 mt-auto">
-                        <div
-                            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md mb-4 border border-white/10 group-hover:scale-110 transition-transform">
-                            <i class="ri-music-2-line text-white"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold text-white mb-2">Event Services</h4>
-                        <p class="text-sm text-zinc-400 mb-6 group-hover:-translate-y-1 transition-transform">Hire
-                            verified local DJs, Halls, Caterers & more for your wedding or event.</p>
-                        <div class="flex flex-col gap-2 relative">
-                            <button onclick="window.location.href='nb://events'"
-                                class="w-full glass-panel py-3 rounded-xl text-sm font-bold hover:bg-white/10 border border-white/10">Open
-                                Marketplace</button>
-                            <button onclick="openWhatsApp('Hi, I am looking for event organizers/services.')"
-                                class="w-full text-emerald-400 text-sm hover:underline py-2"><i
-                                    class="ri-whatsapp-line"></i> Connect on WA</button>
+                        <!-- Form -->
+                        <div class="glass-form rounded-3xl p-8 relative overflow-hidden emerald-glow backdrop-blur-2xl bg-zinc-950/60 border border-emerald-500/20">
+                            <h5 class="text-xl font-bold text-white mb-6 relative z-10 flex items-center gap-2"><i class="ri-smartphone-line text-emerald-400"></i> <span id="eco-t1-form-title">Request a Custom Trip</span></h5>
+                            <form class="relative z-10 space-y-4" onsubmit="handleFormSubmit(event, 'Travel Enquiry')">
+                                <div class="relative">
+                                    <input type="text" id="travel-dest" class="premium-input peer" placeholder=" " required />
+                                    <label for="travel-dest" class="floating-label">Destination</label>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="relative">
+                                        <input type="date" id="travel-date" class="premium-input text-zinc-400 focus:text-white" required />
+                                    </div>
+                                    <div class="relative">
+                                        <input type="number" id="travel-pax" class="premium-input peer" placeholder=" " min="1" required />
+                                        <label for="travel-pax" class="floating-label">Passengers</label>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <input type="tel" id="travel-phone" class="premium-input peer" placeholder=" " required />
+                                    <label for="travel-phone" class="floating-label">WhatsApp Number</label>
+                                </div>
+                                <button type="submit" class="premium-btn w-full bg-emerald-500 text-emerald-950 font-bold py-4 rounded-xl mt-4 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                                    <span id="eco-t1-btn">One-Tap Booking</span> <i class="ri-arrow-right-line"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
 
-                <!-- Smart Food -->
-                <div
-                    class="service-card group relative rounded-[2.5rem] bg-zinc-950 border border-emerald-500/20 overflow-hidden p-8 flex flex-col justify-end hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 shadow-[0_0_40px_rgba(16,185,129,0.05)] min-h-[380px]">
-                    <div
-                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-dot.png')] opacity-30 mix-blend-overlay">
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-950/80 to-transparent"></div>
-                    <div class="relative z-20 mt-auto">
-                        <div
-                            class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-4 uppercase tracking-widest border border-emerald-500/30">
-                            <i class="ri-flight-takeoff-line mr-1"></i> Smart Food
+                <!-- Tab 2: Events -->
+                <div id="eco-events" class="tab-content reveal-fade relative">
+                    <video autoplay loop muted playsinline class="absolute max-w-none w-[120%] h-[120%] -top-[10%] -left-[10%] object-cover opacity-10 mix-blend-screen pointer-events-none rounded-[3rem]">
+                        <source src="NB3.mp4" type="video/mp4">
+                    </video>
+                    
+                    <div class="grid lg:grid-cols-2 gap-10 items-center relative z-10">
+                        <!-- Events form is Blue themed -->
+                        <div class="order-2 lg:order-1 glass-form rounded-3xl p-8 relative overflow-hidden neon-blue-glow backdrop-blur-2xl bg-zinc-950/60 border border-blue-500/20">
+                            <style>
+                                #eco-events .premium-input:focus { border-color: rgba(59, 130, 246, 0.5); background: rgba(59, 130, 246, 0.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
+                                #eco-events .premium-input:focus ~ .floating-label, #eco-events .premium-input:not(:placeholder-shown) ~ .floating-label { color: rgba(59, 130, 246, 0.8); }
+                            </style>
+                            <h5 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i class="ri-calendar-event-line text-blue-400"></i> <span id="eco-t2-form-title">Book Event Services</span></h5>
+                            <form class="space-y-4" onsubmit="handleFormSubmit(event, 'Event Booking')">
+                                <div class="relative">
+                                    <select id="event-type" class="premium-input premium-select text-zinc-400 focus:text-white" required>
+                                        <option value="" disabled selected>Select Service</option>
+                                        <option value="Food Vendor">Food Vendors</option>
+                                        <option value="Event Organizer">Event Organizers</option>
+                                        <option value="Photo/Video">Photo / Video Organizer</option>
+                                        <option value="DJ for Bhajan Kirtan">DJ for Bhajan Kirtan</option>
+                                    </select>
+                                    <i class="ri-arrow-down-s-line select-icon"></i>
+                                </div>
+                                <div class="relative">
+                                    <input type="text" id="event-city" class="premium-input peer" placeholder=" " required />
+                                    <label for="event-city" class="floating-label">Event City (e.g., Katni)</label>
+                                </div>
+                                <div class="relative">
+                                    <input type="date" class="premium-input text-zinc-400 focus:text-white" required />
+                                </div>
+                                <div class="relative">
+                                    <input type="tel" class="premium-input peer" placeholder=" " required />
+                                    <label class="floating-label">WhatsApp Number</label>
+                                </div>
+                                <button type="submit" class="premium-btn w-full bg-blue-500 text-blue-950 font-bold py-4 rounded-xl mt-4 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.4)]">
+                                    <span id="eco-t2-btn">Find Verified Experts</span> <i class="ri-search-line"></i>
+                                </button>
+                            </form>
                         </div>
-                        <h4 class="text-2xl font-bold text-white mb-2">Enroute Dining</h4>
-                        <p class="text-sm text-emerald-100/70 mb-6">Our revolutionary system tracks your bus and ensures
-                            hot food arrives precisely at your partnered rest stop.</p>
-                        <button onclick="window.location.href='nb://food'"
-                            class="flexItems-center group-hover:text-emerald-400 text-white font-medium transition-colors group-hover:translate-x-1 duration-300">Explore
-                            Partnered Menus <i class="ri-arrow-right-line"></i></button>
+
+                        <div class="order-1 lg:order-2 lg:pl-10">
+                            <div class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-blue-500/10 mb-6 border border-blue-500/20 shadow-[0_0_30px_rgba(59,130,246,0.2)] text-blue-400 font-bold uppercase tracking-widest text-xs">
+                                <i class="ri-magic-line mr-2"></i> <span id="eco-t2-badge">Event & Service Bookings</span>
+                            </div>
+                            <h4 id="eco-t2-title" class="text-3xl font-bold text-white mb-6 leading-tight">Complete Event <br/><span class="text-blue-400">Management</span></h4>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="glass-panel py-5 px-4 rounded-2xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform border border-blue-500/10 shadow-[0_4px_20px_rgba(59,130,246,0.05)]">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center mb-2"><i class="ri-restaurant-fill"></i></div>
+                                    <span id="eco-t2-food-lbl" class="text-xs font-bold text-white uppercase">Food Vendors</span>
+                                </div>
+                                <div class="glass-panel py-5 px-4 rounded-2xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform border border-blue-500/10 shadow-[0_4px_20px_rgba(59,130,246,0.05)]">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center mb-2"><i class="ri-layout-masonry-fill"></i></div>
+                                    <span id="eco-t2-org-lbl" class="text-xs font-bold text-white uppercase">Event Organizers</span>
+                                </div>
+                                <div class="glass-panel py-5 px-4 rounded-2xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform border border-blue-500/10 shadow-[0_4px_20px_rgba(59,130,246,0.05)]">
+                                    <div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center mb-2"><i class="ri-camera-lens-fill"></i></div>
+                                    <span id="eco-t2-photo-lbl" class="text-xs font-bold text-white uppercase">Photo / Video</span>
+                                </div>
+                                <div class="glass-panel py-5 px-4 rounded-2xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform border border-blue-500/10 shadow-[0_4px_20px_rgba(59,130,246,0.05)]">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center mb-2"><i class="ri-disc-fill"></i></div>
+                                    <span id="eco-t2-dj-lbl" class="text-xs font-bold text-white uppercase leading-tight">DJ for<br/>Bhajan Kirtan</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Vendor / Partner Link hidden here subtly -->
-                <div id="vendor"
-                    class="service-card group relative rounded-[2.5rem] bg-zinc-950 border-2 border-dashed border-white/10 overflow-hidden p-8 flex flex-col justify-center items-center hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-all duration-500 cursor-pointer min-h-[380px]"
-                    onclick="openWhatsApp('Hi, I want to list my service/vehicle on the NB platform.')">
-                    <div class="text-center relative z-20 flex flex-col items-center">
-                        <div
-                            class="w-20 h-20 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-                            <i class="ri-add-line text-3xl"></i>
+                <!-- Tab 3: Business/Partner -->
+                <div id="eco-business" class="tab-content reveal-fade relative">
+                    <video autoplay loop muted playsinline class="absolute max-w-none w-[120%] h-[120%] -top-[10%] -left-[10%] object-cover opacity-10 mix-blend-screen pointer-events-none rounded-[3rem]">
+                        <source src="NB4.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="grid lg:grid-cols-2 gap-10 items-center relative z-10">
+                        <div>
+                            <div class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-amber-500/10 mb-6 border border-amber-500/20 shadow-[0_0_30px_rgba(245,158,11,0.2)] text-amber-400 font-bold uppercase tracking-widest text-xs">
+                                <i class="ri-shake-hands-fill mr-2"></i> <span id="eco-t3-badge">Your Community Partner</span>
+                            </div>
+                            <h4 id="eco-t3-title" class="text-3xl font-bold text-white mb-6 leading-tight">Bus Owner & Staff <br/><span class="text-amber-400">Connection</span></h4>
+                            
+                            <div class="flex flex-col gap-3 mb-8">
+                                <div class="glass-panel p-4 rounded-xl flex items-center gap-4 border border-amber-500/10">
+                                    <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0"><i class="ri-steering-2-fill"></i></div>
+                                    <div><p id="eco-t3-owners" class="text-sm font-bold text-white mb-0 uppercase tracking-widest">Connecting Bus Owners</p></div>
+                                </div>
+                                <div class="glass-panel p-4 rounded-xl flex items-center gap-4 border border-amber-500/10">
+                                    <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 relative"><i class="ri-user-star-fill"></i><div class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border border-black animate-pulse"></div></div>
+                                    <div><p id="eco-t3-drivers" class="text-sm font-bold text-white mb-0 uppercase tracking-widest">Verified Drivers</p></div>
+                                </div>
+                                <div class="glass-panel p-4 rounded-xl flex items-center gap-4 border border-amber-500/10">
+                                    <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0"><i class="ri-tools-fill"></i></div>
+                                    <div><p id="eco-t3-cleaners" class="text-sm font-bold text-white mb-0 uppercase tracking-widest">Cleaners</p></div>
+                                </div>
+                                <div class="glass-panel p-4 rounded-xl flex items-center gap-4 border border-amber-500/10">
+                                    <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0"><i class="ri-map-pin-user-fill"></i></div>
+                                    <div><p id="eco-t3-local" class="text-sm font-bold text-white mb-0 uppercase tracking-widest">Local Partnerships in Katni & MP</p></div>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
-                            List Your Service</h4>
-                        <p class="text-sm text-zinc-500 max-w-[200px]">Become a verified NB Vendor (Bus Owners, DJs,
-                            Drivers)</p>
+
+                        <!-- Business form is Gold themed -->
+                        <div class="glass-form rounded-3xl p-8 relative overflow-hidden neon-gold-glow backdrop-blur-2xl bg-zinc-950/60 border border-amber-500/20">
+                            <style>
+                                #eco-business .premium-input:focus { border-color: rgba(245, 158, 11, 0.5); background: rgba(245, 158, 11, 0.05); box-shadow: 0 0 20px rgba(245, 158, 11, 0.1); }
+                                #eco-business .premium-input:focus ~ .floating-label, #eco-business .premium-input:not(:placeholder-shown) ~ .floating-label { color: rgba(245, 158, 11, 0.8); }
+                            </style>
+                            <h5 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i class="ri-team-fill text-amber-400"></i> <span id="eco-t3-form-title">Local Partnership</span></h5>
+                            <form class="space-y-4" onsubmit="handleFormSubmit(event, 'Partner Onboarding')">
+                                <div class="relative">
+                                    <select class="premium-input premium-select text-zinc-400 focus:text-white" required>
+                                        <option value="" disabled selected>I am a...</option>
+                                        <option value="Bus Owner">Bus Owner</option>
+                                        <option value="Verified Driver">Driver</option>
+                                        <option value="Cleaner">Cleaner / Service Staff</option>
+                                        <option value="Local Partnership Katni/MP">Local Partner (Katni / MP)</option>
+                                    </select>
+                                    <i class="ri-arrow-down-s-line select-icon"></i>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="relative">
+                                        <input type="text" class="premium-input peer" placeholder=" " required />
+                                        <label class="floating-label">Full Name</label>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="text" class="premium-input peer" placeholder=" " required />
+                                        <label class="floating-label">City</label>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <input type="tel" class="premium-input peer" placeholder=" " required />
+                                    <label class="floating-label">Phone Number</label>
+                                </div>
+                                <button type="submit" class="premium-btn w-full bg-amber-500 text-amber-950 font-bold py-4 rounded-xl mt-4 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+                                    <span id="eco-t3-btn">Submit Application</span> <i class="ri-send-plane-fill"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Vision Section -->
+    <section id="vision" class="py-32 relative bg-zinc-950 border-y border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Content -->
+                <div class="reveal-up order-2 lg:order-1">
+                    <h2 id="vision-badge" class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">Our Vision</h2>
+                    <h3 id="vision-title" class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">A Completely Interconnected <br/><span class="text-zinc-500">Service Ecosystem</span></h3>
+                    <p id="vision-desc" class="text-lg text-zinc-400 font-light mb-8">
+                        We are building more than just an app. We're creating a digital infrastructure where passengers, bus owners, verified drivers, and local event providers all interconnect flawlessly. Our focus is on <strong class="text-white">hyper-convenience</strong> and <strong class="text-white">unbreakable trust</strong>.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="mt-1 w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 text-emerald-400 text-xl border border-emerald-500/20"><i class="ri-shield-star-line"></i></div>
+                            <div>
+                                <h5 id="vision-trust-title" class="text-xl font-bold text-white mb-1">Trust at the Core</h5>
+                                <p id="vision-trust-desc" class="text-sm text-zinc-500">Every node in our network—from the driver behind the wheel to the cleaner maintaining hygiene—is strictly verified to ensure top-level safety.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 text-amber-400 text-xl border border-amber-500/20"><i class="ri-loop-right-line"></i></div>
+                            <div>
+                                <h5 id="vision-synergy-title" class="text-xl font-bold text-white mb-1">Ecosystem Synergy</h5>
+                                <p id="vision-synergy-desc" class="text-sm text-zinc-500">Event organizers connect to transport smoothly. Passengers book meals directly to their seats. Everything works in perfect tandem.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Image Block -->
+                <div class="relative flex items-center justify-center reveal-zoom order-1 lg:order-2">
+                    <img src="CONTENT/Ecosystem.png" class="w-full h-auto rounded-3xl shadow-[0_0_40px_rgba(16,185,129,0.2)] border border-white/10 hover:scale-105 transition-transform duration-500" alt="Night Bus Ecosystem Infographic">
+                </div>
             </div>
         </div>
     </section>
@@ -369,14 +502,12 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="reveal-up flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                 <div>
-                    <h2 class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">Curated Tours</h2>
-                    <h3 class="text-4xl font-bold tracking-tight">Divine Yatra Packages</h3>
-                    <p class="mt-4 text-zinc-400 max-w-lg">All-inclusive travel, accommodation, and darshan packages
-                        carefully formulated for peace of mind.</p>
+                    <h2 id="yatra-badge" class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">Curated Tours</h2>
+                    <h3 id="yatra-title" class="text-4xl font-bold tracking-tight">Divine Yatra Packages</h3>
+                    <p id="yatra-desc" class="mt-4 text-zinc-400 max-w-lg">All-inclusive travel, accommodation, and darshan packages carefully formulated for peace of mind.</p>
                 </div>
                 <button onclick="window.location.href='nb://yatra'"
-                    class="glass-panel px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 shrink-0">View All
-                    Packages <i class="ri-arrow-right-s-line"></i></button>
+                    class="glass-panel px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 shrink-0"><span id="yatra-view-all">View All Packages</span> <i class="ri-arrow-right-s-line"></i></button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -388,14 +519,17 @@
                         <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-600/20"></div>
                         <div
                             class="absolute bottom-4 left-4 bg-zinc-950/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-white tracking-wide border border-white/10">
-                            3 Days / 2 Nights</div>
+                            <span id="yatra-p1-duration">3 Days / 2 Nights</span></div>
+                        <!-- Wishlist Icon -->
+                        <button onclick="toggleWishlist(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-950/50 backdrop-blur border border-white/10 flex items-center justify-center text-zinc-400 hover:text-red-500 hover:bg-zinc-900 transition-colors z-20">
+                            <i class="ri-heart-3-line"></i>
+                        </button>
                     </div>
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold mb-1">Jyotirlinga Tour</h4>
-                        <p class="text-sm text-zinc-400 mb-4 line-clamp-2">Complete guided tour visiting 3 prominent
-                            self-manifested shrines.</p>
+                    <div class="p-6 relative z-10">
+                        <h4 id="yatra-p1-title" class="text-xl font-bold mb-1">Jyotirlinga Tour</h4>
+                        <p id="yatra-p1-desc" class="text-sm text-zinc-400 mb-4 line-clamp-2">Complete guided tour visiting 3 prominent self-manifested shrines.</p>
                         <div class="flex items-center justify-between mt-auto">
-                            <div><span class="text-xs text-zinc-500 block">Starting from</span><span
+                            <div><span id="yatra-p1-from" class="text-xs text-zinc-500 block">Starting from</span><span
                                     class="text-lg font-bold text-emerald-400">₹4,999</span></div>
                             <button onclick="getYatraDetails('Jyotirlinga Tour')"
                                 class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-emerald-500 hover:text-zinc-950 transition-colors"><i
@@ -411,17 +545,20 @@
                         <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-600/20"></div>
                         <div
                             class="absolute bottom-4 left-4 bg-zinc-950/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-white tracking-wide border border-white/10">
-                            5 Days / 4 Nights</div>
+                            <span id="yatra-p2-duration">5 Days / 4 Nights</span></div>
                         <div
-                            class="absolute top-4 right-4 bg-emerald-500 text-zinc-950 px-2 py-1 rounded text-xs font-bold animate-pulse">
+                            class="absolute top-4 left-4 bg-emerald-500 text-zinc-950 px-2 py-1 rounded text-xs font-bold animate-pulse">
                             POPULAR</div>
+                        <!-- Wishlist Icon -->
+                        <button onclick="toggleWishlist(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-950/50 backdrop-blur border border-white/10 flex items-center justify-center text-zinc-400 hover:text-red-500 hover:bg-zinc-900 transition-colors z-20">
+                            <i class="ri-heart-3-line"></i>
+                        </button>
                     </div>
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold mb-1">Char Dham Special</h4>
-                        <p class="text-sm text-zinc-400 mb-4 line-clamp-2">Seamless transport and priority darshan
-                            across the sacred circuit.</p>
+                    <div class="p-6 relative z-10">
+                        <h4 id="yatra-p2-title" class="text-xl font-bold mb-1">Char Dham Special</h4>
+                        <p id="yatra-p2-desc" class="text-sm text-zinc-400 mb-4 line-clamp-2">Seamless transport and priority darshan across the sacred circuit.</p>
                         <div class="flex items-center justify-between mt-auto">
-                            <div><span class="text-xs text-zinc-500 block">Starting from</span><span
+                            <div><span id="yatra-p2-from" class="text-xs text-zinc-500 block">Starting from</span><span
                                     class="text-lg font-bold text-emerald-400">₹12,499</span></div>
                             <button onclick="getYatraDetails('Char Dham Special')"
                                 class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-emerald-500 hover:text-zinc-950 transition-colors"><i
@@ -437,14 +574,17 @@
                         <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-600/20"></div>
                         <div
                             class="absolute bottom-4 left-4 bg-zinc-950/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-white tracking-wide border border-white/10">
-                            1 Day</div>
+                            <span id="yatra-p3-duration">1 Day</span></div>
+                        <!-- Wishlist Icon -->
+                        <button onclick="toggleWishlist(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-950/50 backdrop-blur border border-white/10 flex items-center justify-center text-zinc-400 hover:text-red-500 hover:bg-zinc-900 transition-colors z-20">
+                            <i class="ri-heart-3-line"></i>
+                        </button>
                     </div>
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold mb-1">Local Temple Circuit</h4>
-                        <p class="text-sm text-zinc-400 mb-4 line-clamp-2">AC Bus travel covering all powerful deities
-                            within 100km radius.</p>
+                    <div class="p-6 relative z-10">
+                        <h4 id="yatra-p3-title" class="text-xl font-bold mb-1">Local Temple Circuit</h4>
+                        <p id="yatra-p3-desc" class="text-sm text-zinc-400 mb-4 line-clamp-2">AC Bus travel covering all powerful deities within 100km radius.</p>
                         <div class="flex items-center justify-between mt-auto">
-                            <div><span class="text-xs text-zinc-500 block">Starting from</span><span
+                            <div><span id="yatra-p3-from" class="text-xs text-zinc-500 block">Starting from</span><span
                                     class="text-lg font-bold text-emerald-400">₹999</span></div>
                             <button onclick="getYatraDetails('Local Temple Circuit')"
                                 class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-emerald-500 hover:text-zinc-950 transition-colors"><i
@@ -456,38 +596,78 @@
         </div>
     </section>
 
-    <!-- Promotional Auto-Video / Lifestyle Section -->
-    <section class="relative py-32 overflow-hidden h-screen max-h-[800px] flex items-center justify-center">
-        <!-- Reusing NB.mp4 or adding a secondary visual -->
-        <div class="absolute inset-0 z-0">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30 transform scale-110"
-                style="filter: grayscale(80%) sepia(30%) hue-rotate(100deg)">
-                <source src="NB.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 bg-zinc-950/80"></div>
-        </div>
+    <!-- Mobile App Showcase Section -->
+    <section id="app-showcase" class="py-32 relative overflow-hidden bg-zinc-950 border-y border-white/5">
+        <!-- Glows -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-            <h2 class="reveal-zoom text-5xl md:text-8xl font-black tracking-tighter uppercase leading-none mb-6">
-                Book.<br />
-                <span class="text-transparent border-text"
-                    style="-webkit-text-stroke: 1px rgba(255,255,255,0.2);">Travel.</span><br />
-                <span class="text-emerald-500 emerald-glow">Celebrate.</span>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left: Text -->
+            <div class="reveal-fade">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
+                    <i class="ri-smartphone-line"></i> <span id="app-badge">The Core Hub</span>
+                </div>
+                <h3 id="app-title" class="text-4xl md:text-6xl font-bold tracking-tight mb-6">One App.<br/><span class="text-emerald-400">Entire Ecosystem.</span></h3>
+                <p id="app-desc" class="text-xl text-zinc-400 font-light mb-8">
+                    Your portal to seamless travel, reliable business connections, and zero-hassle event bookings. Engineered for speed and trust.
+                </p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center gap-4 text-zinc-300">
+                        <div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center shrink-0 border border-white/10"><i class="ri-flashlight-fill text-emerald-400 text-xl"></i></div>
+                        <span id="app-feat1" class="font-medium text-lg">Instant direct bookings</span>
+                    </li>
+                    <li class="flex items-center gap-4 text-zinc-300">
+                        <div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center shrink-0 border border-white/10"><i class="ri-shield-check-fill text-amber-400 text-xl"></i></div>
+                        <span id="app-feat2" class="font-medium text-lg">100% verified operators & staff</span>
+                    </li>
+                    <li class="flex items-center gap-4 text-zinc-300">
+                        <div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center shrink-0 border border-white/10"><i class="ri-share-forward-fill text-blue-400 text-xl"></i></div>
+                        <span id="app-feat3" class="font-medium text-lg">Live interconnected network</span>
+                    </li>
+                </ul>
+                <div class="flex gap-4">
+                    <button class="bg-emerald-500 text-emerald-950 px-6 sm:px-8 py-4 font-bold rounded-2xl flex items-center gap-2 hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                        <i class="ri-google-play-fill text-xl"></i> <span id="app-playstore">Play Store</span>
+                    </button>
+                    <button class="bg-white/5 border border-white/10 text-white px-6 sm:px-8 py-4 font-bold rounded-2xl flex items-center gap-2 hover:bg-white/10 transition-all">
+                        <i class="ri-apple-fill text-xl"></i> <span id="app-appstore">App Store</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: App Features Graphic -->
+            <div class="relative flex justify-center items-center reveal-fade">
+                <img src="CONTENT/Ecosystem2.png" class="w-full h-auto rounded-[2rem] shadow-[0_0_50px_rgba(16,185,129,0.3)] border border-white/10 hover:scale-105 transition-transform duration-500" alt="Night Bus App Features">
+            </div>
+        </div>
+    </section>
+
+    <!-- Join CTA Section -->
+    <section class="py-24 relative bg-zinc-950 overflow-hidden">
+        <div class="absolute inset-0 bg-emerald-500/5"></div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2 id="cta-title" class="reveal-zoom text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+                Join the <span class="text-emerald-400">Ecosystem</span>
             </h2>
-            <p class="reveal-zoom text-xl text-zinc-400 font-light max-w-lg mx-auto mb-10">Experience the future of
-                mobility and event management, engineered for Indian terrains.</p>
-            <button onclick="window.location.href='nb://app'"
-                class="reveal-zoom magnetic-btn bg-white text-zinc-950 font-bold px-10 py-5 rounded-full hover:bg-zinc-200 transition-colors text-lg shadow-[0_0_40px_rgba(255,255,255,0.2)]">
-                Launch NB App <i class="ri-rocket-line ml-2"></i>
-            </button>
+            <p id="cta-desc" class="reveal-up text-xl text-zinc-400 font-light mb-10 max-w-2xl mx-auto">
+                Whether you are booking a ticket or growing your local business, NB is your unified growth partner.
+            </p>
+            <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.location.href='nb://app'" class="bg-emerald-500 text-emerald-950 px-8 py-4 font-bold rounded-full hover:bg-emerald-400 transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                    <span id="cta-download">Download the App Today</span>
+                </button>
+                <a href="#services" class="glass-panel text-white px-8 py-4 font-bold rounded-full hover:bg-white/10 transition-colors border border-white/10">
+                    <span id="cta-explore">Explore Services</span> <i class="ri-arrow-up-line"></i>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- FAQ -->
     <section class="py-32 relative max-w-4xl mx-auto px-6">
         <div class="text-center mb-16 reveal-up">
-            <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p class="text-zinc-400">Need help? Learn how NB simplifies your requirements.</p>
+            <h2 id="faq-title" class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p id="faq-desc" class="text-zinc-400">Need help? Learn how NB simplifies your requirements.</p>
         </div>
 
         <div class="space-y-4">
@@ -496,34 +676,30 @@
                 <button
                     class="w-full text-left px-6 py-5 font-bold flex justify-between items-center group cursor-pointer"
                     onclick="toggleFaq(this)">
-                    How does the Rent a Vehicle feature work?
+                    <span id="faq-q1">How does the Rent a Vehicle feature work?</span>
                     <i class="ri-add-line text-zinc-500 group-hover:text-emerald-400 transition-colors"></i>
                 </button>
-                <div class="px-6 pb-5 text-sm text-zinc-400 hidden">You fill out the basic requirements (Date, Vehicle,
-                    Occupancy). Our system pings verified owners in the region, and you receive competitive direct
-                    quotes on WhatsApp/App. No hidden middleman commissions.</div>
+                <div id="faq-a1" class="px-6 pb-5 text-sm text-zinc-400 hidden">You fill out the basic requirements (Date, Vehicle, Occupancy). Our system pings verified owners in the region, and you receive competitive direct quotes on WhatsApp/App. No hidden middleman commissions.</div>
             </div>
 
             <div class="reveal-up border border-white/10 bg-zinc-900/50 rounded-2xl overflow-hidden glass-panel">
                 <button
                     class="w-full text-left px-6 py-5 font-bold flex justify-between items-center group cursor-pointer"
                     onclick="toggleFaq(this)">
-                    Are the Event Services (DJs, Halls) verified?
+                    <span id="faq-q2">Are the Event Services (DJs, Halls) verified?</span>
                     <i class="ri-add-line text-zinc-500 group-hover:text-emerald-400 transition-colors"></i>
                 </button>
-                <div class="px-6 pb-5 text-sm text-zinc-400 hidden">Yes! Every vendor undergoes a strict KYC process,
-                    and our community rating system (out of 5.0) guarantees transparency.</div>
+                <div id="faq-a2" class="px-6 pb-5 text-sm text-zinc-400 hidden">Yes! Every vendor undergoes a strict KYC process, and our community rating system (out of 5.0) guarantees transparency.</div>
             </div>
 
             <div class="reveal-up border border-white/10 bg-zinc-900/50 rounded-2xl overflow-hidden glass-panel">
                 <button
                     class="w-full text-left px-6 py-5 font-bold flex justify-between items-center group cursor-pointer"
                     onclick="toggleFaq(this)">
-                    How is Smart Food delivered on a moving bus?
+                    <span id="faq-q3">How is Smart Food delivered on a moving bus?</span>
                     <i class="ri-add-line text-zinc-500 group-hover:text-emerald-400 transition-colors"></i>
                 </button>
-                <div class="px-6 pb-5 text-sm text-zinc-400 hidden">We integrate live GPS tracking with our partner
-                    rest-stops. Your food is prepared fresh and handed directly to your seat when the bus halts.</div>
+                <div id="faq-a3" class="px-6 pb-5 text-sm text-zinc-400 hidden">We integrate live GPS tracking with our partner rest-stops. Your food is prepared fresh and handed directly to your seat when the bus halts.</div>
             </div>
         </div>
     </section>
@@ -538,8 +714,7 @@
                         NB</div>
                     <span class="font-bold text-lg">Night Bus</span>
                 </div>
-                <p class="text-zinc-500 text-sm max-w-sm mb-6">Connecting passengers with bus operators, premium
-                    rentals, event curators, and smart transit dining across the country.</p>
+                <p id="footer-desc" class="text-zinc-500 text-sm max-w-sm mb-6">Connecting passengers with bus operators, premium rentals, event curators, and smart transit dining across the country.</p>
                 <div class="flex gap-4">
                     <a href="#"
                         class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"><i
@@ -553,29 +728,29 @@
                 </div>
             </div>
             <div>
-                <h5 class="text-white font-bold mb-4">Quick Links</h5>
+                <h5 id="footer-links-title" class="text-white font-bold mb-4">Quick Links</h5>
                 <ul class="space-y-3 text-sm text-zinc-500">
-                    <li><a href="#services" class="hover:text-emerald-400 transition-colors">Bus Tickets</a></li>
-                    <li><a href="#rentals" class="hover:text-emerald-400 transition-colors">Vehicle Rentals</a></li>
-                    <li><a href="#events" class="hover:text-emerald-400 transition-colors">Event Management</a></li>
-                    <li><a href="#yatra" class="hover:text-emerald-400 transition-colors">Yatras</a></li>
+                    <li><a href="#services" class="hover:text-emerald-400 transition-colors"><span id="footer-tickets">Bus Tickets</span></a></li>
+                    <li><a href="#rentals" class="hover:text-emerald-400 transition-colors"><span id="footer-rentals">Vehicle Rentals</span></a></li>
+                    <li><a href="#events" class="hover:text-emerald-400 transition-colors"><span id="footer-events">Event Management</span></a></li>
+                    <li><a href="#yatra" class="hover:text-emerald-400 transition-colors"><span id="footer-yatras">Yatras</span></a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="text-white font-bold mb-4">Support</h5>
+                <h5 id="footer-support-title" class="text-white font-bold mb-4">Support</h5>
                 <ul class="space-y-3 text-sm text-zinc-500">
-                    <li><a href="contact.html" class="hover:text-white transition-colors">Help Center / Contact</a></li>
-                    <li><a href="refund.html" class="hover:text-white transition-colors">Refund & Cancellation</a></li>
-                    <li><a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a></li>
-                    <li><a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                    <li><a href="shipping.html" class="hover:text-white transition-colors">Shipping & Delivery</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors"><span id="footer-contact">Help Center / Contact</span></a></li>
+                    <li><a href="refund.html" class="hover:text-white transition-colors"><span id="footer-refund">Refund & Cancellation</span></a></li>
+                    <li><a href="terms.html" class="hover:text-white transition-colors"><span id="footer-terms">Terms of Service</span></a></li>
+                    <li><a href="privacy.html" class="hover:text-white transition-colors"><span id="footer-privacy">Privacy Policy</span></a></li>
+                    <li><a href="shipping.html" class="hover:text-white transition-colors"><span id="footer-shipping">Shipping & Delivery</span></a></li>
                 </ul>
             </div>
         </div>
         <div
             class="max-w-7xl mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
-            <p>&copy; 2026 NB Platform. Built for Bharat.</p>
-            <p>Made with <i class="ri-heart-fill text-emerald-500"></i> by NB Engineering</p>
+            <p id="footer-copy">&copy; 2026 NB Platform. Built for Bharat.</p>
+            <p id="footer-made">Made with <i class="ri-heart-fill text-emerald-500"></i> by NB Engineering</p>
         </div>
     </footer>
 
@@ -584,7 +759,7 @@
         <button onclick="window.location.href='nb://app'"
             class="w-16 h-16 rounded-full bg-emerald-500 text-zinc-950 shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center hover:scale-110 transition-transform cursor-pointer md:w-auto md:px-6 md:py-3 md:rounded-full group">
             <i class="ri-smartphone-line text-2xl md:mr-2"></i>
-            <span class="hidden md:inline font-bold">Open App</span>
+            <span id="fab-open" class="hidden md:inline font-bold">Open App</span>
         </button>
     </div>
 
@@ -612,6 +787,82 @@
             openWhatsApp(`🙏 Hari Om! I would like to get detailed itinerary and availability for the [${packageName}] package.`);
         }
 
+        // Ecosystem Tabs Logic
+        function switchEcoTab(tabId, btnElement) {
+            const target = document.getElementById(tabId);
+            
+            // Hide all contents EXCEPT the target
+            document.querySelectorAll('.tab-content').forEach(el => {
+                if (el !== target) {
+                    el.classList.remove('active');
+                    gsap.to(el, { opacity: 0, duration: 0.3, onComplete: () => el.style.display = 'none' });
+                }
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.eco-tab').forEach(el => el.classList.remove('active', 'text-white'));
+            
+            // Add active to current
+            btnElement.classList.add('active', 'text-white');
+            target.style.display = 'block';
+            
+            // Animate target in
+            target.classList.add('active');
+            gsap.fromTo(target, 
+                { opacity: 0, y: 20 }, 
+                { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", delay: 0.1 }
+            );
+        }
+
+        // Handle Form Submissions via Node.js Backend
+        async function handleFormSubmit(e, formTitle) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            // UI Feedback
+            btn.innerHTML = `<div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> Sending...`;
+            btn.disabled = true;
+            
+            // Gather details
+            let details = [];
+            form.querySelectorAll('input, select').forEach(input => {
+                if(input.value) {
+                    const label = input.nextElementSibling?.tagName === 'LABEL' ? input.nextElementSibling.innerText : input.placeholder || input.type;
+                    details.push(`${label}: ${input.value}`);
+                }
+            });
+
+            try {
+                // Send data to our Node.js server
+                const response = await fetch('http://localhost:5000/api/send-enquiry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ formTitle, details })
+                });
+
+                if (response.ok) {
+                    btn.innerHTML = `<i class="ri-check-line text-xl"></i> Enquiry Sent!`;
+                    btn.classList.add('bg-emerald-400');
+                    form.reset(); // Reset form locally
+                } else {
+                    throw new Error('Server returned an error');
+                }
+            } catch (error) {
+                console.error('Error sending enquiry:', error);
+                btn.innerHTML = `<i class="ri-error-warning-line text-xl"></i> Failed to send`;
+                btn.classList.add('bg-red-500');
+            }
+            
+            // Reset button state after a few seconds
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-emerald-400', 'bg-red-500');
+                btn.disabled = false;
+            }, 3000);
+        }
+
         // Search Deep Link Logic
         document.getElementById('search-deep-link').addEventListener('click', () => {
             const from = document.getElementById('bus-from').value || '';
@@ -631,6 +882,329 @@
                 content.classList.add('hidden');
                 icon.classList.remove('ri-subtract-line');
                 icon.classList.add('ri-add-line');
+            }
+        }
+
+        // ======================================================
+        // FULL PAGE LOCALIZATION — Pure HTML/CSS/JS, No Frameworks
+        // ======================================================
+        const pageTranslations = {
+            en: {
+                // Loader
+                loader_text: "Preparing Your Journey...",
+                // Nav
+                nav_bus: "Bus", nav_yatras: "Yatras", nav_events: "Events",
+                nav_partner: "Partner with Us", nav_account: "Account", nav_plan_trip: "Plan a Trip",
+                // Hero
+                hero_badge: "The Ultimate Travel Super App",
+                hero_title: 'Connecting <br /> <span class="gradient-text">Every Journey,</span> <br /> Every Town.',
+                hero_desc: "Bus bookings, premium rentals, event services, and yatra packages. One multi-service platform built for the next generation of travelers.",
+                hero_btn_book: "Book Bus", hero_btn_explore: "Explore Services",
+                hero_searchfrom: "From (e.g. Pune)", hero_searchto: "To (e.g. Mumbai)",
+                hero_search_btn: "Search in App",
+                // Stats
+                stats_alert: "Only few slots left for weekend travel",
+                stats_routes: "Routes Active", stats_providers: "Providers",
+                // Ecosystem Section
+                eco_badge: "Our Ecosystem",
+                eco_title: "Travel. Events. Logistics.",
+                eco_desc: "Experience a fully integrated ecosystem designed for an effortless journey. Book buses, organize events, or partner with us—all in one place.",
+                eco_tab1: "Travel & Yatra", eco_tab2: "Events & Services", eco_tab3: "Business Partners",
+                // Eco Tab 1 - Travel
+                eco_t1_badge: "B2C Bookings",
+                eco_t1_title: 'Your Complete Journey,<br/><span class="text-emerald-400">Perfected.</span>',
+                eco_t1_om: "Om Travel", eco_t1_wedding: "Wedding", eco_t1_picnic: "Picnic", eco_t1_yatra: "Teerth Yatra",
+                eco_t1_form_title: "Request a Custom Trip",
+                eco_t1_dest: "Destination", eco_t1_pax: "Passengers", eco_t1_wa: "WhatsApp Number",
+                eco_t1_btn: "One-Tap Booking",
+                // Eco Tab 2 - Events
+                eco_t2_form_title: "Book Event Services",
+                eco_t2_select: "Select Service", eco_t2_food: "Food Vendors", eco_t2_organizer: "Event Organizers",
+                eco_t2_photo: "Photo / Video Organizer", eco_t2_dj: "DJ for Bhajan Kirtan",
+                eco_t2_city: "Event City (e.g., Katni)", eco_t2_wa: "WhatsApp Number",
+                eco_t2_btn: "Find Verified Experts",
+                eco_t2_badge: "Event & Service Bookings",
+                eco_t2_title: 'Complete Event <br/><span class="text-blue-400">Management</span>',
+                eco_t2_food_lbl: "Food Vendors", eco_t2_org_lbl: "Event Organizers",
+                eco_t2_photo_lbl: "Photo / Video", eco_t2_dj_lbl: "DJ for\nBhajan Kirtan",
+                // Eco Tab 3 - Business
+                eco_t3_badge: "Your Community Partner",
+                eco_t3_title: 'Bus Owner & Staff <br/><span class="text-amber-400">Connection</span>',
+                eco_t3_owners: "Connecting Bus Owners", eco_t3_drivers: "Verified Drivers",
+                eco_t3_cleaners: "Cleaners", eco_t3_local: "Local Partnerships in Katni & MP",
+                eco_t3_form_title: "Local Partnership",
+                eco_t3_iam: "I am a...", eco_t3_owner: "Bus Owner", eco_t3_driver: "Driver",
+                eco_t3_cleaner: "Cleaner / Service Staff", eco_t3_localpartner: "Local Partner (Katni / MP)",
+                eco_t3_name: "Full Name", eco_t3_city: "City", eco_t3_phone: "Phone Number",
+                eco_t3_btn: "Submit Application",
+                // Vision Section
+                vision_badge: "Our Vision",
+                vision_title: 'A Completely Interconnected <br/><span class="text-zinc-500">Service Ecosystem</span>',
+                vision_desc: 'We are building more than just an app. We\'re creating a digital infrastructure where passengers, bus owners, verified drivers, and local event providers all interconnect flawlessly. Our focus is on <strong class="text-white">hyper-convenience</strong> and <strong class="text-white">unbreakable trust</strong>.',
+                vision_trust_title: "Trust at the Core",
+                vision_trust_desc: "Every node in our network—from the driver behind the wheel to the cleaner maintaining hygiene—is strictly verified to ensure top-level safety.",
+                vision_synergy_title: "Ecosystem Synergy",
+                vision_synergy_desc: "Event organizers connect to transport smoothly. Passengers book meals directly to their seats. Everything works in perfect tandem.",
+                // Yatra Section
+                yatra_badge: "Curated Tours",
+                yatra_title: "Divine Yatra Packages",
+                yatra_desc: "All-inclusive travel, accommodation, and darshan packages carefully formulated for peace of mind.",
+                yatra_view_all: "View All Packages",
+                yatra_from: "Starting from",
+                yatra_p1_title: "Jyotirlinga Tour", yatra_p1_desc: "Complete guided tour visiting 3 prominent self-manifested shrines.", yatra_p1_duration: "3 Days / 2 Nights",
+                yatra_p2_title: "Char Dham Special", yatra_p2_desc: "Seamless transport and priority darshan across the sacred circuit.", yatra_p2_duration: "5 Days / 4 Nights",
+                yatra_p3_title: "Local Temple Circuit", yatra_p3_desc: "AC Bus travel covering all powerful deities within 100km radius.", yatra_p3_duration: "1 Day",
+                // App Showcase
+                app_badge: "The Core Hub",
+                app_title: 'One App.<br/><span class="text-emerald-400">Entire Ecosystem.</span>',
+                app_desc: "Your portal to seamless travel, reliable business connections, and zero-hassle event bookings. Engineered for speed and trust.",
+                app_feat1: "Instant direct bookings", app_feat2: "100% verified operators & staff", app_feat3: "Live interconnected network",
+                app_playstore: "Play Store", app_appstore: "App Store",
+                // CTA
+                cta_title: 'Join the <span class="text-emerald-400">Ecosystem</span>',
+                cta_desc: "Whether you are booking a ticket or growing your local business, NB is your unified growth partner.",
+                cta_download: "Download the App Today", cta_explore: "Explore Services",
+                // FAQ
+                faq_title: "Frequently Asked Questions",
+                faq_desc: "Need help? Learn how NB simplifies your requirements.",
+                faq_q1: "How does the Rent a Vehicle feature work?",
+                faq_a1: "You fill out the basic requirements (Date, Vehicle, Occupancy). Our system pings verified owners in the region, and you receive competitive direct quotes on WhatsApp/App. No hidden middleman commissions.",
+                faq_q2: "Are the Event Services (DJs, Halls) verified?",
+                faq_a2: "Yes! Every vendor undergoes a strict KYC process, and our community rating system (out of 5.0) guarantees transparency.",
+                faq_q3: "How is Smart Food delivered on a moving bus?",
+                faq_a3: "We integrate live GPS tracking with our partner rest-stops. Your food is prepared fresh and handed directly to your seat when the bus halts.",
+                // Footer
+                footer_desc: "Connecting passengers with bus operators, premium rentals, event curators, and smart transit dining across the country.",
+                footer_links: "Quick Links", footer_support: "Support",
+                footer_tickets: "Bus Tickets", footer_rentals: "Vehicle Rentals",
+                footer_events: "Event Management", footer_yatras: "Yatras",
+                footer_contact: "Help Center / Contact", footer_refund: "Refund & Cancellation",
+                footer_terms: "Terms of Service", footer_privacy: "Privacy Policy",
+                footer_shipping: "Shipping & Delivery",
+                footer_copy: "© 2026 NB Platform. Built for Bharat.",
+                footer_made: "Made with ❤️ by NB Engineering",
+                fab_open: "Open App",
+            },
+            hi: {
+                // Loader
+                loader_text: "आपकी यात्रा की तैयारी हो रही है...",
+                // Nav
+                nav_bus: "बस", nav_yatras: "यात्राएं", nav_events: "आयोजन",
+                nav_partner: "हमारे साथ जुड़ें", nav_account: "खाता", nav_plan_trip: "यात्रा प्लान करें",
+                // Hero
+                hero_badge: "अल्टीमेट ट्रैवल सुपर ऐप",
+                hero_title: 'हर यात्रा, <br /> <span class="gradient-text">हर सफर,</span> <br /> को जोड़ना।',
+                hero_desc: "बस बुकिंग, प्रीमियम किराया, इवेंट सेवाएं और यात्रा पैकेज। अगली पीढ़ी के यात्रियों के लिए एक मल्टी-सर्विस प्लेटफ़ॉर्म।",
+                hero_btn_book: "बस बुक करें", hero_btn_explore: "सेवाएं देखें",
+                hero_searchfrom: "कहाँ से (जैसे पुणे)", hero_searchto: "कहाँ (जैसे मुंबई)",
+                hero_search_btn: "ऐप में खोजें",
+                // Stats
+                stats_alert: "वीकेंड यात्रा के लिए कुछ ही सीटें बची हैं",
+                stats_routes: "सक्रिय रूट", stats_providers: "प्रदाता",
+                // Ecosystem Section
+                eco_badge: "हमारा इकोसिस्टम",
+                eco_title: "यात्रा। आयोजन। लॉजिस्टिक्स।",
+                eco_desc: "एक पूर्णतः एकीकृत इकोसिस्टम जो आपकी यात्रा को सरल बनाता है। बस बुक करें, इवेंट आयोजित करें, या हमारे साथ साझेदारी करें — सब एक जगह।",
+                eco_tab1: "यात्रा & तीर्थ", eco_tab2: "आयोजन & सेवाएं", eco_tab3: "बिज़नेस पार्टनर",
+                // Eco Tab 1 - Travel
+                eco_t1_badge: "B2C बुकिंग्स",
+                eco_t1_title: 'आपकी पूरी यात्रा,<br/><span class="text-emerald-400">परफेक्ट।</span>',
+                eco_t1_om: "ओम ट्रैवल", eco_t1_wedding: "शादी", eco_t1_picnic: "पिकनिक", eco_t1_yatra: "तीर्थ यात्रा",
+                eco_t1_form_title: "कस्टम यात्रा का अनुरोध करें",
+                eco_t1_dest: "गंतव्य", eco_t1_pax: "यात्री", eco_t1_wa: "व्हाट्सएप नंबर",
+                eco_t1_btn: "वन-टैप बुकिंग",
+                // Eco Tab 2 - Events
+                eco_t2_form_title: "इवेंट सेवाएं बुक करें",
+                eco_t2_select: "सेवा चुनें", eco_t2_food: "खाद्य विक्रेता", eco_t2_organizer: "इवेंट ऑर्गेनाइज़र",
+                eco_t2_photo: "फोटो / वीडियो ऑर्गेनाइज़र", eco_t2_dj: "भजन कीर्तन के लिए DJ",
+                eco_t2_city: "इवेंट शहर (जैसे कटनी)", eco_t2_wa: "व्हाट्सएप नंबर",
+                eco_t2_btn: "सत्यापित विशेषज्ञ खोजें",
+                eco_t2_badge: "इवेंट & सेवा बुकिंग",
+                eco_t2_title: 'पूर्ण इवेंट <br/><span class="text-blue-400">प्रबंधन</span>',
+                eco_t2_food_lbl: "खाद्य विक्रेता", eco_t2_org_lbl: "इवेंट ऑर्गेनाइज़र",
+                eco_t2_photo_lbl: "फोटो / वीडियो", eco_t2_dj_lbl: "DJ भजन\nकीर्तन",
+                // Eco Tab 3 - Business
+                eco_t3_badge: "आपका सामुदायिक साझेदार",
+                eco_t3_title: 'बस मालिक और स्टाफ <br/><span class="text-amber-400">कनेक्शन</span>',
+                eco_t3_owners: "बस मालिकों को जोड़ना", eco_t3_drivers: "सत्यापित ड्राइवर",
+                eco_t3_cleaners: "सफाईकर्मी", eco_t3_local: "कटनी और MP में स्थानीय साझेदारी",
+                eco_t3_form_title: "स्थानीय साझेदारी",
+                eco_t3_iam: "मैं हूँ...", eco_t3_owner: "बस मालिक", eco_t3_driver: "ड्राइवर",
+                eco_t3_cleaner: "सफाईकर्मी / सेवा स्टाफ", eco_t3_localpartner: "स्थानीय पार्टनर (कटनी / MP)",
+                eco_t3_name: "पूरा नाम", eco_t3_city: "शहर", eco_t3_phone: "फ़ोन नंबर",
+                eco_t3_btn: "आवेदन जमा करें",
+                // Vision Section
+                vision_badge: "हमारा विजन",
+                vision_title: 'एक पूर्णतः जुड़ा हुआ <br/><span class="text-zinc-500">सेवा इकोसिस्टम</span>',
+                vision_desc: 'हम सिर्फ एक ऐप नहीं बना रहे। हम एक डिजिटल इन्फ्रास्ट्रक्चर बना रहे हैं जहाँ यात्री, बस मालिक, सत्यापित ड्राइवर और स्थानीय इवेंट प्रदाता सभी निर्बाध रूप से जुड़ते हैं। हमारा ध्यान <strong class="text-white">अत्यधिक सुविधा</strong> और <strong class="text-white">अटूट विश्वास</strong> पर है।',
+                vision_trust_title: "विश्वास की नींव",
+                vision_trust_desc: "हमारे नेटवर्क में हर कड़ी—चाहे ड्राइवर हो या सफाईकर्मी—कड़ाई से सत्यापित है ताकि उच्चतम सुरक्षा सुनिश्चित हो।",
+                vision_synergy_title: "इकोसिस्टम सहयोग",
+                vision_synergy_desc: "इवेंट ऑर्गेनाइज़र आसानी से ट्रांसपोर्ट से जुड़ते हैं। यात्री सीधे अपनी सीट पर खाना बुक करते हैं। सब कुछ सही तालमेल में काम करता है।",
+                // Yatra Section
+                yatra_badge: "विशेष टूर",
+                yatra_title: "दिव्य यात्रा पैकेज",
+                yatra_desc: "मन की शांति के लिए सावधानीपूर्वक बनाए गए सर्व-समावेशी यात्रा, आवास और दर्शन पैकेज।",
+                yatra_view_all: "सभी पैकेज देखें",
+                yatra_from: "शुरुआती कीमत",
+                yatra_p1_title: "ज्योतिर्लिंग दर्शन", yatra_p1_desc: "3 प्रसिद्ध स्वयंभू ज्योतिर्लिंगों का संपूर्ण गाइडेड दौरा।", yatra_p1_duration: "3 दिन / 2 रातें",
+                yatra_p2_title: "चार धाम स्पेशल", yatra_p2_desc: "पवित्र सर्किट में निर्बाध यातायात और प्राथमिकता दर्शन।", yatra_p2_duration: "5 दिन / 4 रातें",
+                yatra_p3_title: "स्थानीय मंदिर सर्किट", yatra_p3_desc: "100 किमी के दायरे में सभी शक्तिशाली देवताओं का AC बस यात्रा।", yatra_p3_duration: "1 दिन",
+                // App Showcase
+                app_badge: "मुख्य केंद्र",
+                app_title: 'एक ऐप।<br/><span class="text-emerald-400">पूरा इकोसिस्टम।</span>',
+                app_desc: "निर्बाध यात्रा, विश्वसनीय व्यापारिक संपर्क और परेशानी मुक्त इवेंट बुकिंग का पोर्टल। गति और विश्वास के लिए डिज़ाइन किया गया।",
+                app_feat1: "तत्काल सीधी बुकिंग", app_feat2: "100% सत्यापित ऑपरेटर और स्टाफ", app_feat3: "लाइव जुड़ा हुआ नेटवर्क",
+                app_playstore: "Play Store", app_appstore: "App Store",
+                // CTA
+                cta_title: 'इकोसिस्टम से <span class="text-emerald-400">जुड़ें</span>',
+                cta_desc: "चाहे आप टिकट बुक कर रहे हों या अपना स्थानीय व्यवसाय बढ़ा रहे हों, NB आपका एकीकृत विकास भागीदार है।",
+                cta_download: "आज ऐप डाउनलोड करें", cta_explore: "सेवाएं देखें",
+                // FAQ
+                faq_title: "अक्सर पूछे जाने वाले प्रश्न",
+                faq_desc: "मदद चाहिए? जानें कि NB आपकी जरूरतें कैसे पूरी करता है।",
+                faq_q1: "वाहन किराया सुविधा कैसे काम करती है?",
+                faq_a1: "आप आधारभूत आवश्यकताएं (तारीख, वाहन, क्षमता) भरें। हमारा सिस्टम क्षेत्र के सत्यापित मालिकों को सूचित करता है और आपको व्हाट्सएप/ऐप पर सीधे प्रतिस्पर्धी कोटेशन मिलते हैं। कोई छिपा कमीशन नहीं।",
+                faq_q2: "क्या इवेंट सेवाएं (DJ, हॉल) सत्यापित हैं?",
+                faq_a2: "हाँ! हर विक्रेता सख्त KYC प्रक्रिया से गुजरता है, और हमारी सामुदायिक रेटिंग प्रणाली (5.0 में से) पारदर्शिता की गारंटी देती है।",
+                faq_q3: "चलती बस में स्मार्ट फूड कैसे पहुँचाया जाता है?",
+                faq_a3: "हम लाइव GPS ट्रैकिंग को पार्टनर रेस्ट-स्टॉप के साथ जोड़ते हैं। जब बस रुकती है, तो आपका ताज़ा खाना सीधे आपकी सीट पर दिया जाता है।",
+                // Footer
+                footer_desc: "यात्रियों को बस ऑपरेटरों, प्रीमियम किराया, इवेंट क्यूरेटर्स और स्मार्ट ट्रांजिट डाइनिंग से जोड़ना।",
+                footer_links: "त्वरित लिंक", footer_support: "सहायता",
+                footer_tickets: "बस टिकट", footer_rentals: "वाहन किराया",
+                footer_events: "इवेंट प्रबंधन", footer_yatras: "यात्राएं",
+                footer_contact: "हेल्प सेंटर / संपर्क", footer_refund: "रिफंड & रद्दीकरण",
+                footer_terms: "सेवा की शर्तें", footer_privacy: "गोपनीयता नीति",
+                footer_shipping: "शिपिंग & डिलीवरी",
+                footer_copy: "© 2026 NB प्लेटफ़ॉर्म। भारत के लिए बनाया गया।",
+                footer_made: "NB इंजीनियरिंग द्वारा ❤️ के साथ बनाया गया",
+                fab_open: "ऐप खोलें",
+            }
+        };
+
+        function setLanguage(lang) {
+            const t = pageTranslations[lang];
+            // Update toggle button styles
+            if (lang === 'en') {
+                document.getElementById('btn-en').className = 'text-white hover:text-emerald-400 transition-colors';
+                document.getElementById('btn-hi').className = 'text-zinc-400 hover:text-emerald-400 transition-colors';
+            } else {
+                document.getElementById('btn-hi').className = 'text-white hover:text-emerald-400 transition-colors';
+                document.getElementById('btn-en').className = 'text-zinc-400 hover:text-emerald-400 transition-colors';
+            }
+
+            // Helper to safely set innerHTML
+            const set = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined) el.innerHTML = val; };
+            // Helper for data-i18n attributes
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const k = el.getAttribute('data-i18n');
+                if (t[k] !== undefined) el.innerHTML = t[k];
+            });
+
+            // ---- Loader ----
+            set('loader-text', t.loader_text);
+            // ---- Hero ----
+            set('hero-badge-text', t.hero_badge);
+            set('hero-title', t.hero_title);
+            set('hero-desc', t.hero_desc);
+            set('hero-btn-book', t.hero_btn_book);
+            set('hero-btn-explore', t.hero_btn_explore);
+            set('hero-search-btn', t.hero_search_btn);
+            const fromEl = document.getElementById('bus-from'); if (fromEl) fromEl.placeholder = t.hero_searchfrom;
+            const toEl = document.getElementById('bus-to');   if (toEl)   toEl.placeholder   = t.hero_searchto;
+            // ---- Stats ----
+            set('stats-alert', t.stats_alert);
+            set('stats-routes', t.stats_routes);
+            set('stats-providers', t.stats_providers);
+            // ---- Ecosystem ----
+            set('eco-badge', t.eco_badge);
+            set('eco-title', t.eco_title);
+            set('eco-desc', t.eco_desc);
+            set('eco-tab1', t.eco_tab1);
+            set('eco-tab2', t.eco_tab2);
+            set('eco-tab3', t.eco_tab3);
+            // Tab 1
+            set('eco-t1-badge', t.eco_t1_badge);
+            set('eco-t1-title', t.eco_t1_title);
+            set('eco-t1-om', t.eco_t1_om); set('eco-t1-wedding', t.eco_t1_wedding);
+            set('eco-t1-picnic', t.eco_t1_picnic); set('eco-t1-yatra', t.eco_t1_yatra);
+            set('eco-t1-form-title', t.eco_t1_form_title);
+            set('eco-t1-btn', t.eco_t1_btn);
+            const destLbl = document.querySelector('label[for="travel-dest"]'); if (destLbl) destLbl.innerHTML = t.eco_t1_dest;
+            const paxLbl  = document.querySelector('label[for="travel-pax"]');  if (paxLbl)  paxLbl.innerHTML  = t.eco_t1_pax;
+            const phLbl   = document.querySelector('label[for="travel-phone"]'); if (phLbl)  phLbl.innerHTML   = t.eco_t1_wa;
+            // Tab 2
+            set('eco-t2-form-title', t.eco_t2_form_title);
+            set('eco-t2-btn', t.eco_t2_btn);
+            set('eco-t2-badge', t.eco_t2_badge);
+            set('eco-t2-title', t.eco_t2_title);
+            set('eco-t2-food-lbl', t.eco_t2_food_lbl); set('eco-t2-org-lbl', t.eco_t2_org_lbl);
+            set('eco-t2-photo-lbl', t.eco_t2_photo_lbl); set('eco-t2-dj-lbl', t.eco_t2_dj_lbl);
+            // Tab 3
+            set('eco-t3-badge', t.eco_t3_badge);
+            set('eco-t3-title', t.eco_t3_title);
+            set('eco-t3-owners', t.eco_t3_owners); set('eco-t3-drivers', t.eco_t3_drivers);
+            set('eco-t3-cleaners', t.eco_t3_cleaners); set('eco-t3-local', t.eco_t3_local);
+            set('eco-t3-form-title', t.eco_t3_form_title);
+            set('eco-t3-btn', t.eco_t3_btn);
+            // ---- Vision ----
+            set('vision-badge', t.vision_badge);
+            set('vision-title', t.vision_title);
+            set('vision-desc', t.vision_desc);
+            set('vision-trust-title', t.vision_trust_title); set('vision-trust-desc', t.vision_trust_desc);
+            set('vision-synergy-title', t.vision_synergy_title); set('vision-synergy-desc', t.vision_synergy_desc);
+            // ---- Yatra ----
+            set('yatra-badge', t.yatra_badge);
+            set('yatra-title', t.yatra_title);
+            set('yatra-desc', t.yatra_desc);
+            set('yatra-view-all', t.yatra_view_all);
+            set('yatra-p1-title', t.yatra_p1_title); set('yatra-p1-desc', t.yatra_p1_desc); set('yatra-p1-duration', t.yatra_p1_duration); set('yatra-p1-from', t.yatra_from);
+            set('yatra-p2-title', t.yatra_p2_title); set('yatra-p2-desc', t.yatra_p2_desc); set('yatra-p2-duration', t.yatra_p2_duration); set('yatra-p2-from', t.yatra_from);
+            set('yatra-p3-title', t.yatra_p3_title); set('yatra-p3-desc', t.yatra_p3_desc); set('yatra-p3-duration', t.yatra_p3_duration); set('yatra-p3-from', t.yatra_from);
+            // ---- App Showcase ----
+            set('app-badge', t.app_badge);
+            set('app-title', t.app_title);
+            set('app-desc', t.app_desc);
+            set('app-feat1', t.app_feat1); set('app-feat2', t.app_feat2); set('app-feat3', t.app_feat3);
+            set('app-playstore', t.app_playstore); set('app-appstore', t.app_appstore);
+            // ---- CTA ----
+            set('cta-title', t.cta_title);
+            set('cta-desc', t.cta_desc);
+            set('cta-download', t.cta_download);
+            set('cta-explore', t.cta_explore);
+            // ---- FAQ ----
+            set('faq-title', t.faq_title); set('faq-desc', t.faq_desc);
+            set('faq-q1', t.faq_q1); set('faq-a1', t.faq_a1);
+            set('faq-q2', t.faq_q2); set('faq-a2', t.faq_a2);
+            set('faq-q3', t.faq_q3); set('faq-a3', t.faq_a3);
+            // ---- Footer ----
+            set('footer-desc', t.footer_desc);
+            set('footer-links-title', t.footer_links); set('footer-support-title', t.footer_support);
+            set('footer-tickets', t.footer_tickets); set('footer-rentals', t.footer_rentals);
+            set('footer-events', t.footer_events); set('footer-yatras', t.footer_yatras);
+            set('footer-contact', t.footer_contact); set('footer-refund', t.footer_refund);
+            set('footer-terms', t.footer_terms); set('footer-privacy', t.footer_privacy);
+            set('footer-shipping', t.footer_shipping);
+            set('footer-copy', t.footer_copy); set('footer-made', t.footer_made);
+            set('fab-open', t.fab_open);
+
+            // Update lang attribute for fonts
+            document.documentElement.lang = lang === 'hi' ? 'hi' : 'en';
+        }
+
+        // Wishlist Toggle Functionality
+        function toggleWishlist(btn) {
+            const icon = btn.querySelector('i');
+            if (icon.classList.contains('ri-heart-3-line')) {
+                icon.classList.remove('ri-heart-3-line');
+                icon.classList.add('ri-heart-3-fill', 'text-red-500');
+                
+                // Add a small bounce animation
+                gsap.fromTo(icon, { scale: 1 }, { scale: 1.4, duration: 0.2, yoyo: true, repeat: 1 });
+            } else {
+                icon.classList.remove('ri-heart-3-fill', 'text-red-500');
+                icon.classList.add('ri-heart-3-line');
             }
         }
 
@@ -703,18 +1277,88 @@
                 });
             }
 
-            // Magnetic Buttons Mapping
-            document.querySelectorAll('.magnetic-btn').forEach(btn => {
-                btn.addEventListener('mousemove', (e) => {
-                    const rect = btn.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) - rect.width / 2;
-                    const y = (e.clientY - rect.top) - rect.height / 2;
-                    gsap.to(btn, { x: x * 0.2, y: y * 0.2, duration: 0.3, ease: "power2.out" });
-                });
-                btn.addEventListener('mouseleave', () => {
-                    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
-                });
-            });
+            // Init Canvas Ecosystem Network
+            initEcosystemCanvas();
+        }
+
+        // --- Canvas Network Effect ---
+        function initEcosystemCanvas() {
+            const canvas = document.getElementById('ecosystem-network');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            let width, height;
+            let particles = [];
+            let animationFrameId;
+
+            function resize() {
+                width = canvas.width = canvas.offsetWidth;
+                height = canvas.height = canvas.offsetHeight;
+                initParticles();
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.size = Math.random() * 2 + 1;
+                    // Colors representing ecosystem components
+                    const colors = ['#10b981', '#f59e0b', '#3b82f6', '#a855f7', '#ffffff'];
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                const numParticles = Math.min(Math.floor((width * height) / 10000), 100);
+                for (let i = 0; i < numParticles; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+
+                    // Draw connections
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 150) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 - dist/1000})`; // Fade out with distance
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                animationFrameId = requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            draw();
         }
     </script>
 </body>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-zinc-950">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner with Night Bus - Ecosystem Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669', 950: '#022c22' }, zinc: { 900: '#18181b', 950: '#09090b' } },
+                }
+            }
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-zinc-950 text-white selection:bg-emerald-500/30">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="CONTENT/logo_NB.png" class="w-10 h-10 object-contain" alt="NB Logo">
+                <span class="font-semibold text-xl tracking-tight hidden sm:block">Night Bus</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors"><i class="ri-arrow-left-line"></i> Back to Platform</a>
+                <button onclick="document.getElementById('onboard-form').scrollIntoView()" class="text-sm font-medium bg-emerald-500 text-zinc-950 px-5 py-2 rounded-full hover:bg-emerald-400 transition-colors shadow-[0_0_15px_rgba(16,185,129,0.3)]">Apply Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Partner Hero -->
+    <header class="pt-32 pb-20 relative overflow-hidden">
+        <!-- Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-6 tracking-wide">
+                <i class="ri-briefcase-4-fill"></i> B2B NIGHT BUS ECOSYSTEM
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8">Drive Your Business <span class="text-emerald-400">Forward.</span></h1>
+            <p class="text-xl text-zinc-400 max-w-2xl mx-auto mb-10">Join the fastest-growing platform connecting Bus Owners, Verified Drivers, and Corporate Clients directly. Zero hidden commissions.</p>
+        </div>
+    </header>
+
+    <!-- Why Partner With Us -->
+    <section class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 hover:-translate-y-2 transition-transform">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-3xl mb-6">
+                        <i class="ri-wallet-3-fill"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Direct Earnings</h3>
+                    <p class="text-sm text-zinc-400">Connect directly with corporate clients and B2C passengers. No middleman brokers taking huge cuts from your trips.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 hover:-translate-y-2 transition-transform">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-3xl mb-6">
+                        <i class="ri-shield-check-fill"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Verified Network</h3>
+                    <p class="text-sm text-zinc-400">Owners can seamlessly hire pre-verified professional drivers and cleaners through our trusted ecosystem.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 hover:-translate-y-2 transition-transform">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-3xl mb-6">
+                        <i class="ri-line-chart-fill"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Smart Analytics</h3>
+                    <p class="text-sm text-zinc-400">Manage your fleet, track driver performance, and analyze monthly earnings directly from our Partner Dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Onboarding Form -->
+    <section id="onboard-form" class="py-24 relative bg-zinc-900/30 border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Left Info -->
+            <div>
+                <h2 class="text-3xl font-bold mb-6 tracking-tight">Become a "Night Bus Verified" Partner.</h2>
+                <ul class="space-y-6 mb-10">
+                    <li class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center shrink-0 mt-1"><i class="ri-number-1"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1 block">Submit Details</h4>
+                            <p class="text-sm text-zinc-400">Fill in your business or professional details. We accept independent drivers and large fleet owners.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center shrink-0 mt-1"><i class="ri-number-2"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1 block">Quick KYC</h4>
+                            <p class="text-sm text-zinc-400">Our local team in Katni & MP will quickly verify your vehicle or license.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center shrink-0 mt-1"><i class="ri-number-3"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1 block">Start Earning</h4>
+                            <p class="text-sm text-zinc-400">Get listed on the platform and start receiving high-quality trip requests!</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Huge Glass Form -->
+            <div class="glass-form p-8 md:p-10 rounded-3xl relative">
+                <h3 class="text-2xl font-bold mb-6 text-center">Partner Application</h3>
+                <form class="space-y-5" onsubmit="event.preventDefault(); alert('Application Submitted! Our B2B team will contact you shortly.');">
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-500 mb-2 uppercase tracking-wide">First Name</label>
+                            <input type="text" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-emerald-500 outline-none transition-colors" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-500 mb-2 uppercase tracking-wide">Last Name</label>
+                            <input type="text" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-emerald-500 outline-none transition-colors" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-zinc-500 mb-2 uppercase tracking-wide">WhatsApp Number</label>
+                        <input type="tel" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-emerald-500 outline-none transition-colors" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-zinc-500 mb-2 uppercase tracking-wide">Partner Type</label>
+                        <select class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-emerald-500 outline-none transition-colors appearance-none" required>
+                            <option value="">Select your role...</option>
+                            <option value="owner">Fleet / Bus Owner</option>
+                            <option value="driver">Professional Driver</option>
+                            <option value="cleaner">Professional Staff/Cleaner</option>
+                            <option value="vendor">Local Food/Service Vendor</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-emerald-500 text-zinc-950 font-bold py-4 rounded-xl hover:bg-emerald-400 transition-all text-lg shadow-[0_0_20px_rgba(16,185,129,0.2)]">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-10 px-6 text-center text-xs text-zinc-600 bg-zinc-950">
+        <p>&copy; 2026 NB Platform. Night Bus Business Hub.</p>
+    </footer>
+
+</body>
+</html>

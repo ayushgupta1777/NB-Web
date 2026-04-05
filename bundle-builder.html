@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-zinc-950">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bundle Builder - Night Bus</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669', 950: '#022c22' }, zinc: { 900: '#18181b', 950: '#09090b' } },
+                }
+            }
+        }
+    </script>
+    <!-- Remixicons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-zinc-950 text-white selection:bg-emerald-500/30 overflow-x-hidden min-h-screen flex flex-col relative">
+
+    <!-- Ambient Glows -->
+    <div class="fixed top-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="w-full z-50 glass-panel border-b border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="CONTENT/logo_NB.png" class="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(16,185,129,0.4)] group-hover:scale-110 transition-transform" alt="NB Logo">
+                <span class="font-semibold text-xl tracking-tight hidden sm:block">Night Bus</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors"><i class="ri-arrow-left-line"></i> Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Wizard -->
+    <main class="flex-grow flex items-center justify-center p-6 relative z-10 w-full max-w-3xl mx-auto mt-10 mb-20">
+        <div class="w-full glass-panel rounded-3xl border border-white/5 shadow-2xl p-8 relative overflow-hidden">
+            <!-- Progress Bar -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-zinc-900">
+                <div id="progress" class="h-full bg-emerald-500 transition-all duration-500 w-1/4"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold mb-2">Smart Trip Builder</h1>
+                <p class="text-zinc-400" id="step-desc">Let's craft your perfect journey</p>
+            </div>
+
+            <!-- Step 1: Purpose -->
+            <div id="step-1" class="step-container">
+                <h2 class="text-xl font-bold mb-6 text-center text-emerald-400">What are you planning?</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="glass-panel p-6 rounded-2xl cursor-pointer hover:bg-white/5 border border-white/5 transition-all outline-none quiz-option group" onclick="selectOption('purpose', 'Wedding', this)">
+                        <i class="ri-hearts-fill text-3xl text-pink-500 mb-3 block group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-bold text-lg mb-1">Wedding</h3>
+                        <p class="text-xs text-zinc-500">Baraat or reception travel</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl cursor-pointer hover:bg-white/5 border border-white/5 transition-all outline-none quiz-option group" onclick="selectOption('purpose', 'Yatra', this)">
+                        <i class="ri-hand-heart-fill text-3xl text-orange-400 mb-3 block group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-bold text-lg mb-1">Teerth Yatra</h3>
+                        <p class="text-xs text-zinc-500">Pilgrimage or spiritual trip</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl cursor-pointer hover:bg-white/5 border border-white/5 transition-all outline-none quiz-option group" onclick="selectOption('purpose', 'Corporate', this)">
+                        <i class="ri-briefcase-fill text-3xl text-blue-500 mb-3 block group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-bold text-lg mb-1">Corporate</h3>
+                        <p class="text-xs text-zinc-500">Office retreats or events</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl cursor-pointer hover:bg-white/5 border border-white/5 transition-all outline-none quiz-option group" onclick="selectOption('purpose', 'Other Event', this)">
+                        <i class="ri-calendar-event-fill text-3xl text-emerald-400 mb-3 block group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-bold text-lg mb-1">Other Event</h3>
+                        <p class="text-xs text-zinc-500">Picnics, parties, general</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Transport -->
+            <div id="step-2" class="step-container hidden">
+                <h2 class="text-xl font-bold mb-6 text-center text-emerald-400">Choose your transport</h2>
+                <div class="space-y-4">
+                    <div class="glass-panel p-5 rounded-2xl flex items-center justify-between cursor-pointer hover:bg-white/5 border border-white/5 transition-all quiz-option" onclick="selectOption('transport', '50-Seater AC Bus', this)">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center text-white"><i class="ri-bus-fill text-xl"></i></div>
+                            <div>
+                                <h3 class="font-bold">50-Seater AC Bus</h3>
+                                <p class="text-xs text-zinc-500">Perfect for large groups holding luggage</p>
+                            </div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full border border-zinc-600 flex items-center justify-center check-circle"></div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl flex items-center justify-between cursor-pointer hover:bg-white/5 border border-white/5 transition-all quiz-option" onclick="selectOption('transport', 'AC Sleeper Bus', this)">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center text-white"><i class="ri-hotel-bed-fill text-xl"></i></div>
+                            <div>
+                                <h3 class="font-bold">AC Sleeper Bus</h3>
+                                <p class="text-xs text-zinc-500">Overnight travel comfort</p>
+                            </div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full border border-zinc-600 flex items-center justify-center check-circle"></div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl flex items-center justify-between cursor-pointer hover:bg-white/5 border border-white/5 transition-all quiz-option" onclick="selectOption('transport', 'Traveller (13-17 seats)', this)">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center text-white"><i class="ri-caravan-fill text-xl"></i></div>
+                            <div>
+                                <h3 class="font-bold">Traveller (13-17 seats)</h3>
+                                <p class="text-xs text-zinc-500">Family-sized premium trips</p>
+                            </div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full border border-zinc-600 flex items-center justify-center check-circle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Ecosystem Upsell -->
+            <div id="step-3" class="step-container hidden">
+                <h2 class="text-xl font-bold mb-2 text-center text-emerald-400">Complete your bundle!</h2>
+                <p class="text-center text-sm text-zinc-400 mb-6">Since you are planning a <span id="dynamic-purpose" class="text-white font-bold">Trip</span>, do you need any of these verified local services?</p>
+                
+                <div class="space-y-4">
+                    <label class="glass-panel p-5 rounded-2xl flex items-center gap-4 cursor-pointer hover:bg-white/5 border border-white/5 transition-all">
+                        <input type="checkbox" class="addon-checkbox w-5 h-5 accent-emerald-500" value="Food Caterer">
+                        <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-500 flex items-center justify-center shrink-0"><i class="ri-restaurant-fill"></i></div>
+                        <div class="flex-grow">
+                            <h3 class="font-bold">Enroute / Venue Caterer</h3>
+                            <p class="text-xs text-zinc-500">Hot meals delivered on time</p>
+                        </div>
+                    </label>
+
+                    <label class="glass-panel p-5 rounded-2xl flex items-center gap-4 cursor-pointer hover:bg-white/5 border border-white/5 transition-all">
+                        <input type="checkbox" class="addon-checkbox w-5 h-5 accent-emerald-500" value="Event Organizer">
+                        <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center shrink-0"><i class="ri-vip-diamond-fill"></i></div>
+                        <div class="flex-grow">
+                            <h3 class="font-bold">Event Organizer</h3>
+                            <p class="text-xs text-zinc-500">Tents, chairs, full setup</p>
+                        </div>
+                    </label>
+
+                    <label class="glass-panel p-5 rounded-2xl flex items-center gap-4 cursor-pointer hover:bg-white/5 border border-white/5 transition-all">
+                        <input type="checkbox" class="addon-checkbox w-5 h-5 accent-emerald-500" value="Bhajan DJ & Sound">
+                        <div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-500 flex items-center justify-center shrink-0"><i class="ri-disc-fill"></i></div>
+                        <div class="flex-grow">
+                            <h3 class="font-bold">Bhajan DJ & Sound</h3>
+                            <p class="text-xs text-zinc-500">Professional sound system</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 4: Summary -->
+            <div id="step-4" class="step-container hidden text-center">
+                <div class="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center mx-auto mb-6">
+                    <i class="ri-check-line text-4xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Your Custom Bundle is Ready!</h2>
+                
+                <div class="glass-panel rounded-2xl p-6 text-left mb-8 border border-emerald-500/20 bg-emerald-500/5">
+                    <h4 class="text-zinc-500 text-xs font-bold uppercase mb-4 tracking-widest border-b border-white/10 pb-2">ITINERARY SUMMARY</h4>
+                    <p class="mb-2"><span class="text-zinc-400 w-24 inline-block">Event:</span> <strong id="summary-purpose" class="text-white"></strong></p>
+                    <p class="mb-2"><span class="text-zinc-400 w-24 inline-block">Transport:</span> <strong id="summary-transport" class="text-white"></strong></p>
+                    <p class="mb-2 flex items-start"><span class="text-zinc-400 w-24 inline-block shrink-0 mt-1">Add-ons:</span> <strong id="summary-addons" class="text-emerald-400 font-medium"></strong></p>
+                </div>
+
+                <p class="text-zinc-400 mb-8">Our verified partners will receive your request and send you direct, commission-free quotes immediately.</p>
+                <button onclick="finishBuilder()" class="w-full bg-emerald-500 text-zinc-950 px-8 py-4 font-bold rounded-2xl hover:bg-emerald-400 transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)] flex justify-center items-center gap-2">
+                    <i class="ri-whatsapp-line text-xl"></i> Request Quotes on WhatsApp
+                </button>
+            </div>
+
+            <!-- Controls -->
+            <div class="mt-8 flex justify-between items-center hidden" id="controls">
+                <button onclick="prevStep()" id="btn-back" class="text-zinc-400 hover:text-white transition-colors font-medium text-sm"><i class="ri-arrow-left-s-line"></i> Back</button>
+                <button onclick="nextStep()" id="btn-next" class="bg-white text-zinc-950 px-6 py-2 rounded-full font-bold text-sm hover:bg-zinc-200 transition-colors hidden shadow-lg">Next <i class="ri-arrow-right-s-line"></i></button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        const selections = {
+            purpose: null,
+            transport: null,
+            addons: []
+        };
+
+        function selectOption(category, value, el) {
+            // Remove active style from all peers
+            const container = el.closest('.step-container');
+            container.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('border-emerald-500', 'bg-emerald-500/10');
+                opt.classList.add('border-white/5');
+                const check = opt.querySelector('.check-circle');
+                if(check) {
+                    check.innerHTML = '';
+                    check.classList.remove('border-emerald-500', 'bg-emerald-500');
+                    check.classList.add('border-zinc-600');
+                }
+            });
+
+            // Add active style to selected
+            el.classList.add('border-emerald-500', 'bg-emerald-500/10');
+            el.classList.remove('border-white/5');
+            const check = el.querySelector('.check-circle');
+            if(check) {
+                check.innerHTML = '<i class="ri-check-line text-xs"></i>';
+                check.classList.add('border-emerald-500', 'bg-emerald-500');
+                check.classList.remove('border-zinc-600');
+            }
+
+            selections[category] = value;
+            document.getElementById('controls').classList.remove('hidden');
+            document.getElementById('btn-next').classList.remove('hidden');
+
+            if(category === 'purpose') {
+                document.getElementById('dynamic-purpose').innerText = value;
+            }
+        }
+
+        function updateProgress() {
+            const pct = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progress').style.width = pct + '%';
+        }
+
+        function renderSummary() {
+            document.getElementById('summary-purpose').innerText = selections.purpose;
+            document.getElementById('summary-transport').innerText = selections.transport;
+            
+            selections.addons = [];
+            document.querySelectorAll('.addon-checkbox:checked').forEach(cb => {
+                selections.addons.push(cb.value);
+            });
+
+            document.getElementById('summary-addons').innerText = selections.addons.length > 0 ? selections.addons.join(", ") : "None specified";
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                if(currentStep === 3) {
+                    renderSummary();
+                }
+
+                gsap.to(`#step-${currentStep}`, { opacity: 0, x: -50, duration: 0.3, onComplete: () => {
+                    document.getElementById(`step-${currentStep}`).classList.add('hidden');
+                    currentStep++;
+                    
+                    if(currentStep === totalSteps) {
+                        document.getElementById('controls').classList.add('hidden');
+                    } else if (currentStep === 3) {
+                        // Allow skipping addons if none selected
+                        document.getElementById('btn-next').classList.remove('hidden');
+                    } else {
+                        // Require selection logic for step 2
+                        if(!selections.transport) {
+                            document.getElementById('btn-next').classList.add('hidden');
+                        }
+                    }
+
+                    const nextEl = document.getElementById(`step-${currentStep}`);
+                    nextEl.classList.remove('hidden');
+                    gsap.fromTo(nextEl, { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.4 });
+                    updateProgress();
+                }});
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                gsap.to(`#step-${currentStep}`, { opacity: 0, x: 50, duration: 0.3, onComplete: () => {
+                    document.getElementById(`step-${currentStep}`).classList.add('hidden');
+                    currentStep--;
+                    
+                    document.getElementById('controls').classList.remove('hidden');
+                    document.getElementById('btn-next').classList.remove('hidden'); // they clicked prev, so they already selected something here
+
+                    const prevEl = document.getElementById(`step-${currentStep}`);
+                    prevEl.classList.remove('hidden');
+                    gsap.fromTo(prevEl, { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.4 });
+                    updateProgress();
+                }});
+            }
+        }
+
+        function finishBuilder() {
+            const text = `Hi, I used the Smart Trip Builder.\n\n*Event:* ${selections.purpose}\n*Transport needed:* ${selections.transport}\n*Add-ons:* ${selections.addons.join(', ') || 'None'}\n\nPlease share competitive quotes!`;
+            window.open(`https://wa.me/919999999999?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
