@@ -68,18 +68,18 @@
 
     <!-- Lottie Loader -->
     <div id="loader" class="fixed inset-0 z-[100] bg-zinc-950 flex flex-col items-center justify-center">
-        <!-- Circular spinner (Lottie replacement for simple implementation) -->
+        <!-- Circular spinner with Logo -->
         <div class="relative w-24 h-24">
             <div class="absolute inset-0 border-t-2 border-emerald-500 rounded-full animate-spin"></div>
             <div
                 class="absolute inset-2 border-r-2 border-emerald-400 rounded-full animate-[spin_2s_linear_infinite_reverse]">
             </div>
             <div
-                class="absolute inset-4 bg-emerald-500/10 rounded-full flex items-center justify-center font-bold text-emerald-400">
-                NB</div>
+                class="absolute inset-4 bg-emerald-500/10 rounded-full flex items-center justify-center overflow-hidden border border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                <img src="assets/logo.png" class="w-10 h-10 object-contain" alt="NB Logo">
+            </div>
         </div>
-        <p id="loader-text" class="mt-4 text-zinc-400 animate-pulse font-light tracking-widest text-sm">Preparing Your
-            Journey...</p>
+        <p id="loader-text" class="mt-4 text-zinc-400 animate-pulse font-light tracking-widest text-sm uppercase">Travel safe at night</p>
     </div>
 
     <!-- Navigation -->
@@ -94,10 +94,9 @@
             </div>
             <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-300">
                 <a href="#services" data-i18n="nav_bus" class="hover:text-white transition-colors">Bus</a>
-                <a href="yatra.html" data-i18n="nav_yatras" class="hover:text-white transition-colors">Yatras</a>
-                <a href="events.html" data-i18n="nav_events" class="hover:text-white transition-colors">Events</a>
-                <a href="partners.html" data-i18n="nav_partner" class="hover:text-emerald-400 transition-colors">Partner
-                    with Us</a>
+                <a href="#yatra" data-i18n="nav_yatras" class="hover:text-white transition-colors">Yatras</a>
+                <a href="#services" onclick="switchEcoTab('eco-events', document.querySelector('.eco-tab[onclick*=\'eco-events\']'))" class="hover:text-white transition-colors">Events</a>
+                <a href="#services" onclick="switchEcoTab('eco-business', document.querySelector('.eco-tab[onclick*=\'eco-business\']'))" class="hover:text-emerald-400 transition-colors">Partner with Us</a>
             </div>
             <div class="flex items-center gap-4">
                 <!-- Language Toggle -->
@@ -109,11 +108,6 @@
                     <button id="btn-hi" onclick="setLanguage('hi')"
                         class="text-zinc-400 hover:text-emerald-400 transition-colors">HI</button>
                 </div>
-                <!-- Dashboard -->
-                <a href="dashboard.html"
-                    class="hidden sm:flex text-sm font-bold items-center gap-2 text-zinc-300 hover:text-white transition-colors">
-                    <i class="ri-user-smile-line text-lg"></i> <span data-i18n="nav_account">Account</span>
-                </a>
                 <button onclick="window.location.href='bundle-builder.html'" data-i18n="nav_plan_trip"
                     class="text-sm font-medium bg-emerald-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-emerald-400 transition-colors emerald-glow">Plan
                     a Trip</button>
@@ -125,20 +119,21 @@
     <main class="relative min-h-[100dvh] w-full flex flex-col justify-center overflow-hidden pt-20" id="hero">
         <!-- Image Background -->
         <div class="absolute inset-0 z-0">
-            <img src="assets/header.png" class="w-full h-full object-cover object-top opacity-50"
+            <img src="assets/header.png" class="w-full h-full object-cover object-top opacity-30 brightness-[0.6] grayscale-[0.2]"
                 id="hero-bg-img" alt="Luxury Bus Night Travel">
-            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/40"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(9,9,11,1)_100%)]">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.05)_0%,rgba(9,9,11,1)_100%)]">
             </div>
-            <!-- Dynamic Grid Overlay (GPU-like effect) -->
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+            <!-- Dynamic Grid Overlay (Premium Touch) -->
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+            <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-emerald-500/5 to-transparent pointer-events-none"></div>
             <!-- Interactive Ecosystem Canvas overlay -->
-            <canvas id="ecosystem-network" class="absolute inset-0 z-10 opacity-30"></canvas>
+            <canvas id="ecosystem-network" class="absolute inset-0 z-10 opacity-40"></canvas>
         </div>
 
         <!-- Brand Text Backdrop -->
         <div class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none overflow-hidden">
-            <h2 class="text-[12vw] font-black uppercase text-white/[0.03] select-none tracking-tighter whitespace-nowrap animate-pulse-slow">Raat Ka Saathi</h2>
+            <h2 class="text-[10vw] font-black uppercase text-white/[0.03] select-none tracking-tighter whitespace-nowrap animate-pulse-slow">Travel safe at night</h2>
         </div>
 
         <!-- Content -->
@@ -149,7 +144,7 @@
                 <div
                     class="reveal-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-4">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span id="hero-badge-text">Raat Ka Saathi</span>
+                    <span id="hero-badge-text">Travel safe at night, best in light</span>
                 </div>
 
                 <h1 id="hero-title"
@@ -209,27 +204,61 @@
                 <div
                     class="relative w-[280px] h-[580px] rounded-[3rem] border-[6px] border-zinc-800 bg-zinc-950 p-2 shadow-2xl glass-panel z-10 flex flex-col justify-between overflow-hidden">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-zinc-800 rounded-b-2xl z-20"></div>
-                    <!-- Mock UI Inside Phone -->
-                    <div class="w-full h-full rounded-[2.5rem] bg-zinc-900 overflow-hidden relative">
+                    <!-- Mock UI Inside Phone (Refined & Premium) -->
+                    <div class="w-full h-full rounded-[2.5rem] bg-[#09090b] overflow-hidden relative font-sans">
                         <!-- Top header mock -->
-                        <div class="h-40 bg-gradient-to-br from-emerald-500/20 to-transparent p-5 pt-12">
-                            <div class="w-10 h-10 rounded-full bg-emerald-500/20 mb-3 flex items-center justify-center">
-                                <i class="ri-user-smile-line text-emerald-500"></i>
-                            </div>
-                            <div class="h-4 w-24 bg-white/20 rounded mb-2"></div>
-                            <div class="h-3 w-16 bg-white/10 rounded"></div>
-                        </div>
-                        <!-- Cards mock -->
-                        <div class="p-4 space-y-3 -mt-6">
-                            <div class="h-24 bg-zinc-800 rounded-2xl flex items-center gap-3 p-3">
-                                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex-shrink-0"></div>
-                                <div class="flex-1">
-                                    <div class="h-3 w-1/2 bg-white/20 rounded mb-2"></div>
-                                    <div class="h-2 w-1/3 bg-white/10 rounded"></div>
+                        <div class="h-44 bg-gradient-to-br from-emerald-500/30 to-zinc-950 p-6 pt-12">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30">
+                                    <i class="ri-user-smile-line text-emerald-400"></i>
+                                </div>
+                                <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                                    <i class="ri-notification-3-line text-zinc-400 text-xs"></i>
                                 </div>
                             </div>
-                            <div class="h-20 bg-zinc-800/50 rounded-2xl"></div>
-                            <div class="h-20 bg-zinc-800/50 rounded-2xl"></div>
+                            <h4 class="text-white font-bold text-lg leading-tight mb-1">Travel Safe</h4>
+                            <p class="text-zinc-500 text-[10px] uppercase tracking-widest">Best in Light</p>
+                        </div>
+                        
+                        <!-- Search Mock -->
+                        <div class="px-4 -mt-6 mb-6">
+                            <div class="bg-zinc-900 border border-white/5 rounded-2xl p-3 shadow-xl">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                    <div class="h-1.5 w-16 bg-white/10 rounded"></div>
+                                </div>
+                                <div class="flex items-center gap-2 border-t border-white/5 pt-2">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                                    <div class="h-1.5 w-24 bg-white/10 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cards mock -->
+                        <div class="px-4 space-y-3">
+                            <div class="h-28 bg-zinc-900/80 rounded-3xl border border-white/5 p-4 flex flex-col justify-between">
+                                <div class="flex justify-between">
+                                    <div class="h-3 w-20 bg-emerald-500/20 rounded"></div>
+                                    <div class="h-3 w-10 bg-white/5 rounded"></div>
+                                </div>
+                                <div class="h-2 w-full bg-white/5 rounded"></div>
+                                <div class="flex justify-between items-center">
+                                    <div class="h-4 w-12 bg-emerald-500/40 rounded"></div>
+                                    <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-zinc-950 text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Bottom tab bar mock -->
+                            <div class="absolute bottom-0 left-0 w-full h-16 bg-zinc-950 border-t border-white/5 flex items-center justify-around px-4">
+                                <i class="ri-home-5-fill text-emerald-500"></i>
+                                <i class="ri-compass-3-line text-zinc-600"></i>
+                                <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center -mt-8 border border-emerald-500/20 shadow-lg">
+                                    <i class="ri-qr-code-line text-emerald-400"></i>
+                                </div>
+                                <i class="ri-calendar-event-line text-zinc-600"></i>
+                                <i class="ri-user-line text-zinc-600"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -657,7 +686,7 @@
             <div class="reveal-up text-center mb-16">
                 <h2 class="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3 animate-pulse">Adventure Awaits</h2>
                 <h3 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6">Explore <span class="gradient-text-blue">Offbeat Places</span></h3>
-                <p class="text-zinc-400 max-w-2xl mx-auto text-lg font-light">Discover hidden gems and untouched landscapes across the Himalayas with our curated travel experiences.</p>
+                <p class="text-zinc-400 max-w-2xl mx-auto text-lg font-light">Discover hidden gems and untouched landscapes across the Himalayas with our in Uttrakhand and Jammu Kashmir.</p>
             </div>
 
             <!-- Category Tabs -->
@@ -761,13 +790,67 @@
 
             <!-- Other Tabs (Placeholders) -->
             <div id="uttarakhand-tab" class="explore-content hidden">
-                <div class="flex items-center justify-center min-h-[400px] border border-dashed border-white/10 rounded-[3rem]">
-                    <p class="text-zinc-500 italic text-xl">Exploring Uttarakhand adventures soon...</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mobile-swipe-grid">
+                    <!-- Rishikesh Group -->
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-blue-400 flex items-center gap-2 mb-4">
+                            <span class="w-8 h-[1px] bg-blue-500/30"></span> Spiritual Rishikesh
+                        </h4>
+                        <div class="group relative aspect-[16/9] rounded-[2rem] overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]">
+                            <img src="assets/DESTINATION_/uttarakhand.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Rishikesh">
+                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <h5 class="text-2xl font-bold text-white mb-1">Rishikesh</h5>
+                                <p class="text-zinc-400 text-sm flex items-center gap-1"><i class="ri-map-pin-2-fill text-blue-400"></i> Yoga Capital</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Kedarnath Group -->
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-emerald-400 flex items-center gap-2 mb-4">
+                            <span class="w-8 h-[1px] bg-emerald-500/30"></span> Divine Kedarnath
+                        </h4>
+                        <div class="group relative aspect-[16/9] rounded-[2rem] overflow-hidden border border-white/10 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(16,185,129,0.2)]">
+                            <img src="assets/DESTINATION_/uttarakhand.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Kedarnath">
+                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <h5 class="text-2xl font-bold text-white mb-1">Kedarnath Valley</h5>
+                                <p class="text-zinc-400 text-sm flex items-center gap-1"><i class="ri-map-pin-2-fill text-emerald-400"></i> Panch Kedar</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="jk-tab" class="explore-content hidden">
-                <div class="flex items-center justify-center min-h-[400px] border border-dashed border-white/10 rounded-[3rem]">
-                    <p class="text-zinc-500 italic text-xl">Jammu & Kashmir peaks coming soon...</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mobile-swipe-grid">
+                    <!-- Gulmarg Group -->
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-indigo-400 flex items-center gap-2 mb-4">
+                            <span class="w-8 h-[1px] bg-indigo-500/30"></span> Gulmarg Peaks
+                        </h4>
+                        <div class="group relative aspect-[16/9] rounded-[2rem] overflow-hidden border border-white/10 hover:border-indigo-500/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]">
+                            <img src="assets/DESTINATION_/jk.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Gulmarg">
+                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <h5 class="text-2xl font-bold text-white mb-1">Gulmarg</h5>
+                                <p class="text-zinc-400 text-sm flex items-center gap-1"><i class="ri-map-pin-2-fill text-indigo-400"></i> Meadow of Flowers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pahalgam Group -->
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-blue-400 flex items-center gap-2 mb-4">
+                            <span class="w-8 h-[1px] bg-blue-500/30"></span> Pahalgam Valley
+                        </h4>
+                        <div class="group relative aspect-[16/9] rounded-[2rem] overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]">
+                            <img src="assets/DESTINATION_/jk.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Pahalgam">
+                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <h5 class="text-2xl font-bold text-white mb-1">Pahalgam</h5>
+                                <p class="text-zinc-400 text-sm flex items-center gap-1"><i class="ri-map-pin-2-fill text-blue-400"></i> Shepherds Valley</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1379,7 +1462,7 @@
         })();
 
         // Multi-contact WhatsApp Logic
-        const WA_NUMBER = "917583022298"; 
+        const WA_NUMBER = "919893980743"; 
 
         function openWhatsApp(message) {
             const encoded = encodeURIComponent(message);
