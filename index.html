@@ -1428,7 +1428,9 @@
         </div>
     </footer>
 
-    <!-- Floating Elements -->
+    <!-- Smart Custom Cursor Elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <!-- GSAP Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -2058,6 +2060,49 @@
 
             // Init Canvas Ecosystem Network
             initEcosystemCanvas();
+
+            // --- Smart Custom Cursor Logic ---
+            const cursorDot = document.querySelector(".cursor-dot");
+            const cursorOutline = document.querySelector(".cursor-outline");
+
+            window.addEventListener("mousemove", (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                // Immediate position for dot
+                cursorDot.style.opacity = "1";
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Smooth inertia for outline using GSAP
+                gsap.to(cursorOutline, {
+                    duration: 0.5,
+                    left: posX - 20,
+                    top: posY - 20,
+                    opacity: 1,
+                    ease: "power3.out"
+                });
+            });
+
+            // Interactive Element Hover Effect
+            const interactiveElements = document.querySelectorAll('button, a, .glass-panel, .yatra-card, input, select, textarea, .eco-tab');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener("mouseenter", () => {
+                    cursorDot.classList.add("active");
+                    cursorOutline.classList.add("active");
+                });
+                el.addEventListener("mouseleave", () => {
+                    cursorDot.classList.remove("active");
+                    cursorOutline.classList.remove("active");
+                });
+            });
+
+            // Hide cursor when leaving window
+            document.addEventListener("mouseleave", () => {
+                cursorDot.style.opacity = "0";
+                cursorOutline.style.opacity = "0";
+            });
         }
 
         // --- Canvas Network Effect ---

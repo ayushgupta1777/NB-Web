@@ -229,23 +229,49 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
-/* Contact Form Specifics */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 1000px rgba(10, 10, 15, 1) inset;
-  transition: background-color 5000s ease-in-out 0s;
+/* Custom Smart Cursor */
+.cursor-dot,
+.cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 9999;
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
 }
 
-#form-alert {
-  transform: translateY(-10px);
-  animation: slideIn 0.3s forwards;
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-emerald);
 }
 
-@keyframes slideIn {
-  to {
-    transform: translateY(0);
-    opacity: 1;
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(16, 185, 129, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cursor Active State (Hovering over interactive elements) */
+.cursor-outline.active {
+  transform: scale(1.5);
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.8);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.cursor-dot.active {
+  transform: scale(0.5);
+}
+
+/* Hide on Mobile */
+@media (max-width: 1024px) {
+  .cursor-dot, .cursor-outline {
+    display: none;
   }
 }
